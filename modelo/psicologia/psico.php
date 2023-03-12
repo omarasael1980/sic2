@@ -126,6 +126,20 @@
           return false;
        }
     }
+    function buscaCasosPisoXAlumno($id){
+      require '../../modelo/config/pdo.php';
+      $query ="CALL  select_buscaCasosPsicoxAlumno(:id)";
+      $st = $pdo->prepare($query);
+      $st->bindparam(':id',$id);
+      $st->execute() or die (implode ('>>', $st->errorInfo()));
+      if($st->rowCount()>0){
+          $casos=$st->fetchAll(PDO::FETCH_OBJ);
+            return $casos;
+        }else{
+          return false;
+       }
+     
+    }
     function buscaCanalizacionesPsico($id){
       require '../../modelo/config/pdo.php';
       $query ="CALL select_buscaCanalizacionPsico(:id)";
