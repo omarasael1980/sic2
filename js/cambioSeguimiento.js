@@ -19,13 +19,17 @@ function actualizaSeg(folio){
      var foliox= folio;
      //console.log(elemento);
    estado = document.getElementById(elemento).checked;
-   //  console.log(checkbox);
-   
- 
+    
+   if(estado == true){
+    estado = 1;
+   }else{
+    estado = 0;
+   }
+ console.log(estado);
  formData.append('seguimiento', estado);
  formData.append('folio', folio);
- console.log('folio:' + folio);
  
+
  // Crear una solicitud HTTP POST y enviar los datos
  fetch('../../controlador/psicopedagogico/actualizar_estado.php', {
          method: 'POST',
@@ -33,9 +37,12 @@ function actualizaSeg(folio){
      }).then(datos => datos.json())
      .then(datosrecibidos =>{
          console.log(datosrecibidos);
+        
+         
          location.reload();
      })
     }
+    
     location.reload();
     return false;
 

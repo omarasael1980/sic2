@@ -63,33 +63,33 @@ if(!isset($_SESSION['user']) || !in_array('Psicopedagogico',$_SESSION['user']->p
      <br>
      <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control">
 
-     <div class="row">
-     
-                 <center><a href="../../vistas/psicopedagogico/pprincipal.php">
-                 <img class="img-menu" src="../../img/icons/psicologa.jpg" alt="Psicopedagógico"></a></center>
-            </div>
             <div class="row">
-                
-                    <h4 class="text-center">Psicopedagógico</h4>
-                
+            
+                        <center><a href="../../vistas/psicopedagogico/pprincipal.php">
+                        <img class="img-menu" src="../../img/icons/psicologa.jpg" alt="Psicopedagógico"></a></center>
             </div>
+              <div class="row">
+                        
+                            <h4 class="text-center">Psicopedagógico</h4>
+                        
+              </div>
             <div class="row">
                 <h1 class="text-center">Menú</h1>
                 <div class="list-group">
                   
                          <!--Menu desplegable-->
                         <?php  $espacios = "        ";?>
-                         <a href="pprincipal.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
+                         <a href="pprincipal.php" class=" btn list-group-item text-center list-group-item-action " aria-current="true">
                          <p> <i class="fa-solid fa-bars"> </i> <?=$espacios?>Pendientes</p>  </a>
                         <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
-                        <a href="#" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
+                        <a href="historialPsico.php" class=" btn-primary  list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
                         <a href="#" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
                         <a href="#" class="list-group-item text-center  list-group-item-action"><p><i class="fa-solid fa-route"></i><?=$espacios?>Canalizaciones</p> </a>
                 </div>
                 
             </div>
 
-     </div>
+            </div>
       
       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 form-control">
 <!--contenedor central -->
@@ -117,24 +117,30 @@ if(!isset($_SESSION['user']) || !in_array('Psicopedagogico',$_SESSION['user']->p
                   
                   </div>
                
-                  <div class="col-lg-4 col-md-3 col-sm-1 col-xs-0"></div>
-                    <div class="col-lg-4 col-md-2 col-sm-3 col-xs-12">
+                  <div class="col-lg-5 col-md-5 col-sm-4 col-xs-2"></div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-8">
                         <button class="form-control btn btn-success">Cargar Expediente</button>
                      
                   </div>
                
           </form>
+          </div> 
+            </div> 
+            </div> 
           <?php else:?>
-            </div> 
-            </div> 
-            </div> 
+
+            <div class="col-lg-5 col-md-3 col-sm-1 col-xs-0"></div>
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                        <a class="btn btn-info"href="historialPsico.php"><i class="fa-solid fa-door-closed"></i><?=" "?>Cerrar</a>
+                  </div>
+            
       <!-- termina filtrado -->
 <div class="row">
   
             <!-- INICIO CENTRO -->
           <?php if($casosEncontrados != ""): //si existen casos?> 
            <!-- se llaman datos del alumno -->
-  <?php if($casosEncontrados !=null){
+            <?php if($casosEncontrados !=null){
           //busca datos del estudiante
            $idalget = buscaAlumno($casosEncontrados[0]->estudiantes_idestudiantes); //carga al alumno
              //se prepara para juntar el nombre
@@ -151,7 +157,7 @@ if(!isset($_SESSION['user']) || !in_array('Psicopedagogico',$_SESSION['user']->p
  
            <!-- inicia boton colapsable -->
            <p>
-        
+      
           <button class="btn btn-primary form-control"   type="button" data-bs-toggle="collapse" 
               data-bs-target="#collapse<?=$ce->idatencion_psico?>" aria-expanded="false" aria-controls="collapseWidthExample">
              <!--datos del boton colapsable de casos activos  -->
@@ -161,7 +167,9 @@ if(!isset($_SESSION['user']) || !in_array('Psicopedagogico',$_SESSION['user']->p
               <div class="col-lg-3 col-md-2 col-sm-3 col-xs-4">
                <div class="form-check form-switch">
                   <input type="hidden" name="folio" id="folio" value="<?=$ce->idatencion_psico?>">
-                  <input class="form-check-input" type="checkbox" checked onChange="actualizaSeg(<?=$ce->idatencion_psico?>)" id="seguimientoPsico<?=$ce->idatencion_psico?>"/>
+                  <input class="form-check-input" type="checkbox" <?php 
+                  if($ce->darSeguimiento == 1){ echo "checked";}
+                  ?> onChange="actualizaSeg(<?=$ce->idatencion_psico?>)" id="seguimientoPsico<?=$ce->idatencion_psico?>"/>
 
                     <label class="form-check-label" for="seguimientoPsico">Dar seguimiento</label>
                 </div>
@@ -416,7 +424,8 @@ if(!isset($_SESSION['user']) || !in_array('Psicopedagogico',$_SESSION['user']->p
 
  
 <!-- Termina boton colapsable -->
-</div> </div>        
+</div> 
+</div>        
     <?php endforeach?>
     </div> 
     <?php endif?>
@@ -424,10 +433,11 @@ if(!isset($_SESSION['user']) || !in_array('Psicopedagogico',$_SESSION['user']->p
               <!-- termina casos -->
               <?php //endforeach?>
             <?php endif?>
-            </div> 
+          
             <?php //endif?>
                 <!-- se llaman datos del alumno -->
-                </div>       
+                  
+               
   
  
    
@@ -436,16 +446,12 @@ if(!isset($_SESSION['user']) || !in_array('Psicopedagogico',$_SESSION['user']->p
       
        
         
-        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control">
-    <!--contenedor derecha -->
-contenedor derecha
-    <!--contenedor derecha -->
-
-        </div>
+       
     </div>
 </div>
    
  <script src="../../js/colapsables.js"></script>
+ <script src="../../js/cambioSeguimiento.js"> </script>
  <script src="../../js/peticiones.js">        </script> 
 
 <?php require '../complementos/footer_2.php';?>
