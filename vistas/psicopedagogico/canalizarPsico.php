@@ -11,7 +11,7 @@ $viaComunicacion = cargaMotivosNotificacion();
 $today =  date('Y-m-d');
 $caso = buscaCasoPsico($_GET['id']);
 $especialistas = buscaEspecialistas();
-$categoriaCanalPsico = buscaCategoCanalPsico();
+$categoriaCanalPsico = buscaCategoCanalPsico(); 
 
 if(!isset($_SESSION['user']) || !in_array('Psicopedagogico',$_SESSION['user']->perm)){
     header("Location:../../");
@@ -177,7 +177,7 @@ while ($contador_dias < 3) {
                                     </div>
                                 </div>
                                 <div class="form-message" id="mensaje_error__categoria">
-                                                <p>Debes elegir alguna opción de categoría</p>
+                                                <p>Debes elegir alguna opción de categoría psicológica</p>
                                     </div>
                                 </div>
                             <br>
