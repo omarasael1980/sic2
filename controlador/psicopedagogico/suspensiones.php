@@ -1,8 +1,4 @@
-<pre>
-    <?php
-    print_r($_POST);
-    ?>
-</pre>
+
 <?php
 $folio = $_POST['folio'];
 $fecha = $_POST['fecha'];

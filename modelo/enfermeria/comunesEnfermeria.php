@@ -181,7 +181,8 @@ function cargarUltimasAtencionesMedicas(){
   function dias_pasados($fecha_inicial,$fecha_final)
   {
   $dias = (strtotime($fecha_inicial)-strtotime($fecha_final))/86400;
-  $dias = abs($dias); $dias = floor($dias);
+  $dias = abs($dias); 
+  $dias = floor($dias);
   return $dias;
   }
    function cargarAtencionesMedicasAlumno($id){

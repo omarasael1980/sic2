@@ -9,7 +9,7 @@ $fechax = substr($fechaCitatorio, 0,10);
 $hora = substr($fechaCitatorio, 11);
 $date = $fechax." ".$hora;
 include '../../modelo/psicologia/psico.php';
-print_r($date);
+
 
 $resp = insertaCitatorioPsico($descripcion, $fecha,  $date,  $viaComunicacion, $folio);
 if($resp){
