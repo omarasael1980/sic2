@@ -15,7 +15,7 @@ $st->execute() or die (implode ('>>', $st->errorInfo()));
 if($st->rowCount()>0){
     echo json_encode("correcto");
 } else {
-    $mn = "valio madres".$seguimiento;
+    $mn = "error al cambiar estado".$seguimiento;
     echo json_encode($mn);
 }
 

@@ -16,18 +16,20 @@ if(isset($_POST)){
         if($_POST['libro'] != ""){
                     $libro = $_POST['libro'];
                     $idlibro = buscaLibroXTitulo($libro);
-if($idlibro !=""){
-   
-    $ejemplares = buscaEjemplaresPorLibro($idlibro[0]->idlibros);
-    $bibliotecarios = buscaBibliotecarios();
-    $procedencia = buscaProcedencia();}
-}else{ 
-    header("Location:./nuevoLibro.php");
-}
-     
-    }else{
-       
-    }
+            if($idlibro !=""){
+            
+                $ejemplares = buscaEjemplaresPorLibro($idlibro[0]->idlibros);
+                $bibliotecarios = buscaBibliotecarios();
+                $procedencia = buscaProcedencia();
+            }else{
+                //se manda error de que no puede estar el campo vacio
+              
+            }
+            }else{ 
+                header("Location:./nuevoLibro.php");
+            }
+                
+                }
 }
 if(isset($_GET['id'])){
 $proceso="nuevoLibro";
@@ -65,8 +67,9 @@ $editorial = buscaEditoriales();
                                     <div class="col-lg-3  col-md-3 col-sm-6 col-xs-6"><a href="nuevoLibro.php?id=1" class="form-control btn btn-primary"><center>Nuevo Libro</center></a></div>
                                 </div>
                             </div> 
-                    
+                            <div class="row"><label for="error" hidden class="form-message form-message-active" id="error" name="error"></label></div>
                         </form>
+                       
                 </div>
         </div>
                  
@@ -267,7 +270,7 @@ $editorial = buscaEditoriales();
                
        
            <!--js-->
-           
+           ````<script src="../../js/errorNuevoLibro.js"></script>
                <script src="../../js/filtraLibros.js">        </script>
                <script src="../../js/validaNuevoLibro.js">        </script>
              

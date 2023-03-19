@@ -55,12 +55,7 @@ if(isset($_POST['libro'])){
 }
 
 ?>
-<pre>
-    <?php
-   print_r($libros);
-   // print_r($prestamos);
-    ?>
-</pre>
+
 <!-- body  -->
 <div class="container"><!--inicia contenedor principal-->
     <div class="row"><!--inicia row principal-->

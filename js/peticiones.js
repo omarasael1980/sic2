@@ -17,7 +17,7 @@ function getAlumnos() {
     console.log("incorrecto");
     document.getElementById("alumno").value = "";
    
-
+ 
     }
          //si es mas de 0 caracteres
          let url = "../../modelo/alumnos/getAlumnos.php"

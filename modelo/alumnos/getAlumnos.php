@@ -16,7 +16,7 @@ $html = "";
 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 	$html .= "<li name=".$row["idestudiantes"]." onclick=\"mostrar('" . $row["nombre"] . "/".$row["apaterno"]."/".$row["amaterno"]."/".$row["grupo"]."  /  " . $row["idestudiantes"] ."' )\">" . $row["nombre"] . " - " . $row["apaterno"] ."  /  " . $row["amaterno"] ."  /  " . $row["grupo"]."</li>";
 }
-
+ 
 echo json_encode($html, JSON_UNESCAPED_UNICODE);
 
 ?>

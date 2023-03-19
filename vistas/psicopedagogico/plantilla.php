@@ -153,4 +153,4 @@ contenedor derecha
 
 <?php require '../complementos/footer_2.php';?>
 
-
+<?php

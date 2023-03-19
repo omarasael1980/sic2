@@ -24,16 +24,16 @@ $categorias = getCategoriasMedicas();
 <!-- body  -->
 <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <center><H1  >Enfermería</H1></center>
-                  <center><div ><img  style="width: 120px;height: auto;" src="../../img/icons/enfermeria.webp" alt="enfermeria">
-                  </div></center>
+                 <H1 class="text-center" >Enfermería</H1>
+               <p class="text-center"></p>  <div ><img  style="width: 120px;height: auto;" src="../../img/icons/enfermeria.webp" alt="enfermeria">
+                  </div></p>
           </div>
 </div>
     <div class="row">
     <form action="../../controlador/enfermeria/atencion_enfermeria.php"  class="form-control2"method="post" autocomplete="off">
                 <div class="col-lg-0 col-md-3 col-sm-1 col-xs-0"></div>
                 <div class="col-lg-2 col-md-1 col-sm-2 col-xs-2">
-                    <label for="alumno" class="form-control2"><center><b> Buscar Alumno:</b></center></label>
+                    <label for="alumno" class="form-control2"> <p class="text-center"> <b> Buscar Alumno:</b></p></label>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-10">
                      <input type="text" required class="form-control"name="alumno" id="alumno">
@@ -58,7 +58,7 @@ $categorias = getCategoriasMedicas();
                     <div class="form-control col-lg-9 col-md-9 col-sm-12 col-xs-12">
                         <!--Se muestran los ultimos casos atendidos-->
                         
-                        <center><h1>Últimos casos atendidos</h1></center>   
+                        <h1 class="text-center">Últimos casos atendidos</h1>  
                         <div class="container">
                         
                             
@@ -104,15 +104,15 @@ $categorias = getCategoriasMedicas();
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <!--Se muestran las estadisticas de atencion-->
                         <div class="form-control ">
-                          <center><h2>Estadísticas</h2></center>
+                         <h2 class="text-center">Estadísticas</h2>
                           <?php foreach($estadisticas as $e):?>
-                        
+                       
                             <!--Se muestran las estadisticas dias sin incidentes-->
                         <div class="row ">
                             <br>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control2">
                                 <br>
-                               <center> <h3>Días sin incidentes</h3></center>
+                              <h3 class="text-center">Días sin incidentes</h3>
                                <?php
                                if($e['ultimoEvento']<5){
                                $color = "danger";
@@ -123,7 +123,7 @@ $categorias = getCategoriasMedicas();
                                }
                                
                                ?>
-                               <center><H1 class="blink <?=$color?>"><?=$e['ultimoEvento']?></H1></center>
+                             <H1  class="text-center  blink <?=$color?>"><?=$e['ultimoEvento']?></H1>
                                
                                <br>
                             </div>
@@ -133,15 +133,15 @@ $categorias = getCategoriasMedicas();
                         <div class="row form-control2">
                                 
                                         
-                                    <center> <h2>Atenciones médicas  </h2></center>
+                                   <h2 class="text-center">Atenciones médicas  </h2>
                                  
-                                    <center> <h4>Desde: <?=$fechaI?>  </h4></center>
-                                    <center> <h4>Hasta: <?=$fechaF?>  </h4></center>
+                                   <h4 class="text-center">Desde: <?=$fechaI?>  </h4>
+                                   <h4 class="text-center">Hasta: <?=$fechaF?>  </h4>
                                     <br>
                                     
                                     <?php foreach ($e['Incidencias'] as $i):?>
                                        
-                                    <center><H3><?=$i['cantidad']['eventos']?></H3></center>
+                                    <H3 class="text-center"><?=$i['cantidad']['eventos']?></H3>
                                   
                                     <?php endforeach?>
                                    
@@ -154,7 +154,7 @@ $categorias = getCategoriasMedicas();
                              <div class="row form-control2">
                                 
                               
-                            <center> <h2>Categorías con más incidentes</h2></center>
+                           <h2 class="text-center">Categorías con más incidentes</h2>
                             <br>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -172,7 +172,7 @@ $categorias = getCategoriasMedicas();
                         <div class="row form-control2">
                      
                                        
-                                    <center> <h2>Grupos con más incidentes</h2></center>
+                                   <h2 class="text-center">Grupos con más incidentes</h2>
                                     <br>
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
                                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">

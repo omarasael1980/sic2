@@ -210,7 +210,7 @@ $estadisticas =  buscaEstadisticasPrestamos();
                             <br>
                               <!--grupos con mas prestamos-->
                           <div class="row form-control">
-                          <center><h3>Grupos con  más préstamos</h3></center>
+                        <h3 class="text-center">Grupos con  más préstamos</h3>
                           <hr>
                                                 
                                         
@@ -222,7 +222,7 @@ $estadisticas =  buscaEstadisticasPrestamos();
                                                             <div class="col-lg-7 col-md-6 col-xs-6 col-sm-6">
                                                              <label for=""><b> <p><?=$xGrupo['Grupo']?>:</div>
                                                             <div class="col-lg-5 col-md-6 col-xs-6 col-sm-6">
-                                                            <center>  <?=$xGrupo['prestamos']?></p></b></label></center>
+                                                            <p class="text-center">  <?=$xGrupo['prestamos']?></p></b></label></p>
                                                             </div>
                                                            
                                                             

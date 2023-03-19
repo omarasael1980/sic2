@@ -14,9 +14,7 @@ $hoy = date("Y-m-d");
 $idPrestamo =$_GET['id'];
 $prestamo = buscaPrestamo($idPrestamo);
 ?>
-<pre><?php
-    print_r($hoy);?>
-</pre>
+
 <!-- body  -->
 <div class="container"><!--inicia contenedor principal-->
     <div class="row"><!--inicia row principal-->
