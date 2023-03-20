@@ -84,6 +84,7 @@ form {
   opacity: 0;
   width:15px;
 }
+
 .form-message{
   height: 45px;
   line-height: 45px;
@@ -165,6 +166,14 @@ textarea {
 .center {
   text-align: center;
   vertical-align: center;
+
+}
+.lderecha{
+  background: #FFFF99;
+  padding: 0 15px;
+    
+  display: none;
+  color: black;
 
 }
 .field {

@@ -14,6 +14,7 @@ function buscaLibros($idUsuario){ //regresa los libros que tiene cada docente en
       
    }
 }
+
 function buscaTodosLibros(){ //
     
   require '../../modelo/config/pdo.php';

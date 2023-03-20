@@ -24,9 +24,8 @@ header("Location: nuevoPrestamo.php");
     $nombre = "$separada[0] $separada[1] $separada[2]";
     $grupo = $separada[3];
     $quien=$separada[4];
-    $prestamoALumno =buscaPrestamosAlumno($quien);
     //busca los libros del usuario logeado para que cada docente pueda prestar los libros que tiene
-    $libros =buscaTodosLibros();
+    $libros =buscaLibros($_SESSION['user']->idUsuario);
     if(isset($_POST['libros'])){
         
         $libroElegido = $_POST['libros'];
@@ -36,64 +35,25 @@ header("Location: nuevoPrestamo.php");
         $advertencia = buscaLibroLeidoAlumno($idlibro, $idalumno);
         $titulo =$libroSeparado[1];
         //busca los ehemplares del usuario logeado para que cada docente pueda prestar los ejemplares que tiene
-        $ejemplares = buscaEjemplaresPorLibro($idlibro);
-
+        $ejemplares = buscaEjemplares($idlibro, $_SESSION['user']->idUsuario);
     }
        
 }
 }
 
-  $espacios = "        ";
 ?>
 
 
 <!-- body  -->
-<div class="container-fluid">
-    
 <div class="row">
-    <!--contenedor general -->
-     <!--contenedor izquierda -->
-     <br>
-     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
-       <div class="row">
-                <p class="text-center"><a href="../../vistas/biblioteca/bprincipal.php">
-                 <img class="img-menu" src="../../img/icons/libreria.jpg" alt="biblioteca"></a></p>
-        </div>
-        <div class="row">
-                
-                    <h4 class="text-center">Biblioteca</h4>
-                
-        </div>
-        <div class="row">
-                <h1 class="text-center">Menú</h1>
-                <div class="list-group">
-                  
-                         <!--Menu desplegable-->
-                         <a href="bprincipal.php" class=" btn  list-group-item text-center list-group-item-action " aria-current="true">
-                         <p> <i class="fa-solid fa-house"></i><?=$espacios?>Principal</p>  </a>
-                         <br>   <a href="nuevoPrestamo.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
-                         <p> <i class="fa-solid fa-circle-plus"></i> <?=$espacios?>Nuevo Préstamo</p>  </a>
-                         <br>
-                        <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><img class="logos-enfermeria"
-                                        src="../../img/icons/history.png" alt=""><?=$espacios?> Historial </p></a>
-                        <br> <a href="#" class="list-group-item text-center list-group-item-action"><p> <img class="logos-enfermeria"
-                                        src="../../img/icons/inventory.png" alt=""> <?=$espacios?>Inventario </p> </a>
-                        <br> <a href="historialPsico.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-simple"></i> <?=$espacios?>Estadísticas</p></a>
-                       
-                       
-         `````` </div>
-                
-        </div>
-        </div> 
-          
-<!-- termina barra lateral izquierda -->
-    
-      
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
-          <!--contenedor central -->
-<div class="row"><h1 class="text-center">Nuevo Préstamo</h1></div>
-<!-- aqui -->
-
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <center><H1  >Biblioteca</H1></center>
+                  <center><div ><img  style="width: 120px;height: auto;" src="../../img/icons/libreria.jpg" alt="enfermeria">
+                  </div></center>
+          </div>
+</div>
+<br>
+<br>
 <?php if(!isset($_POST['alumno'])):?>
     <div class="row">
         <div class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></div>
@@ -111,18 +71,18 @@ header("Location: nuevoPrestamo.php");
     </div>
            <?php else :?>
             <div class="row">
-               <h1 class="text-center"><?=$nombre?></h1>
-               <h1 class="text-center"><?=$grupo?></h1>
+                <center><h1><?=$nombre?></h1></center>
+                <center><h1><?=$grupo?></h1></center>
                 <div class="col-lg-5 col-md-1 col-sm-1 col-xs-0"></div>
                 <div class="col-lg-2 col-md-10 col-sm-10 col-xs-12">
-            <p class="text-center">   <a class="form-control btn btn-danger" href="nuevoPrestamo.php">Regresar</a></p>
+               <center> <a class="form-control btn btn-danger" href="nuevoPrestamo.php">Regresar</a></center>
                <?php if(isset($_POST['ejemplar'])):?> 
                 <br>
-                           <h3 class="text-center">Confirmar Préstamo</h3>
+                            <center><h3>Confirmar Préstamo</h3></center>
                             <br>
                         <?php else:?>
                             <br>
-                           <h3 class="text-center">Iniciar Préstamo</h3>
+                            <center><h3>Iniciar Préstamo</h3></center>
                             <br>
                             <?php endif;?>
             </div>
@@ -174,7 +134,7 @@ header("Location: nuevoPrestamo.php");
                                         <div class="row">
                                             <div class="form-message  me_formulario-active" id="">
                                             <?php foreach ($advertencia as $adv):?>
-                                                        <p class="text-center"><b><h3>El alumno ya leyó este libro (Fecha de Préstamo: <?=$adv->fecha_prestamo?>)</h3></b> </p>
+                                                        <p><center> <b><h3>El alumno ya leyó este libro (Fecha de Préstamo: <?=$adv->fecha_prestamo?>)</h3></b> </p></center>
                                               <?php endforeach?>
                                                 
                                             </div>    
@@ -188,12 +148,8 @@ header("Location: nuevoPrestamo.php");
                                         <?php endforeach?>
                                         </select>
                                         <?php if($ejemplares==false):?>
-                                            
-    <br>
                                             <div class="form-message  me_formulario-active" id="">
-                                                
-                                            <h3 class="text-center" style="font-size:small;"><b>
-                                            Lo siento pero están agotados estos ejemplares, selecciona otro libro</b></h3>
+                                            <p><center> <b><h3>Lo siento pero están agotados estos ejemplares, selecciona otro libro</h3></b></center> </p>
                                             </div>
                                             <?php endif?>
                                 <?php endif;?>
@@ -211,57 +167,13 @@ header("Location: nuevoPrestamo.php");
                             </div>
                        </form>
                     </div>
-                 
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <!--Columna derecha-->
+                       
+                        </div> 
             </div>
             <?php endif?>
-    
-            
-            </div>
-  
-<!-- aqui -->
-            <!--contenedor central -->
-          
-       
-         
-<!-- FIN CENTRO -->
-<!--contenedor central -->
-     
-
-        
-     
-<?php if(isset($prestamoALumno)):?>
-    <?php if($prestamoALumno !=""):?>
-    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" style="background:#FFFF99; font-size: small; border-radius: 20px;">
-    <!--contenedor derecha -->
-<div class="row">
-   
-    <h4 class="text-center">Últimos préstamos del estudiante</h4>
-    <br>
-  
-    <?php
-  
-    foreach($prestamoALumno as $pa):?>
-      <hr>
-    <br>
-    <p><b>Título: </b><?=$pa->titulo?></p>
-    <p><b>Fecha de préstamo: </b><?=$pa->fecha_prestamo?></p>
-    <p><b>Folio: </b><?=$pa->idPrestamos?></p>
-    <p><b>Ejemplar: </b><?=$pa->ejemplar?></p>
-    <p><b>Fecha de devolución: </b><?=$pa->fecha_regreso?></p>
-
-    <br>
-    
-    <?php endforeach?>
     </div>
 
-    <!--contenedor derecha -->
-
-        </div>
-        <?php endif?>
-    <?php endif?>
-
-    </div>
-</div>
-
-<script src="../../js/peticiones.js">        </script>
+    <script src="../../js/peticiones.js">        </script>
 <?php require '../complementos/footer_2.php';?>
