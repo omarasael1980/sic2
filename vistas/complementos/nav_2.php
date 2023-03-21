@@ -5,8 +5,8 @@ if(!isset($_SESSION['user'])){
 }?>
    <div class="sticky-top">
         <div class="nav-logo row">
-            <div class=" col-lg-0 col-md-0 col-sm-4 col-xs-4"></div>
-                <div class="div-logo col-lg-3 col-md-4 col-sm-8 col-xs-8">
+            <div class=" col-lg-0 col-md-0 col-sm-4 col-xs-0"></div>
+                <div class="div-logo col-lg-3 col-md-4 col-sm-8 col-xs-12">
                     <label for="" class="logoS"><a href="#">
                        <a href="../../"> <p><img src="../../img/empresarial/logoSantee.png" alt="Colegio Santee"> </p> </a>   </a>
                     </label>

@@ -74,11 +74,11 @@ header("Location: nuevoPrestamo.php");
                          <br>   <a href="nuevoPrestamo.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
                          <p> <i class="fa-solid fa-circle-plus"></i> <?=$espacios?>Nuevo Préstamo</p>  </a>
                          <br>
-                        <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><img class="logos-enfermeria"
+                        <a class="list-group-item text-center list-group-item-action" href="historialPrestamos.php"><p><img class="logos-enfermeria"
                                         src="../../img/icons/history.png" alt=""><?=$espacios?> Historial </p></a>
-                        <br> <a href="#" class="list-group-item text-center list-group-item-action"><p> <img class="logos-enfermeria"
+                        <br> <a href="binventario.php" class="list-group-item text-center list-group-item-action"><p> <img class="logos-enfermeria"
                                         src="../../img/icons/inventory.png" alt=""> <?=$espacios?>Inventario </p> </a>
-                        <br> <a href="historialPsico.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-simple"></i> <?=$espacios?>Estadísticas</p></a>
+                        <br> <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-simple"></i> <?=$espacios?>Estadísticas</p></a>
                        
                        
          `````` </div>

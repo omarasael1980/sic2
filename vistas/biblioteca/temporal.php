@@ -1,179 +1,267 @@
+
 <?php
 include '../../modelo/usuarios/usuarios.php';
 require '../complementos/header_2.php';
 require '../complementos/nav_2.php';
 require '../../modelo/config/comunes.php';
-require '../../modelo/biblioteca/comunesBiblioteca.php';
-$today =  date('Y-m-d');
-abreSesion();
+require "../../modelo/biblioteca/comunesBiblioteca.php";
+$espacios = "        ";
+$grupillos = buscarGrupoS();
+$libros = buscaTodosLibros();
+$fechaI='2022-08-21';
+date_default_timezone_set("America/Tijuana");
+$fechaF= date("Y-m-d");
 if(!isset($_SESSION['user']) || !in_array('Biblioteca',$_SESSION['user']->perm)){
- //   header("Location:../../");
+    header("Location:../../");
 }
 
-
-date_default_timezone_set("America/Tijuana");
-
-
-$roles = buscaRoles();
-if(isset($_POST['alumno'])){
-    if($_POST['alumno'] ==""){
-header("Location: nuevoPrestamo.php");
-    }else{
-    $separador = "/";
-    $separada = explode($separador, $_POST['alumno']);
-    $nombre = "$separada[0] $separada[1] $separada[2]";
-    $grupo = $separada[3];
-    $quien=$separada[4];
-    //busca los libros del usuario logeado para que cada docente pueda prestar los libros que tiene
-    $libros =buscaLibros($_SESSION['user']->idUsuario);
-    if(isset($_POST['libros'])){
-        
-        $libroElegido = $_POST['libros'];
-        $libroSeparado = explode("/",$libroElegido);
-        $idlibro = $libroSeparado[0]; //id del libro
-        $idalumno = $_POST['idalumno'];
-        $advertencia = buscaLibroLeidoAlumno($idlibro, $idalumno);
-        $titulo =$libroSeparado[1];
-        //busca los ehemplares del usuario logeado para que cada docente pueda prestar los ejemplares que tiene
-        $ejemplares = buscaEjemplares($idlibro, $_SESSION['user']->idUsuario);
+if(isset($_POST)){
+    if(isset($_POST['busca'])){
+    $busqueda = $_POST['busca'];
+    if($busqueda ==0){
+        $busca= "grupo";
+      
+       }
+       if($busqueda==1){
+        $busca= "alumno";
+       }if($busqueda==2){
+        $busca= "libro";
+       }
     }
-       
+    
+  
+if(isset($_POST['alumno'])){
+    $alumno= $_POST['alumno']; 
+    if(strpos($alumno, '/') == false){
+        //si no contiene / no existe en la base de datos y redirige a la misma pagina pero sin post
+        header("Location:./historialPrestamos.php");
+         }else{
+            //si existe / entonces existe en la base de datos y carga los datos
+   $al = explode("/",$alumno);
+    $nAlumno = $al[0]." ".$al[1]." ".$al[2];
+    $grupoAlumno=$al[3];
+    $idal=trim($al[4]);
+    $historial = "Historial del alumno:";
+    $tema = $nAlumno;
+    $prestamos = buscaPrestamosAlumno($idal);
+}}
+if(isset($_POST['grupo'])){
+    $grupo= $_POST['grupo'];
+    $historial = "Historial del grupo:";
+    $tema = $grupillos[$grupo-1]->grupo;
+    $prestamos = buscaTodosPrestamosGrupo($grupo);
+}
+
+if(isset($_POST['libro'])){
+    $idlibros= $_POST['libro'];
+    $historial = "Historial del libro:";
+    
+    $prestamos = buscaPrestamosLibro($idlibros);
+    if($prestamos != false){
+        $tema = $prestamos[0]->titulo;
+        }else{
+            $tema="";
+        }
 }
 }
 
 ?>
-
-
+ 
 <!-- body  -->
-<div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <center><H1  >Biblioteca</H1></center>
-                  <center><div ><img  style="width: 120px;height: auto;" src="../../img/icons/libreria.jpg" alt="enfermeria">
-                  </div></center>
-          </div>
-</div>
-<br>
-<br>
-<?php if(!isset($_POST['alumno'])):?>
-    <div class="row">
-        <div class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></div>
-                <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
-                        <form action="nuevoPrestamo.php"  class="form-control"  method="post" autocomplete="off">
-                        <div>
-                            <label for="alumno">Buscar Alumno:</label>
-                            <input type="text" class="form-control" name="alumno"  id="alumno">
-                            <ul id="lista">        
-                                    </ul>
-                            </div>
-                        <button class="btn btn-success form-control">Cargar Alumno</button>
-                         </form>
-                 </div>
-    </div>
-           <?php else :?>
+<div class="container"><!--inicia contenedor principal-->
+    <div class="row"><!--inicia row principal-->
+    <!--Contenido principal de la pagina-->
+   <br><br><br>
+     <!--busqueda de alumnos-->
+     <?php if(isset($busca)):?><!--si existe busca entonces es que ya se selecciono un modo de busqueda-->
+        <?php if($busca=="alumno"):?><!--busqueda de alumnos-->
             <div class="row">
-                <center><h1><?=$nombre?></h1></center>
-                <center><h1><?=$grupo?></h1></center>
-                <div class="col-lg-5 col-md-1 col-sm-1 col-xs-0"></div>
-                <div class="col-lg-2 col-md-10 col-sm-10 col-xs-12">
-               <center> <a class="form-control btn btn-danger" href="nuevoPrestamo.php">Regresar</a></center>
-               <?php if(isset($_POST['ejemplar'])):?> 
-                <br>
-                            <center><h3>Confirmar Préstamo</h3></center>
-                            <br>
-                        <?php else:?>
-                            <br>
-                            <center><h3>Iniciar Préstamo</h3></center>
-                            <br>
-                            <?php endif;?>
-            </div>
-               <div class="col-lg-5 col-md-1 col-sm-1 col-xs-0"></div>
-               </div>
-               <div class="row">
-               <div class="col-lg-2 col-md-1 col-sm-1 col-xs-0"></div>
-                    <div class="col-lg-8 col-md-10 col-sm-10 col-xs-12">
-                     <!--columna izquierda formulario para pedir libro-->  
-                     <?php if(isset($_POST['ejemplar'])):?> 
-                       <form class="form-control" action="../../controlador/biblioteca/nuevoPrestamo.php" method="post">
-                        <?php else:?>
-                            <form class="form-control" action="nuevoPrestamo.php" method="post">
-                            <input type="hidden" name = "idalumno" value="<?=$quien?>">
-                        <?php endif?>
-                            <div class="form-class">
-                                <?php if(isset($_POST['alumno'])):?>
-                                    <input type="hidden" name = "idalumno" value="<?=$quien?>">
-                                              <input type="hidden" name="alumno" value="<?=$_POST['alumno']?>">
-                                        <?php if(isset($_POST['fecha'])):?>
-                                               Fecha Seleccionada: <input type="date" required name="fecha" id="fecha"  value ="<?=$_POST['fecha']?>" min="2022-09-11" max="<?=$today?>" class="form-control">
-                                            <?php else:?>
-                                               Selecciona Fecha: <input type="date" required name="fecha" id="fecha" value="<?=$today?>" min="2022-09-11" max="<?=$today?>" class="form-control">
-                                         <?php endif?>
-                                <?php endif;?>
-                                <?php if(!isset($_POST['libros'])):?>
-                                <label for="libros">Selecciona Libro:</label>
-                                <select class ="form-control" name="libros" id="libros">
-                                <?php foreach($libros as $libro):?>
-                                        <option value="<?=$libro->idlibros."/".$libro->titulo?>"><?=$libro->titulo?></option> 
-                                <?php endforeach?>
-                                </select>
-                                <?php else:?>
-                                    <input type="hidden" name="libros" value="<?=$idlibro."/".$titulo?>"> 
-                                    Libro Elegido<input class="form-control"type="text" enabled="off" name="libro" value="<?=$titulo?>">
-                                   <br>
-                                <?php if(isset($_POST['ejemplar'])):?> 
-                                    Ejemplar seleccionado:
-                                    <input type="hidden" class="form-control" name="ejemplar" id="ejemplar"  value="<?=$_POST['ejemplar']?>">
-                                    <select class="form-control" name="ejemplar" id="ejemplar">
-                                    <?php foreach ($ejemplares as $ejemplar):?>
-                                        <option value="<?=$ejemplar->idEjemplar?>" <?php if($ejemplar->idEjemplar ==$_POST['ejemplar']){echo 'selected';}?>><?=$ejemplar->ejemplar?></option>
-                                        <?php endforeach?>
-                                        </select>
-                                <?php else:?>
-                                   <!--se hace verificacion de prestamos de ese libro a ese alumno previamente-->
-                                   <?php if(isset($advertencia)):?>
-                                    <?php if($advertencia !=false):?>
-                                        <div class="row">
-                                            <div class="form-message  me_formulario-active" id="">
-                                            <?php foreach ($advertencia as $adv):?>
-                                                        <p><center> <b><h3>El alumno ya leyó este libro (Fecha de Préstamo: <?=$adv->fecha_prestamo?>)</h3></b> </p></center>
-                                              <?php endforeach?>
-                                                
-                                            </div>    
+                        <div class="col-lg-4 col-md-4 col-sm-0 col-xs-0"></div>
+                          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                 <form action="historialPrestamos.php"  class="form-control"  method="post" autocomplete="off">
+                                    <input type="hidden" name="busca" value="1" >
+                                     <div>
+                                        <label for="alumno"><h1>Buscar historial por alumno:</h1></label><br><br>
+                                        <input type="text" required class="form-control" name="alumno"  id="alumno">
+                                        <ul id="lista">                                                    
+                                                </ul>
+                                     </div>
+                                     <div class="row">
+                                         <div class="col-lg-2 col-md-1 col-sm-1 col-xs-0"></div>
+                                        <div class="col-lg-3 col-sm-4 col-md-4 col-xs-6"> 
+                                            <button type="submit" class=" form-control btn btn-success">Buscar</button>
                                         </div>
-                                         <?php endif;?>
-                                <?php endif;?>
-                                    Selecciona Ejemplar:<select class="form-control" name="ejemplar" id="ejemplar">
-                                    <?php foreach ($ejemplares as $ejemplar):?>
-                                       
-                                        <option value="<?=$ejemplar->idEjemplar?>"><?=$ejemplar->ejemplar?></option>
-                                        <?php endforeach?>
-                                        </select>
-                                        <?php if($ejemplares==false):?>
-                                            <div class="form-message  me_formulario-active" id="">
-                                            <p><center> <b><h3>Lo siento pero están agotados estos ejemplares, selecciona otro libro</h3></b></center> </p>
-                                            </div>
-                                            <?php endif?>
-                                <?php endif;?>
-                                     <?php endif;?>
-                                    <br>
-                        <?php if(isset($_POST['ejemplar'])):?> 
-                           
-                            <button class="form-control btn btn-success">Guardar Prestamo</button>
-                            
-                        <?php else:?>
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-0"></div>
+                                        <div class="col-lg-3 col-sm-4 col-md-4 col-xs-6">
+                                        <a href="historialPrestamos.php"  class=" form-control  btn btn-danger">Regresar</a>
+                                        </div>
+                                     </div>
+                                   
+                                 </form>
+ 
+              
+                        </div>
 
-                            <button class="form-control btn btn-primary">Continuar</button>
-                        <?php endif?> 
-                               
-                            </div>
-                       </form>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <!--Columna derecha-->
-                       
-                        </div> 
+
             </div>
-            <?php endif?>
+            <!--Se cargan los historiales de los alumnos si existe la variable alumnos-->
+              
+           
+            <?php endif;?><!--termina busqueda de alumnos-->
+          
+            <!--En caso de elegir por grupo-->
+            <!--elegir grupo-->
+            <?php if($busca=="grupo"):?><!--if busca grupos-->
+                <center><h1>Búsqueda por grupo</h1></center><br><br><br>
+            <div class="row">
+                <div class="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
+                <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12">
+                        <form action="historialPrestamos.php" method="post" class="form-control2">
+                            <input type="hidden" name="busca" value="0">
+                          Elige un grupo  <select class="form-control" name="grupo" id="grupo">
+                                <?php foreach($grupillos as $g):?>
+                                    <option value="<?=$g->idgrupos?>"
+                                    <?php if(isset($grupo)){ if($g->idgrupos == $grupo){echo 'selected';}}?>><center><?=$g->grupo?></center></option>
+                                    <?php endforeach?>
+                            </select>
+                            <div class="row">
+                                         
+                                        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12"> 
+                                            <button type="submit" class=" form-control btn btn-success">Cargar préstamos</button>
+                                        </div>
+                                        
+                                        <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                                        <a href="historialPrestamos.php"  class=" form-control  btn btn-danger"> <center>Regresar</center> </a>
+                                        </div>
+                                     </div>
+                        </form>
+                        
+                </div>
+            </div>
+            <?php endif?><!--terminabusqueda de grupos-->
+            <br><br>
+            
+            <!--En caso de elegir por libro-->
+            <!--elegir libro-->
+            <?php if($busca=="libro"):?><!--busqueda de libros-->
+                <center><h1>Búsqueda por libro</h1></center><br><br><br>
+            <div class="row">
+                <form action="historialPrestamos.php"  class="form-control2"method="post">
+                    <div class="row">
+                    <input type="hidden" name="busca" value="2">
+                      Elige un libro  <select class="form-control" name="libro" id="libro">
+                        <?php foreach($libros as $l):?>
+                                <option value="<?=$l->idlibros?>" 
+                                <?php if(isset($idLibro)){
+                                    if($idLibro == $l->idlibros){
+                                        echo'selected';
+                                        }
+                                        }?>
+                                ><?= $l->titulo?></option>
+                                <?php endforeach?>
+                                    </select>
+                    </div>
+                            <div class="row">
+                                
+                                <div class="col-lg-6 col-sm-6 col-md-12 col-xs-12"> 
+                                    <button type="submit" class=" form-control btn btn-success">Cargar préstamos</button>
+                                </div>
+                                
+                                <div class="col-lg-6 col-sm-6 col-md-12 col-xs-12">
+                                <a href="historialPrestamos.php"  class=" form-control  btn btn-danger">Regresar</a>
+                                </div>
+                            </div>
+                </form>
+            </div>
+            <?php endif?><!--terminabusqueda de libros-->
+            <!--termina elegir libro-->
+            
+            <!--Se muestran resultados-->
+            <?php if(isset($historial)):?>
+                    <div class="row">
+                    <br><br><center><h3><?=$historial?></h3></center>
+                    <center><h3><?=$tema?></h3></center>
+                    </div>
+                <?php endif?>
+            <?php if(isset($prestamos)):?>
+            <?php if($prestamos !=false):?><!--si hay registros-->
+                <?php foreach($prestamos as $p):?>
+                    <br><hr>
+                    <div class="row form-control">
+                        
+                        <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6"> 
+                            <b> Folio: </b>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+                            <input type="text" readonly value="<?=$p->idPrestamos?>">
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+                            <b> Título: </b>
+                        </div>
+                        <div class="col-lg-2 col-md-1 col-sm-6 col-xs-6">
+                            <input type="text" readonly value="<?=$p->titulo?>">
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+                           <b> Ejemplar: </b>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+                            <input type="text" readonly value="<?=$p->ejemplar?>">
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+                           <b> Fecha Préstamo: </b>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+                            <input type="text" readonly value="<?=$p->fecha_prestamo?>">
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+                           <b> Fecha Devolución: </b>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+                            <input type="text" readonly value="<?=$p->fecha_regreso?>">
+                        </div>
+                    
+                    </div>
+                <?php endforeach?>
+                <?php else:?><!--si no hay registros-->
+                    <br><br><hr>
+                    <center><h3>No hay préstamos registrados de este <?=$busca?></h3></center>
+                    <?php endif;?> 
+                    <?php endif;?> 
+<?php else:?><!--fin de ifinicial-->
+            <center><h1>Historial de préstamos de libros</h1></center> <br><br><br>
+    <div class="row">
+        <div class="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
+            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12 form-control">
+                <form class="form-control2" autocomplete="off" action="historialPrestamos.php" method="post">
+                <center><h3>Tipo de búsqueda</h3></center>
+                <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">Por Grupo </div>
+                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6"><input type="radio" value="0"name="busca" id="grupo" ></div>
+                    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">Por Alumno</div>
+                    <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6"><input type="radio" value="1"name="busca" id="alumno" ></div>
+                    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0"></div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">Por Libro </div>
+                <div class="col-lg-6 col-md-8 col-sm-6 col-xs-6"> <input type="radio" value="2"name="busca" id="libro"></div>
+                <br><br> 
+                <div class="row">
+                  <div class="col-lg-2 col-md-1 col-sm-1 col-xs-0"></div>
+                  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"> <button type="submit" class="form-control btn btn-primary">Siguiente</button></div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-0"></div>
+                  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"><a href="bprincipal.php"class="form-control btn btn-danger"> <center> Regresar</center></a></div>
+                  </div>
+               
+                    
+                </form> 
+            </div>
     </div>
-
-    <script src="../../js/peticiones.js">        </script>
-<?php require '../complementos/footer_2.php';?>
+    <?php endif;?>
+    <!--termina contenido principal de la pagina-->
+    </div><!--termina  row principall-->
+</div>  <!--termina contenedor principal-->   
+           
+           <!--js-->
+           
+               <script src="../../js/peticiones.js">        </script>
+               <script src="../../js/colapsables.js"></script>
+           <?php require '../complementos/footer_2.php';?>
