@@ -240,7 +240,7 @@ if(isset($_POST['libro'])){
             <?php if($prestamos !=false):?><!--si hay registros-->
                 <?php foreach($prestamos as $p):?>
                   
-                    <br><hr>
+                    <br>
                     <div class="row form-control" style="font-size:small;">
                          <!-- aqui se hace cambio cuando se ha buscado por libro --> 
                         <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6"> 
@@ -355,7 +355,44 @@ if(isset($_POST['libro'])){
         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control2">
     <!--contenedor derecha -->
    
+    <?php if(isset($_POST['alumno'])):?>
+    <?php if($prestamos !=""):?>
+  
+   
+                <div class="row"  style="background:#FFFF99; font-size: small; border-radius: 20px;">
+            
+                <h4 class="text-center">Datos interesantes:</h4>
+                <br>
+               
+              
+                <?php $cuantos = count($prestamos,COUNT_RECURSIVE);
+                $fprestamo = date_create($prestamos[0]->fecha_prestamo);
+                $hoy = date_create($fechaF);
+                $devolvio = date_create($prestamos[0]->fecha_regreso);
+                $ultimo= date_diff($fprestamo, $hoy);
+                $tardo =  date_diff($fprestamo, $devolvio);
+                
+                ?>
+                <p class="text-center"> <b><?=$nAlumno."  "?></b></p>
+                <br><hr> 
+                <p class="text-center"><b> Ha leido <?=" ".$cuantos." "?>libros</b></p> 
+                <br>
+                <hr>
+                <?php if($ultimo->format('%a') == 0):?>
+                    <p class="text-center"> <b>Hoy solicitó un libro</b> </p>
+                    <?php else :?>
+                <p class="text-center"> <b>Tiene   <?= $ultimo->format('%a días')?> desde su último préstamo</b> </p>
+              <?php endif?>
 
+                <br>
+                <hr>
+                <p class="text-center"> <b>Tardó  <?= $tardo->format('%a días ' )?>en leer su último libro</b> </p>
+                 
+            
+                
+        </div>
+        <?php endif?>
+    <?php endif?>
     <!--contenedor derecha -->
 
         </div>
