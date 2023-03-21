@@ -45,10 +45,12 @@ if(isset($_POST['alumno'])){
     
 }}
 if(isset($_POST['grupo'])){
+    if($_POST['grupo'] != 0){
     $grupo= $_POST['grupo'];
     $historial = "Historial del grupo:";
     $tema = $grupillos[$grupo-1]->grupo;
     $prestamos = buscaTodosPrestamosGrupo($grupo);
+    }
 }
 
 if(isset($_POST['libro'])){
@@ -159,13 +161,19 @@ if(isset($_POST['libro'])){
                         <form action="historialPrestamos.php" method="post" class="">
                             <input type="hidden" name="busca" value="0">
                          <h5>Elige un grupo:  </h5> <select class="form-control" name="grupo" id="grupo">
-                           
+                         <option value="0">Selecciona un grupo</option>
                                 <?php foreach($grupillos as $g):?>
                                     <option value="<?=$g->idgrupos?>"
                                     <?php if(isset($grupo)){ if($g->idgrupos == $grupo){echo 'selected';}}?>><p class="text-center"><?=$g->grupo?></p></option>
                                     <?php endforeach?>
                             </select>
                             <br>
+                         
+                                <?php if($_POST['grupo']==0):?>
+                                    <?php if($_POST['grupo']==0):?>
+                            <p class="text-center form-message form-message-active"><b> Debes seleccionar un grupo</b></p>
+                            <?php endif?>
+                            <?php endif?>
                             <div class="row">
                                         <div class="col-lg-1 col-md-2 col-sm-2 col-xs-12"></div>
                                         <div class="col-lg-4 col-sm-6 col-md-6 col-xs-12"> 
@@ -183,6 +191,7 @@ if(isset($_POST['libro'])){
                
             <?php endif?><!--terminabusqueda de grupos-->
             <br><br>
+            
             
             <!--En caso de elegir por libro-->
             <!--elegir libro-->
