@@ -89,6 +89,15 @@ p{
       line-height: 1;
 
 }
+.titulo-Libros{
+  background: #01016D; 
+  color:white; 
+  
+}
+.titulo-Libros:hover{
+  background:#0605FE;
+  color: #ccc;
+}
 .form-message{
   height: 45px;
   line-height: 45px;

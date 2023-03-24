@@ -79,7 +79,7 @@ $espacios = "        ";
          
         <?php foreach ($libros as $li):?>
             <?php  $clibros =$clibros + 1;?>
-         <div class=" btn btn-primary m-0 p-0">
+         <div class=" btn m-0 p-0 btn-secondary" >
           <h5 class="text-center"><?=$li->titulo?></h5>
            </div>
            <?php $ejemplares =buscaEjemplaresPorLibro($li->idlibros) //se buscan los ejemplares?> 
@@ -143,7 +143,7 @@ $espacios = "        ";
                 </select> </div>
                 <?php //se valida que el usuario sea administrador o directivo para cambiar la custodia
                     if( in_array('Ajustes',$_SESSION['user']->perm)){
-                     echo'   <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 m-0 p-o"> <button class="form-control btn btn-success">Guardar</button> </div>';
+                     echo'   <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 m-0 p-o"> <button class="form-control btn btn-primary">Guardar</button> </div>';
                     }
                     ?>
                
