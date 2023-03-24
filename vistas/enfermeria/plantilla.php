@@ -13,15 +13,73 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
 
 
 <!-- body  -->
-
-    <div class="row">
-        <div class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></div>
-        <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+<div class="container-fluid">
+    
+<div class="row">
+    <!--contenedor general -->
+     <!--contenedor izquierda -->
+     <br>
+     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
+       <div class="row">
+                 <center><a href="../../vistas/biblioteca/bprincipal.php">
+                 <img class="img-menu" src="../../img/icons/libreria.jpg" alt="biblioteca"></a></center>
+        </div>
+        <div class="row">
+                
+                    <h4 class="text-center">Biblioteca</h4>
+                
+        </div>
+        <div class="row">
+                <h1 class="text-center">Menú</h1>
+                <div class="list-group">
+                  
+                         <!--Menu desplegable-->
+                         <a href="bprincipal.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
+                         <p> <i class="fa-solid fa-house"></i><?=$espacios?>Principal</p>  </a>
+                         <br>   <a href="nuevoPrestamo.php" class=" btn  list-group-item text-center list-group-item-action " aria-current="true">
+                         <p> <i class="fa-solid fa-circle-plus"></i> <?=$espacios?>Nuevo Préstamo</p>  </a>
+                         <br>
+                        <a class="list-group-item text-center list-group-item-action" href="historialPrestamos.php"><p><img class="logos-enfermeria"
+                                        src="../../img/icons/history.png" alt=""><?=$espacios?> Historial </p></a>
+                        <br> <a href="binventario.php" class="list-group-item text-center list-group-item-action"><p> <img class="logos-enfermeria"
+                                        src="../../img/icons/inventory.png" alt=""> <?=$espacios?>Inventario </p> </a>
+                        <br> <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-simple"></i> <?=$espacios?>Estadísticas</p></a>
+                       
+                       
+          </div>
+                
+        </div>
+        </div> 
           
-        
+<!-- termina barra lateral izquierda -->
+    
+      
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
+          <!--contenedor central -->
+
+
+            <!--contenedor central -->
+          
        
+         
+<!-- FIN CENTRO -->
+<!--contenedor central -->
+     
+
+        
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control2">
+    <!--contenedor derecha -->
+                 <!--Mostrar estadisticas --> 
+             
+
+
+                     
+    <!--contenedor derecha -->
+
         </div>
     </div>
+</div>
 
+ 
 
 <?php require '../complementos/footer_2.php';?>
