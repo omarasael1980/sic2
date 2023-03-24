@@ -245,7 +245,49 @@ if(isset($_POST['libro'])){
                     <h3 class="text-center"><?=$tema?></h3>
                     </div>
                 <?php endif?>
-            <?php if(isset($prestamos)):?>
+                <?php if(isset($prestamos)):?>
+                    <!-- empiezan ecabezados -->
+                    <div class="row form-control2 m-0 p-0" style=" background: #01016D; 
+  color:white; ">
+                         <!-- aqui se hace cambio cuando se ha buscado por libro --> 
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-0"  > 
+                        <?php if($busca=="libro"):?><!--busqueda de libros-->
+                            <b> Alumn@: </b>
+                            <?php else:?>
+                            <b> Folio: </b>
+                            <?php endif?>
+                        </div>
+                     
+                      
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-0"  >
+                        <?php if($busca=="libro"):?><!--busqueda de libros-->
+                            <b>  </b>
+                            <?php else:?>
+                       
+                            <b> Título: </b>
+                        
+                        <?php endif?>
+                        </div>
+                   
+                        
+                      
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-0" >
+                           <b> Ejemplar: </b>
+                        </div>
+                       
+                        <div class="col-lg-21 col-md-2 col-sm-3 col-xs-0" >
+                           <b> Fecha Préstamo: </b>
+                        </div>
+                       
+
+                        
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-0" >
+
+                           <b> Fecha Devolución: </b>
+                        </div>
+                  
+                    </div>
+                    <!-- terminan encabezados -->
                 <?php $i=0;?>
             <?php if($prestamos !=false):?><!--si hay registros-->
                 <?php foreach($prestamos as $p):?>
@@ -255,7 +297,7 @@ if(isset($_POST['libro'])){
                         echo ' style="background:#AED6F1;" ';
                     }?>>
                          <!-- aqui se hace cambio cuando se ha buscado por libro --> 
-                        <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6"  <?php if($i % 2 == 0){
+                        <div class="col-lg-0 col-md-0 col-sm-0 col-xs-6"  <?php if($i % 2 == 0){
                         echo ' style="background:#AED6F1;" ';
                     }?>> 
                         <?php if($busca=="libro"):?><!--busqueda de libros-->
@@ -264,7 +306,7 @@ if(isset($_POST['libro'])){
                             <b> Folio: </b>
                             <?php endif?>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        <div class="col-lg-2 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
                         echo ' style="background:#AED6F1;" ';
                     }?>>
                         <?php if($busca=="libro"):?><!--busqueda de libros-->
@@ -276,7 +318,7 @@ if(isset($_POST['libro'])){
                                 <?php endif?>
                         </div>
                       
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6"  <?php if($i % 2 == 0){
+                        <div class="col-lg-0 col-md-0 col-sm-0 col-xs-6"  <?php if($i % 2 == 0){
                         echo ' style="background:#AED6F1;" ';
                     }?>>
                         <?php if($busca=="libro"):?><!--busqueda de libros-->
@@ -288,7 +330,7 @@ if(isset($_POST['libro'])){
                         <?php endif?>
                         </div>
                    
-                        <div class="col-lg-2 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" <?php if($i % 2 == 0){
                         echo ' style="background:#AED6F1;" ';
                     }?>>
                         <?php if($busca=="libro"):?><!--busqueda de libros-->
@@ -303,24 +345,24 @@ if(isset($_POST['libro'])){
                                  <!-- termina cambio por busqueda por libro -->
                         </div>
                       
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6"  <?php if($i % 2 == 0){
+                        <div class="col-lg-0 col-md-0 col-sm-0 col-xs-6"  <?php if($i % 2 == 0){
                         echo ' style="background:#AED6F1;" ';
                     }?>>
                            <b> Ejemplar: </b>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" <?php if($i % 2 == 0){
                         echo ' style="background:#AED6F1;" ';
                     }?>>
-                            <input type="text" readonly value="<?=$p->ejemplar?>"  <?php if($i % 2 == 0){
+                         <center>  <input type="text" class="" readonly value="<?=$p->ejemplar?>"  <?php if($i % 2 == 0){
                         echo ' style="background:#AED6F1;" ';
-                    }?>>
+                    }?>></center> 
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        <div class="col-lg-0 col-md-0 col-sm-0 col-xs-6" <?php if($i % 2 == 0){
                         echo ' style="background:#AED6F1;" ';
                     }?>>
                            <b> Fecha Préstamo: </b>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" <?php if($i % 2 == 0){
                         echo ' style="background:#AED6F1;" ';
                     }?>>
                             <input type="text" readonly value="<?=$p->fecha_prestamo?>"  <?php if($i % 2 == 0){
@@ -329,13 +371,13 @@ if(isset($_POST['libro'])){
                         </div>
 
                         <?php if($p->fecha_regreso != ""):?>
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        <div class="col-lg-0 col-md-0 col-sm-0 col-xs-6" <?php if($i % 2 == 0){
                         echo ' style="background:#AED6F1;" ';
                     }?>>
 
                            <b> Fecha Devolución: </b>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" <?php if($i % 2 == 0){
                         echo ' style="background:#AED6F1;" ';
                     }?>>
                             <input type="text" readonly value="<?= $p->fecha_regreso ?>"  <?php if($i % 2 == 0){
