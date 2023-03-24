@@ -76,7 +76,7 @@ $categoriaCanalPsico = buscaCategoCanalPsico();
            <!-- inicia boton colapsable -->
            <p>
         
-          <button class="btn btn-primary form-control"   type="button" data-bs-toggle="collapse" 
+          <button class="btn btn-primary form-control"  type="button" data-bs-toggle="collapse" 
               data-bs-target="#collapse<?=$p->idatencion_psico?>" aria-expanded="false" aria-controls="collapseWidthExample">
              <!--datos del boton colapsable de casos activos  -->
               <div class="col-lg-2 col-md-2 col-sm-0 col-xs-4">Folio: <?=" ".$p->idatencion_psico?></div>

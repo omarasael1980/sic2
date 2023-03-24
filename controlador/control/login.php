@@ -17,7 +17,7 @@ curl_close($curl);
 $arrResponse = json_decode($response, true);
  
 // verificar la respuesta que sea mayor a 0.5
-if($arrResponse["success"] == '1' && $arrResponse["action"] == $action && $arrResponse["score"] >= 0.5) {
+//if($arrResponse["success"] == '1' && $arrResponse["action"] == $action && $arrResponse["score"] >= 0.5) {
 
 	
     require '../../modelo/config/pdo.php';
@@ -31,9 +31,9 @@ $error = $_SESSION['msg'];
 $tipo=$error['tipo'];
 $msg = $error['msg'];
 header("Location: ../../?tipo=".$tipo."&&msg=".$msg);
-} else {
+//} else {
     
-	echo "Lo siento, por seguridad no procesaremos tu solicitud!";
-}
+//	echo "Lo siento, por seguridad no procesaremos tu solicitud!";
+//}
 
 ?> 

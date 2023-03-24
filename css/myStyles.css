@@ -84,7 +84,11 @@ form {
   opacity: 0;
   width:15px;
 }
+p{
+  font-size: 12px;
+      line-height: 1;
 
+}
 .form-message{
   height: 45px;
   line-height: 45px;

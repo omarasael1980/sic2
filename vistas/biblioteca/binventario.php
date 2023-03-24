@@ -58,15 +58,15 @@ $espacios = "        ";
 <!-- termina barra lateral izquierda -->
     
       
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12  m-0 p-0">
           <!--contenedor central -->
-<div class="row"><h1 class="text-center">Inventario</h1></div>
+<div class="row m-0 p-0"><h1 class="text-center">Inventario</h1></div>
 <!-- aqui empiza  inventario -->
-<br><br><br>
+<br>
 
-<div class="row">
-    <div class="col"></div>
-    <div class="col">
+<div class="row m-0 p-0">
+    <div class="col m-0 p-0"></div>
+    <div class="col m-0 p-0">
     <?php // calculo de estadisticas para panel derecho
             $clibros =0;
             $cejemplares=0;
@@ -79,27 +79,33 @@ $espacios = "        ";
          
         <?php foreach ($libros as $li):?>
             <?php  $clibros =$clibros + 1;?>
-         <div class="form-control btn btn-primary">
-          <h3 class="text-center"><?=$li->titulo?></h3>
+         <div class=" btn btn-primary m-0 p-0">
+          <h5 class="text-center"><?=$li->titulo?></h5>
            </div>
            <?php $ejemplares =buscaEjemplaresPorLibro($li->idlibros) //se buscan los ejemplares?> 
            <?php if(isset($ejemplares)):?>
           
            <?php if($ejemplares == false):?>
-            <div ><p class="text-center"></p> No hay ejemplares disponibles</div>
+            <p class="text-center " style="font-size: small"> No hay ejemplares disponibles</p>
            <?php else: ?>
+              <!-- Encabezados de la presentacion de resultados -->
+         
+              <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 m-0 p-o"><p class="xs-4  m-0 p-o" style="font-size: small"><b> Ejemplar:  </b></p></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 m-0 p-o"> <p class="xs-4 m-0 p-o" style="font-size: small"><b> Fecha de Alta: </b> </p></div>
+               <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 m-0 p-o"> <p class="xs-4 m-0 p-o" style="font-size: small"><b>Estado:</b>  </p> </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 m-0 p-o"><p class="xs-4 m-0 p-o" style="font-size: small"><b>Custodia:</b> </div>
+               
+           <!-- terminan encambezados  -->
            <?php foreach ($ejemplares as $e):?>
-           
+         
                <?php $cejemplares = $cejemplares+1;?>
-           <div class="row">
-            <form action="../../controlador/biblioteca/actualizaInventario.php" class="form-control2" method="post">
-            <div class="" > <input type="hidden" name="idEjemplar" value="<?=$e->idEjemplar?>"> </div>
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">Ejemplar:<input type="text"  name="Ejemplar">  <b> <?=$e->ejemplar?> </b></div>
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6"> Fecha de Alta:<input type="date" name="f_alta" class="form-control2" readonly value="<?=$e->fecha_alta?>"> </div>
-             <?php if($e->fecha_baja != ""):?>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">Fecha de Baja: <input type="date" name="f_baja"class="form-control2" readonly value="<?=$e->fecha_baja?>"></b></div>
-                <?php endif ?>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6"> Estado: <input type="text" name="estado" value="<?php
+           <div class="row m-0 p-0">
+            <form action="../../controlador/biblioteca/actualizaInventario.php" class="form-control2  m-0 p-0" method="post">
+            <div class="" > <input type="hidden" name="idEjemplar" class="m-0 p-0" value="<?=$e->idEjemplar?>"> </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 m-0 p-o"><input type="text" class="m-0 p-0" name="Ejemplar" value="<?=$e->ejemplar?>">  <b>  </b></p></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 m-0 p-o"> <input class="m-0 p-0" style="font-size: small;" type="date" name="f_alta" class="form-control2" readonly value="<?=$e->fecha_alta?>"> </p></div>
+          
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 m-0 p-o"> <input class="m-0 p-0" type="text" name="estado" value="<?php
                 switch($e->disponible){
                     case 1:
                         echo "Disponible";
@@ -119,8 +125,8 @@ $espacios = "        ";
                         break;
 
                 }
-               ?>"> </b></div>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">Custodia: <select  class="form-control" name="idUsuario" id="">
+               ?>"></p> </b></div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 m-0 p-o"> <select  class="form-control m-0 p-0" name="idUsuario" id="">
                    
                     <?php foreach ($bibliotecarios as $bi):?>
                     <option 
@@ -131,20 +137,20 @@ $espacios = "        ";
                     ?>
                     value="<?=$bi->idUsuario?>"
                     <?php if($bi->idUsuario == $e->usuario_idUsuario){echo 'selected';}?>
-                    ><?=$bi->nombre." ".$bi->apaterno?></option>
-                   
+                    ><p style="font-size: 12; "><?=$bi->nombre." ".$bi->apaterno?></p></option>
+                    </p>
                     <?php endforeach?>
                 </select> </div>
                 <?php //se valida que el usuario sea administrador o directivo para cambiar la custodia
                     if( in_array('Ajustes',$_SESSION['user']->perm)){
-                     echo'   <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6"> <button class="form-control btn btn-success">Guardar</button> </div>';
+                     echo'   <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 m-0 p-o"> <button class="form-control btn btn-success">Guardar</button> </div>';
                     }
                     ?>
                
             </div>
             </form>
                 
-            <hr> 
+            <hr class=" m-0 p-0"> 
            
             <?php endforeach?>
             <?php endif?>
@@ -175,18 +181,18 @@ $espacios = "        ";
    
                 <div class="row"  style="background:#FFFF99; font-size: small; border-radius: 20px;">
             
-                <h4 class="text-center"><b>Algunos datos:</b> </h4>
-                <br><hr>
-                    <p class="text-center"><b> Hay <?=" ".$clibros." "?> libros en existencia.</b></p>
-                    <br><hr>
-                    <p class="text-center"><b> Tenemos <?=" ".$cejemplares." "?> ejemplares para nuestros alumnos.</b></p>
-                    <br><hr> <p class="text-center"><b> Se tienen <?=" ".$cprestados." "?> ejemplares prestados actualmente.</b></p>
-                    <br><hr> <p class="text-center"><b> Y <?=" ".$cdisponibles." "?> libros disponibles en biblioteca para prestar.</b></p>
+                <h4 class="text-center xs-3"><b>Algunos datos:</b> </h4>
+                
+                    <p class="text-center xs-3"><b> Hay <?=" ".$clibros." "?> libros en existencia.</b></p>
+                    <hr class=" m-0 p-0">
+                    <p class="text-center xs-3"><b> Tenemos <?=" ".$cejemplares." "?> ejemplares para nuestros alumnos.</b></p>
+                    <hr class=" m-0 p-0"> <p class="text-center xs-3"><b> Se tienen <?=" ".$cprestados." "?> ejemplares prestados actualmente.</b></p>
+                    <hr class=" m-0 p-0"> <p class="text-center xs-3"><b> Y <?=" ".$cdisponibles." "?> libros disponibles en biblioteca para prestar.</b></p>
                     <?php if($cmantinimiento !=0):?>
-                    <br><hr> <p class="text-center"><b> Se tienen <?=" ".$cmantinimiento." "?> libros en mantenimiento.</b></p>
+                    <hr class=" m-0 p-0"> <p class="text-center xs-3"><b> Se tienen <?=" ".$cmantinimiento." "?> libros en mantenimiento.</b></p>
                     <?php endif?>
                     <?php if($cbaja !=0):?>
-                    <br><hr> <p class="text-center"><b> y en este ciclo se han dado de baja<?=" ".$cbaja." "?> libros.</b></p>
+                    <hr class=" m-0 p-0"> <p class="text-center xs-3"><b> y en este ciclo se han dado de baja<?=" ".$cbaja." "?> libros.</b></p>
                <?php endif?>
                 </div>
                

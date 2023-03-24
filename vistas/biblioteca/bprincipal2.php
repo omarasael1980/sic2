@@ -75,7 +75,7 @@ $estadisticas =  buscaEstadisticasPrestamos();
                           <br><br><br>
                             <div class="">
                                         <!--combobox para seleccionar  grupo-->
-                                    <form class="form-control" action="bprincipal.php" method="post">
+                                    <form class="form-control" action="bprincipal2.php" method="post">
                                             <div class="form-group">
                                                         <div class="row">
                                                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">

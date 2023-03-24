@@ -76,7 +76,7 @@ if(isset($_POST['libro'])){
 <div class="row">
     <!--contenedor general -->
      <!--contenedor izquierda -->
-     <br>
+     
      <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
        <div class="row">
                  <center><a href="../../vistas/biblioteca/bprincipal.php">
@@ -114,7 +114,7 @@ if(isset($_POST['libro'])){
       
    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
           <!--contenedor central -->
-          <br><br><br>
+          
      <!--busqueda de alumnos-->
      <?php if(isset($busca)):?><!--si existe busca entonces es que ya se selecciono un modo de busqueda-->
         <?php if($busca=="alumno"):?><!--busqueda de alumnos-->
@@ -169,7 +169,7 @@ if(isset($_POST['libro'])){
                             </select>
                             <br>
                          
-                                <?php if($_POST['grupo']==0):?>
+                                <?php if(isset($_POST['grupo'])):?>
                                     <?php if($_POST['grupo']==0):?>
                             <p class="text-center form-message form-message-active"><b> Debes seleccionar un grupo</b></p>
                             <?php endif?>
@@ -246,28 +246,39 @@ if(isset($_POST['libro'])){
                     </div>
                 <?php endif?>
             <?php if(isset($prestamos)):?>
+                <?php $i=0;?>
             <?php if($prestamos !=false):?><!--si hay registros-->
                 <?php foreach($prestamos as $p):?>
-                  
-                    <br>
-                    <div class="row form-control" style="font-size:small;">
+                  <?php $i= $i+1;?>
+                    
+                    <div class="row form-control2 m-0 p-0" <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
                          <!-- aqui se hace cambio cuando se ha buscado por libro --> 
-                        <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6"> 
+                        <div class="col-lg-1 col-md-3 col-sm-6 col-xs-6"  <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>> 
                         <?php if($busca=="libro"):?><!--busqueda de libros-->
                             <b> Alumn@: </b>
                             <?php else:?>
                             <b> Folio: </b>
                             <?php endif?>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
                         <?php if($busca=="libro"):?><!--busqueda de libros-->
                             <input type="text" readonly value="<?=$p->nombre?>">
                             <?php else:?>
-                                <input type="text" readonly value="<?=$p->idPrestamos?>">
+                                <input type="text" readonly value="<?=$p->idPrestamos?>"  <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
                                 <?php endif?>
                         </div>
                       
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6"  <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
                         <?php if($busca=="libro"):?><!--busqueda de libros-->
                             <b>  </b>
                             <?php else:?>
@@ -277,38 +288,65 @@ if(isset($_POST['libro'])){
                         <?php endif?>
                         </div>
                    
-                        <div class="col-lg-2 col-md-1 col-sm-6 col-xs-6">
+                        <div class="col-lg-2 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
                         <?php if($busca=="libro"):?><!--busqueda de libros-->
-                            <input type="text" readonly value="<?=$p->apaterno." ".$p->amaterno?>">
+                            <input type="text" readonly value="<?=$p->apaterno." ".$p->amaterno?>"  <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
                         <?php else:?>
-                            <input type="text" readonly value="<?=$p->titulo?>">
+                            <input type="text" readonly value="<?=$p->titulo?>"  <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
                             <?php endif?>
                                  <!-- termina cambio por busqueda por libro -->
                         </div>
                       
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6"  <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
                            <b> Ejemplar: </b>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
-                            <input type="text" readonly value="<?=$p->ejemplar?>">
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
+                            <input type="text" readonly value="<?=$p->ejemplar?>"  <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
                            <b> Fecha Préstamo: </b>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
-                            <input type="text" readonly value="<?=$p->fecha_prestamo?>">
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
+                            <input type="text" readonly value="<?=$p->fecha_prestamo?>"  <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+
+                        <?php if($p->fecha_regreso != ""):?>
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
+
                            <b> Fecha Devolución: </b>
                         </div>
-                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
-                            <input type="text" readonly value="<?=$p->fecha_regreso?>">
+                        <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6" <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
+                            <input type="text" readonly value="<?= $p->fecha_regreso ?>"  <?php if($i % 2 == 0){
+                        echo ' style="background:#AED6F1;" ';
+                    }?>>
                         </div>
-                    
+                    <?php endif?>
                     </div>
                 <?php endforeach?>
                 <?php else:?><!--si no hay registros-->
-                    <br><br><hr>
+                    <br><hr>
                    <h3 class="text-center">No hay préstamos registrados de este <?=$busca?></h3>
                     <?php endif;?> 
                     <?php endif;?> 
