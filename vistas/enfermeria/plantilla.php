@@ -21,12 +21,12 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
      <br>
      <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
        <div class="row">
-                 <center><a href="../../vistas/biblioteca/bprincipal.php">
-                 <img class="img-menu" src="../../img/icons/libreria.jpg" alt="biblioteca"></a></center>
+                 <center><a href="eprincipal.php">
+                 <img class="img-menu" src="../../img/icons/enfermeria.webp" alt="enfermeria"></a></center>
         </div>
         <div class="row">
                 
-                    <h4 class="text-center">Biblioteca</h4>
+                    <h4 class="text-center">Enfermería</h4>
                 
         </div>
         <div class="row">
@@ -34,15 +34,14 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
                 <div class="list-group">
                   
                          <!--Menu desplegable-->
-                         <a href="bprincipal.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
+                         <a href="eprincipal.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
                          <p> <i class="fa-solid fa-house"></i><?=$espacios?>Principal</p>  </a>
-                         <br>   <a href="nuevoPrestamo.php" class=" btn  list-group-item text-center list-group-item-action " aria-current="true">
-                         <p> <i class="fa-solid fa-circle-plus"></i> <?=$espacios?>Nuevo Préstamo</p>  </a>
+                         <br>   <a href="e_nuevoCaso.php" class=" btn  list-group-item text-center list-group-item-action " aria-current="true">
+                         <p> <i class="fa-solid fa-circle-plus"></i> <?=$espacios?>Atención médica</p>  </a>
                          <br>
-                        <a class="list-group-item text-center list-group-item-action" href="historialPrestamos.php"><p><img class="logos-enfermeria"
-                                        src="../../img/icons/history.png" alt=""><?=$espacios?> Historial </p></a>
-                        <br> <a href="binventario.php" class="list-group-item text-center list-group-item-action"><p> <img class="logos-enfermeria"
-                                        src="../../img/icons/inventory.png" alt=""> <?=$espacios?>Inventario </p> </a>
+                        <a class="list-group-item text-center list-group-item-action" href="expedienteAlumno.php"><p><img class="logos-enfermeria"
+                                        src="../../img/icons/history.png" alt=""><?=$espacios?> Expedientes </p></a>
+                     
                         <br> <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-simple"></i> <?=$espacios?>Estadísticas</p></a>
                        
                        
@@ -61,7 +60,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
             <!--contenedor central -->
           
        
-         
+            </div>
 <!-- FIN CENTRO -->
 <!--contenedor central -->
      

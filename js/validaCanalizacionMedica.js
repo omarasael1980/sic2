@@ -18,15 +18,14 @@ const validarCampo = (expresion, input, campo)=>{
   if(expresion.test(input.value)){
     document.getElementById(`grupo__${campo}`).classList.remove('form-group-wrong');
    document.getElementById(`grupo__${campo}`).classList.add('form-group-correct');
-   document.getElementById(`mensaje_error__${campo}`).classList.remove('form-message-active');
-   document.getElementById(`mensaje_error__${campo}`).classList.add('form-message');
+document.getElementById(`mensaje_error__${campo}`).classList.remove('form-message-active');
+ // document.getElementById(`mensaje_error__${campo}`).classList.add('form-message');
    campos[campo]=true;
   }else{
     document.getElementById(`grupo__${campo}`).classList.remove('form-group-correct');
-    
     document.getElementById(`grupo__${campo}`).classList.add('form-group-wrong');
-    document.getElementById(`mensaje_error__${campo}`).classList.add('form-message-active');
-    document.getElementById(`mensaje_error__${campo}`).classList.remove('form-message');
+  document.getElementById(`mensaje_error__${campo}`).classList.add('form-message-active');
+   //document.getElementById(`mensaje_error__${campo}`).classList.remove('form-message');
     campos[campo]=false;
   }
 }

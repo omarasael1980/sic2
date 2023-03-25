@@ -1,4 +1,3 @@
-
 <?php
 require '../complementos/header_2.php' ;
 include '../../modelo/usuarios/usuarios.php';
@@ -16,54 +15,91 @@ $categorias =getCategoriasMedicas();
 if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
     header("Location:../../");
 }
-
+$espacios = "        ";
 ?>
 
 
-
 <!-- body  -->
-
-    <div class="row">
-        <div class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></div>
-        <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+<div class="container-fluid">
+    
+<div class="row">
+    <!--contenedor general -->
+     <!--contenedor izquierda -->
+     <br>
+     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
+       <div class="row">
+                 <center><a href="eprincipal.php">
+                 <img class="img-menu" src="../../img/icons/enfermeria.webp" alt="enfermeria"></a></center>
+        </div>
+        <div class="row">
+                
+                    <h4 class="text-center">Enfermería</h4>
+                
+        </div>
+        <div class="row">
+                <h1 class="text-center">Menú</h1>
+                <div class="list-group">
+                  
+                         <!--Menu desplegable-->
+                         <a href="eprincipal.php" class=" btn  list-group-item text-center list-group-item-action " aria-current="true">
+                         <p> <i class="fa-solid fa-house"></i><?=$espacios?>Principal</p>  </a>
+                         <br>   <a href="e_nuevoCaso.php" class=" btn  btn-primary list-group-item text-center list-group-item-action " aria-current="true">
+                         <p> <i class="fa-solid fa-circle-plus"></i> <?=$espacios?>Atención médica</p>  </a>
+                         <br>
+                        <a class="list-group-item text-center list-group-item-action" href="expedienteAlumno.php"><p><img class="logos-enfermeria"
+                                        src="../../img/icons/history.png" alt=""><?=$espacios?> Expedientes </p></a>
+                     
+                        <br> <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-simple"></i> <?=$espacios?>Estadísticas</p></a>
+                       
+                       
+          </div>
+                
+        </div>
+        </div> 
           
-                    <div class="row">
-                        <center><H1  >Registro de Nueva atención</H1></center>
-                        <center><div ><img  style="width: 120px;height: auto;" src="../../img/icons/enfermeria.webp" alt="enfermeria">
-                                </div></center>
-                            <center><h3><?=$al[0]->nombre." ".$al[0]->apaterno." ".$al[0]->amaterno?></h3></center>
+<!-- termina barra lateral izquierda -->
+    
+      
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
+          <!--contenedor central -->
+
+          <div class="row">
+                       <H3 class="text-center"  >Registro de Nueva atención</H3>
+                       
+                               
+                          <h6 class="text-center"><?=$al[0]->nombre." ".$al[0]->apaterno." ".$al[0]->amaterno?></h6>
                     </div>
        
-        </div>
-    </div>
+     
     <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-2 col-xs-0"></div>
-    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12">
+    <div class="col-lg-3 col-md-3 col-sm-0 col-xs-0"></div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <form id="formulario" action="../../controlador/enfermeria/nuevoCaso.php" class="form-control2"method="post">
         
        <div class="row"> 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <Label><h4>Fecha y hora</h4></Label><input type="datetime"
+                    <Label><h6><b> Fecha y hora</b></h6></Label><input type="datetime"
                        id="fecha"  name="fecha" value="<?=$today?>" min="2022-09-11" max="<?=$today?>"  class="form-control"></div>
 
                          <!--div con validacion de motivo-->
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="grupo__motivo">
-                    <div class="form-group-input  ">
-                     <label for="motivo" class="form-label"> <b> Motivo:</b>
+                    <div class="form-group-input   col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                     <label for="motivo" class="form-label  col-lg-12 col-md-12 col-sm-12 col-xs-12"> <b> Motivo:</b>
                      <input type="text" name="motivo"  id="motivo" autocomplete="off"class="form-control">
                           <i class=""><img class="form-validation-state img-input" id="img-motivo"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                           </label>
                     </div>
                      
-                <div class="form-message" id="mensaje_error__motivo">
-                 <p>Escribe el motivo, debe contener entre 4-30 caracteres, solo se permiten letras.</p>
+                <div class="form-message col-lg-12 col-md-12 col-sm-12 col-xs-12" id="mensaje_error__motivo">
+                 <p class="text-center" ><b> Escribe el motivo, debe contener entre 4-30 caracteres, solo se permiten letras.</b></p>
+                    <br>
                 </div>
              </div>
                  <br>
                          <!--div con validacion de motivo-->
                 <div class="form-group">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <Label><h4>Categoria</h4></Label>
+                    <Label><h6><b>Categoria</b></h6></Label>
                     <select id="categoria" name="categoria" class="form-control">
                                 <?php foreach($categorias as $cat):?>
                                 <option value="<?=$cat->idcategoria_medica?>"><?=$cat->categoriaMedica?></option>
@@ -73,10 +109,10 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
          </div>
          <div class="row">
             <!---->
-            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" id="grupo__desc">
-                    <div class="form-group-input  ">
-                     <label for="desc" class="form-label"> <b> Descripción:</b>
-                     <textarea autocomplete="off" type="search" name="desc" id="desc" class="form-control"></textarea>
+            <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12" id="grupo__desc">
+                    <div class="form-group-input col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                     <label for="desc" class="form-label col-lg-12 col-md-12 col-sm-12 col-xs-12"> <b> Descripción:</b>
+                     <textarea autocomplete="off"  spellcheck="true" lang="es" type="search" name="desc" id="desc" class="form-control "></textarea>
                           <i class=""><img class="form-validation-state img-input" id="img-desc"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                           </label>
                     </div>
@@ -85,7 +121,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
                          <!---->
              
          </div>
-         <div class="form-message" id="mensaje_error__desc">
+         <div class="form-message  col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="mensaje_error__desc">
                  <p>Escribe el descripción, debe contener entre 10-200 caracteres.</p>
                 </div>
              </div>
@@ -99,12 +135,32 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
          </div>
 
          <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6">
-         <a class="form-control btn btn-danger" href="expedienteAlumno.php?id=<?=$id?>"> <center>Cancelar</center> </a>
+         <a class="form-control btn btn-danger" href="expedienteAlumno.php?id=<?=$id?>"><p class="text-center"> Cancelar</p> </a>
          </div>
          </div>
         </form>
     </div>
+            <!--contenedor central -->
+</div>
+<!-- FIN CENTRO -->
+<!--contenedor central -->
+     
+
+        
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control2">
+    <!--contenedor derecha -->
+                 <!--Mostrar estadisticas --> 
+             
+
+
+                     
+    <!--contenedor derecha -->
+
+        </div>
     </div>
+</div>
+
+ 
 
 <script src="../../js/validaCanalizacionMedica.js"></script>
 <?php require '../complementos/footer_2.php';?>
