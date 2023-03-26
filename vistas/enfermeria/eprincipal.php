@@ -21,7 +21,6 @@ $espacios = "        ";
 
 ?> 
 
-
 <!-- body  -->
 <div class="container-fluid">
     

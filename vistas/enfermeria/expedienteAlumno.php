@@ -19,6 +19,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
 }
 ?>
 
+
 <!-- body  -->
 <div class="container-fluid">
     
@@ -77,7 +78,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
     <div class="row expediente">
         <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0"></div>
         <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
-        <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Expediente Médico
         </button>
         </div>
@@ -108,7 +109,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
             <div class="row  ">
                     <div class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></div>
                     <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 caso "   >
-                                <button class="row btn  btn-outline-dark form-control" data-bs-toggle="collapse" href="#desc<?=$c['cas']->idenfermeria?>" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                <button class="row btn  btn-outline-primary form-control" data-bs-toggle="collapse" href="#desc<?=$c['cas']->idenfermeria?>" role="button" aria-expanded="false" aria-controls="collapseExample">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 si "> <?=$c['cas']->fecha ?>  </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 si "><?=$c['cas']->categoriaMedica?>   </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 ">  <?=$c['cas']->motivo?> </div>
