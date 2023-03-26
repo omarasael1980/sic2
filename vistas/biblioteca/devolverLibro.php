@@ -74,7 +74,7 @@ $espacios = "        ";
                   <b>Ejemplar:</b>   <input class="form-control" type="text" name="ejemplar" readonly value="<?=$p->ejemplar?>">
                      <input class="form-control" type="hidden" name="idEjemplar" value="<?=$p->idEjemplar?>">
                    <b>Fecha de Préstamo:</b>   <input class="form-control" type="date" name="fprestamo" readonly value="<?=$p->fecha_prestamo?>">
-                    <b>Fecha de regreso:</b>   <input class="form-control" type="date" name="fregreso"  value="<?=$hoy?>">
+                    <b>Fecha de regreso:</b>   <input class="form-control" type="date" min="<?=$p->fecha_prestamo?>" max="<?=$hoy?>" name="fregreso"  value="<?=$hoy?>">
                     <b>Observaciones:</b>   <input class="form-control" type="text" name="observaciones"  value="" >
                  <br><button class="form-control btn btn-success">Finalizar Regreso de libro</button>
                     </form>

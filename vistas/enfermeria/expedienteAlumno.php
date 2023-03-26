@@ -9,6 +9,7 @@
             $al =buscaAlumno($id);
             $espacios ="   ";
             $casos =cargarAtencionesMedicasAlumno($id);
+            $especialistas = buscaEspecialista();
 ?>
 
 <?php
@@ -109,7 +110,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
             <div class="row  ">
                     <div class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></div>
                     <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12 caso "   >
-                                <button class="row btn  btn-outline-primary form-control" data-bs-toggle="collapse" href="#desc<?=$c['cas']->idenfermeria?>" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                <button class="row btn  btn-outline-primarygit form-control" data-bs-toggle="collapse" href="#desc<?=$c['cas']->idenfermeria?>" role="button" aria-expanded="false" aria-controls="collapseExample">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 si "> <?=$c['cas']->fecha ?>  </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 si "><?=$c['cas']->categoriaMedica?>   </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 ">  <?=$c['cas']->motivo?> </div>
@@ -198,22 +199,33 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
                                         <h5 class="text-center"> Canalizaciones médicas:</h5>
                                                 </div>
                                                 </div>
+                                               
                                                 <?php foreach ($c['Canalizacion'] as $can):?>
                                         <div class="row form-control">
-                                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                                                 <p>Folio: <b><?=$can->idCanaliza_med ?></b></p>
                                                 </div>
-                                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                                                      <p class="text-center">Fecha:<b><?=$can->fecha?></b></p>  
                                                     </div>
                                                <?php
+                                               //en los datos la descripcion viene pegado el motivo con la descripcion 
+                                               //por eso se separa  separado =- 
                                                $cadena = $can->Descripcion;
                                                $separado ="-";
                                                $separada = explode($separado,$cadena);
                                                $motivo=$separada[0];
                                                $descripcion = $separada[1];
+                                               foreach($especialistas as $e){
+                                                if($e->idespecialiste_medico == $can->especialiste_medico_idespecialiste_medico) {
+                                                    $doctor = $e->especialista;
+                                                } 
+                                               }
+                                             
                                                ?>
-                                                <div class="col-lg-4 col-md-2 col-sm-4 col-xs-6"> Motivo:<b><?=$motivo?></b>
+                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6"><p> Especialista:<b><?=$doctor?></b></p>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6"><p> Motivo:<b><?=$motivo?></b></p>
                                                 </div>
                                        
                                             <div class="row">
@@ -356,7 +368,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
     <!--contenedor derecha -->
                  <!--Mostrar estadisticas --> 
              
-derecha
+
 
                      
     <!--contenedor derecha -->
