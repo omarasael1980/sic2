@@ -46,12 +46,12 @@ $espacios = "        ";
                          <!--Menu desplegable-->
                          <a href="eprincipal.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
                          <p> <i class="fa-solid fa-house"></i><?=$espacios?>Principal</p>  </a>
-                         <br>   <a href="e_nuevoCaso.php" class=" btn  list-group-item text-center list-group-item-action " aria-current="true">
-                         <p> <i class="fa-solid fa-circle-plus"></i> <?=$espacios?>Atención médica</p>  </a>
+                       <!--  <br>   <a href="e_nuevoCaso.php" class=" btn  list-group-item text-center list-group-item-action " aria-current="true">
+                      
+                        <p> <i class="fa-solid fa-circle-plus"></i> <?=$espacios?>Atención médica</p>  </a>
                          <br>
                         <a class="list-group-item text-center list-group-item-action" href="expedienteAlumno.php"><p><img class="logos-enfermeria"
-                                        src="../../img/icons/history.png" alt=""><?=$espacios?> Expedientes </p></a>
-                     
+                                        src="../../img/icons/history.png" alt=""><?=$espacios?> Expedientes </p></a> -->
                         <br> <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-simple"></i> <?=$espacios?>Estadísticas</p></a>
                        
                        

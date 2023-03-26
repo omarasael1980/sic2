@@ -52,12 +52,12 @@ const validarFormulario = (e)=>{
   
 switch(e.target.name){
 case "motivo":
-  quitaEspacios(e.target.value,"motivo");
+  //quitaEspacios(e.target.value,"motivo");
   validarCampo(expresiones.motivo,e.target,'motivo');
   document.getElementById("motivo").value=primeraMaydemasMin(e.target.value);
     break;
 case "desc":
-  quitaEspacios(e.target.value,"desc");
+ // quitaEspacios(e.target.value,"desc");
   validarCampo(expresiones.desc,e.target,'desc');
   document.getElementById("desc").value=primeraMaydemasMin(e.target.value);
       break;
@@ -84,6 +84,7 @@ icon.classList.remove('form-group-correct');
 
 });
 }else{
+  console.log("error");
   e.preventDefault(); //previene que al presionar no se mande sin verificacion
 
   document.getElementById('mensaje_error__formulario').classList.add('me_formulario-active');
