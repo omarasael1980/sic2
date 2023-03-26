@@ -6,7 +6,7 @@ require '../complementos/nav_2.php';
 require_once '../../modelo/enfermeria/comunesEnfermeria.php';
 require '../../modelo/config/comunes.php';
 
-
+$espacios = "        ";
 if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
     header("Location:../../");
 }?>
