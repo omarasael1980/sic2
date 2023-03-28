@@ -237,7 +237,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-2 col-sm-2 col-xs-0"> </div>
                                                 <div class="col-lg-4 col-md-8 col-sm-8 col-xs-12">
-                                                <button class="form-control btn btn-primary"><center>Imprimir</center></button>        
+                                                <a class="btn btn-outline-primary"href="../imprimir/canalizaMedico.php?id=<?=$id?>"><p class="text-center">Imprimir</p></a>       
                                                 </div>
                                             </div>
                                         </div>
@@ -273,7 +273,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
                                                 <p>Fecha:<b><?=$fechaSE?></b></p> </div>
                                                 <div class="col-lg-4 col-md-2 col-sm-4 col-xs-6"></div>
                                                     <div class="col-lg-4 col-md-2 col-sm-4 col-xs-6 m-0 p-0">
-                                                    <a href="" class="btn btn-primary form-control">Imprimir</a>
+                                                    <a href="../imprimir/seguroEscolar.php" class="btn btn-primary form-control">Imprimir</a>
                                                     </div>
                                         </div>
                                             <br class="m-0 p-0">
