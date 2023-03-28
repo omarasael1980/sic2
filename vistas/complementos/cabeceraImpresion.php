@@ -11,7 +11,8 @@
     <link rel="stylesheet" type="text/css" href="../../css/navbar.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/eff852937b.js" crossorigin="anonymous"></script>
-   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/jdhvwvsz2aw35nl4azu5nfjc98oy54smk26abgv7xnjfj2j9/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body>
@@ -21,13 +22,3 @@ if(!isset($_SESSION['user'])){
     header("Location:../../");
 }?>
 
-<!-- Aqui se hace el encabezado de impresiones -->
-   <div class="container">
-        <div class="row">
-            <p class="text-center">
-               <img src="http://<?=$_SERVER['HTTP_HOST']?>/img/empresarial/logoMembrete.png" height="120 px" alt="Logo">
-            </p>
-        </div>
-   </div>
-   
-    <!-- termina el encabezado -->
