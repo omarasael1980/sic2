@@ -235,6 +235,23 @@ function cargarUltimasAtencionesMedicas(){
          return false;
           }
     }
+    function getSeguroEscolarxFolio($folio){
+      require '../../modelo/config/pdo.php';
+      $query ="CALL select_buscaSeguroEscolarxFolio(:id)";
+      
+      $st = $pdo->prepare($query);
+      $st->bindParam(':id',$folio);
+      $st->execute() or die(implode('>>',$st->errorInfo()));
+      if($st->rowCount()>0){
+       
+        $seguros=$st->fetchAll(PDO::FETCH_OBJ);
+        
+        return $seguros;
+       }else{
+
+         return false;
+          }
+    }
     function getSeguroEscolar($id){
       require '../../modelo/config/pdo.php';
       $query ="CALL select_buscaSeguroEscolar(:id)";

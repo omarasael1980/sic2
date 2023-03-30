@@ -273,7 +273,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
                                                 <p>Fecha:<b><?=$fechaSE?></b></p> </div>
                                                 <div class="col-lg-4 col-md-2 col-sm-4 col-xs-6"></div>
                                                     <div class="col-lg-4 col-md-2 col-sm-4 col-xs-6 m-0 p-0">
-                                                    <a href="../imprimir/seguroEscolar.php" class="btn btn-primary form-control">Imprimir</a>
+                                                    <a href="../imprimir/seguroEscolar.php?f=<?=$seguro->idseguro_escolar ?>" class="btn btn-primary form-control">Imprimir</a>
                                                     </div>
                                         </div>
                                             <br class="m-0 p-0">

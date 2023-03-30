@@ -7,8 +7,9 @@ if(!isset($_SESSION['user'])){
 }
 require '../../modelo/enfermeria/comunesEnfermeria.php';
 $fechaCompleta = $_POST['fecha'];
-$fecha = substr($fechaCompleta, 0,10);
-$hora = substr($fechaCompleta, 11);
+$posicion =strpos($fechaCompleta,"T");
+$fecha = substr($fechaCompleta, 0,$posicion);
+$hora = substr($fechaCompleta, ($posicion+1));
 $date = $fecha." ".$hora.":00";
 $motivo = $_POST['motivo'];
 $categoria = $_POST['categoria'];

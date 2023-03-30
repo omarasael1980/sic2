@@ -1,7 +1,7 @@
 <?php
 include '../../modelo/usuarios/usuarios.php';
 require '../complementos/header_2.php';
-require '../complementos/nav_2.php';
+require_once '../complementos/nav_2.php';
 require_once '../../modelo/enfermeria/comunesEnfermeria.php';
 require '../../modelo/config/comunes.php';
 
@@ -9,11 +9,11 @@ require '../../modelo/config/comunes.php';
 if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
     header("Location:../../");
 }
-
+$espacios = "    ";
 $idenfermeria = $_GET['id'];// 
 $idal = $_GET['c'];
 
-
+$fecha_actual = date("Y-m-d h:i:s");
 $casos =cargarAtencionesMedicasAlumno($idal);
  ?>
 
@@ -21,79 +21,85 @@ $casos =cargarAtencionesMedicasAlumno($idal);
 
 date_default_timezone_set("America/Tijuana");
 setlocale(LC_ALL, 'es_ES');
-$mes =date("m");
-switch($mes){
-    case '01':
-        $meses = "Enero";
-        break;
-    case '02':
-        $meses = "Febrero";
-        break;
-    case '03':
-        $meses = "Marzo";
-        break;
-    case '04':
-        $meses = "Abril";
-        break;
-     case '05':
-            $meses = "Mayo";
-            break;
-     case '06':
-            $meses = "Junio";
-            break;
-    case '07':
-            $meses = "Julio";
-            break;
-    case '08':
-            $meses = "Agosto";
-            break;
-       case '09':
-                $meses = "Septiembre";
-                break;
-    case '10':
-                $meses = "Octubre";
-                break;
-   case '11':
-                $meses = "Noviembre";
-                break;
-   case '12':
-                $meses = "Diciembre";
-                break;
-}
-$dia = date("d");
-$anio = date("Y");
+$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+ 
+$hoy = date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
+$dia = date('d');
+$mes= $meses[date('n')-1];
+$anio = date('Y');
 $poliza="07000030";
 $empresa = "Colegio Santee A.C.";
 $domicilio ="Rio Champotón S/N, Fraccionamiento Villa Florida,  Mexicali, Baja California.";
 $contacto ="686-580-74-24";
 ?>
 
-<pre>
-   
 
 <!-- body  -->
-
-    <div class="row">
-        <center><h1>SEGURO ESCOLAR</h1></center>
-        <div class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></div>
-        <div class="div-logo col-lg-4 col-md-4 col-sm-5 col-xs-6">
-                <label for="" class="logoSS"><a href="#">
-                    <p><img src="../../img/empresarial/adalid.png" alt="Colegio Santee"> </p>    </a>
-                </label>
-            </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-0">
-            
+<div class="container-fluid">
+   
+<div class="row">
+    <!--contenedor general -->
+     <!--contenedor izquierda -->
+     <br>
+     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
+       <div class="row">
+                 <center><a href="eprincipal.php">
+                 <img class="img-menu" src="../../img/icons/enfermeria.webp" alt="enfermeria"></a></center>
         </div>
-        <div class="div-logo col-lg-4 col-md-4 col-sm-5 col-xs-6">
-                <label for="" class="logoSS"><a href="#">
-                    <p><img src="../../img/empresarial/gmx.png" alt="Colegio Santee"> </p>    </a>
-                </label>
+        <div class="row">
+                
+                    <h4 class="text-center">Enfermería</h4>
+                
+        </div>
+        <div class="row">
+                <h1 class="text-center">Menú</h1>
+                <div class="list-group">
+                  
+                         <!--Menu desplegable-->
+                         <a href="eprincipal.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
+                         <p> <i class="fa-solid fa-house"></i><?=$espacios?>Principal</p>  </a>
+
+                         <br>   <a href="e_nuevoCaso.php?id=<?=$_GET['c']?>" class=" btn  list-group-item text-center list-group-item-action " aria-current="true">
+                         <p> <i class="fa-solid fa-circle-plus"></i> <?=$espacios?>Atención médica</p>  </a>
+                         <br>
+                        <a class="list-group-item text-center list-group-item-action" href="seguroEscolar.php?id=<?=$_GET['id']?>&c=<?=trim($_GET['c']);?>"><p>
+                        <i class="fa-solid fa-hand-holding-medical"></i><?=$espacios?> Seguro escolar </p></a>
+                         <br>
+                        <a class="list-group-item text-center list-group-item-action" href="expedienteAlumno.php?id=<?=$_GET['c']?>"><p><img class="logos-enfermeria"
+                                        src="../../img/icons/history.png" alt=""><?=$espacios?> Expedientes </p></a>
+                     
+                        <br> <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-simple"></i> <?=$espacios?>Estadísticas</p></a>
+                       
+                       
+          </div>
+                
+        </div>
+        </div> 
+          
+<!-- termina barra lateral izquierda -->
+    
+      
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
+          <!--contenedor central -->
+
+<div class="row" id="cuerpoImpresion">
+<!-- aqui va formulario -->
+<div class="row">
+        <h1 class="text-center">SEGURO ESCOLAR</h1>
+        
+        <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="container">
+                    <div class="row">
+                        <p class="text-center">
+                        <img src="http://<?=$_SERVER['HTTP_HOST']?>/img/empresarial/logoMembrete.png" height="120 px" alt="Logo">
+                        </p>
+                    </div>
             </div>
     </div>
     
     <div class="container">
-        <div class="row ">
-                   <center> <b> <h3 class=""> Mexicali, B.C. a <?=$dia?> de <?=$meses?> del <?=$anio?></h3></b></center> 
+    <div class="row ">
+        <h6 class="text-right">Mexicali, B.C. a <?=$hoy?></h6>
          </div>     
     </div>
     <hr>
@@ -105,6 +111,7 @@ $contacto ="686-580-74-24";
 
     <div class="container">
         <input type="text" hidden name="alumno" value="<?=$idal?>">
+        <input type="text" hidden name="fechaActual" value="<?=$fecha_actual?>">
         <input type="text" hidden name="idenfermeria" value="<?=$idenfermeria?>">
      <input type="text" hidden  name="fecha"value = "<?=$dia." ".$meses." ".$anio." ".$mes?>">
         <div class="row ">
@@ -151,7 +158,7 @@ $contacto ="686-580-74-24";
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" > 
                     <label for="descripcion " >Descripción:</label>  
-                    <textarea type="text"  class="form-control"name="descripcion"  value=""></textarea>
+                    <textarea type="text" autocomplete ="off"spellcheck="true" lang="es" class="form-control"name="descripcion"  value=""></textarea>
                 </div> 
             </div>
             
@@ -170,7 +177,7 @@ $contacto ="686-580-74-24";
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label for="si"><b> ¿Qué autoridad?</b></label>
-                    <input type="text"  name="queautoridad" class="form-control">
+                    <input type="text" autocomplete ="off"spellcheck="true" lang="es" name="queautoridad" class="form-control">
                     
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -181,11 +188,11 @@ $contacto ="686-580-74-24";
             <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" > 
                     <label for="percepcion" ><b>En su percepción, ¿Cuál fue la causa del siniestro? :</b></label>  
-                    <input type="text"  class="form-control"name="causa"  value="">
+                    <input type="text" autocomplete ="off"spellcheck="true" lang="es" class="form-control"name="causa"  value="">
                 </div> 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" > 
                     <label for="medidas " ><b>¿Qué medidas se tomaron después de tener conocimiento? :</b></label>  
-                    <input type="text"  class="form-control"name="medidas"  value="">
+                    <input type="text" autocomplete ="off"spellcheck="true" lang="es" class="form-control"name="medidas"  value="">
                 </div> 
                  
             </div>
@@ -196,14 +203,14 @@ $contacto ="686-580-74-24";
                 </div> 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" > 
                     <label for="danosTercero " ><b>¿En caso de existir terceros afectados, mencione sus nombres y teléfonos de contacto:</b></label>  
-                    <input type="text"  class="form-control"name="terceros"  value="">
+                    <input type="text" autocomplete ="off"spellcheck="true" lang="es"  class="form-control"name="terceros"  value="">
                 </div> 
             </div>
             <div class="row">
                 <center><b>Declaro que los datos que anteceden corresponden a la realidad al momento de la firma de este documento</b></center>
                 <br>
                 
-                <center> <b> A <?=$dia?> de <?=$meses?> de <?=$anio?> </b></center>
+                <h6 class="text-center"><b> A <?=$dia?> de <?=$mes?> de <?=$anio?> </b></h6> 
                 <br><br>
             
             <div class="row">
@@ -218,12 +225,41 @@ $contacto ="686-580-74-24";
             
       
    
-        <div class="row">
-            <button type ="submit" class="btn btn-success"><center>Guardar</center> </button>
+            <div class="row">
+            <button type="submit">Enviar</button>
         </div>
    
        
             
      </div>
      </form>
+</div>
+
+<div class="row" id="pdf">
+
+</div>
+            <!--contenedor central -->
+          
+       
+            </div>
+<!-- FIN CENTRO -->
+<!--contenedor central -->
+     
+
+        
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control2">
+    <!--contenedor derecha -->
+                 <!--Mostrar estadisticas --> 
+             
+
+
+                     
+    <!--contenedor derecha -->
+
+        </div>
+    </div>
+</div>
+
+ 
+
 <?php require '../complementos/footer_2.php';?>

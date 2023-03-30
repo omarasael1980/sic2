@@ -4,16 +4,16 @@ include '../../modelo/usuarios/usuarios.php';
 require '../complementos/cabeceraImpresion.php';
 require_once '../../modelo/enfermeria/comunesEnfermeria.php';
 require '../../modelo/config/comunes.php';
-
+if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
+    header("Location:../../");
+}
 
 $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
  
 $hoy = date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
 //Resultado: Domingo 26 de Enero del 2020
 $espacios = "        ";
-if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
-    header("Location:../../");
-}
+
 if(isset($_GET['id'])){
   
     $id = $_GET['id'];

@@ -18,13 +18,14 @@ $terceros =$_POST['terceros'];
 $date = explode(" ",$fecha);
 $dia = $date[0];
 $mes = $date[3];
-$anio = $date[2];
-$fechab = $anio."-".$mes."-".$dia." 12:00:00";
-
-
+$anio = $date[2]; 
+$fechab = $_POST['fechaActual'];
 $id= insertaSeguroEscolar($fechab, $descripcion, $causa, $medidas, $monto, $terceros, $idEnfermeria, $idUsuario, $acta, $autoridad);
 
 if($id){
     header('Location:../../vistas/enfermeria/expedienteAlumno.php?id='.$idAlumno);
 }else{exit("Hubo un error guardar seguro Escolar");}
 ?>
+
+
+
