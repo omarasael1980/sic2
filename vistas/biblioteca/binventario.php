@@ -65,7 +65,7 @@ $espacios = "        ";
 <br>
 
 <div class="row m-0 p-0">
-    <div class="col m-0 p-0"></div>
+
     <div class="col m-0 p-0">
     <?php // calculo de estadisticas para panel derecho
             $clibros =0;

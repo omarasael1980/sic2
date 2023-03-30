@@ -64,7 +64,7 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
 <!-- termina barra lateral izquierda -->
     
       
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
+        <div class="col-lg-7 col-md-8 col-sm-8 col-xs-12 ">
           <!--contenedor central -->
 
 
@@ -204,20 +204,17 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
                                                 
                                                         <?php $x=0; ?>
                                                         <?php  foreach($e['xTitulo'] as $xtitulo):?>
-                                                            <div class="row m-0 p-0" >
+                                                          
                                                             <?php if($xtitulo != ""):?>
                                                                 <?php $x++; 
                                                                 if($x<11): ?>
-                                                            <div class="col-lg-5 col-md-5 col-xs-5 col-sm-8 p-0">
-                                                             <label for=""><b> <p><?=$xtitulo['titulo']?>:</div>
-                                                            <div class="col-lg-5 col-md-5 col-xs-6 col-sm-3 p-0">
-                                                            <p class="text-center">  <?=$xtitulo['prestamos']?></p></b></label></p>
-                                                            </div>
+                                                             <div class="row m-0 p-0" >
+                                                                    <p class="text-left m-2 p-0">   <b> <?=$x.".- ".$xtitulo['titulo']?>   </b> </p>
+                                                          </div>
                                                             <?php endif?>
                                                              <?php endif?>
-                                                             </div>
+                                                             
                                                         <?php endforeach?>
-
                             </div>
                             <br>
                               <!--grupos con mas prestamos-->
