@@ -103,8 +103,8 @@ $contacto ="686-580-74-24";
          </div>     
     </div>
     <hr>
-    <center><h1>Declaración del siniestro</h1></center>
-    <center><h4><?="Caso del alumno:".$casos["0"]['cas']->nombre." ".$casos["0"]['cas']->apaterno." ".$casos["0"]['cas']->amaterno?></h4></center>
+    <h1 class ="text-center">Declaración del siniestro</h1>
+    <h4 class="text-center"><?="Caso del alumno:".$casos["0"]['cas']->nombre." ".$casos["0"]['cas']->apaterno." ".$casos["0"]['cas']->amaterno?></h4>
     </div>
 
     <form class = "form-control"action="../../controlador/enfermeria/seguroEscolarAlta.php" method="post">

@@ -28,8 +28,8 @@ $espacios = "        ";
      <br>
      <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
        <div class="row">
-                 <center><a href="eprincipal.php">
-                 <img class="img-menu" src="../../img/icons/enfermeria.webp" alt="enfermeria"></a></center>
+                <p class="text-center"><a href="eprincipal.php">
+                 <img class="img-menu" src="../../img/icons/enfermeria.webp" alt="enfermeria"></a></p>
         </div>
         <div class="row">
                 
@@ -43,7 +43,7 @@ $espacios = "        ";
                          <!--Menu desplegable-->
                          <a href="eprincipal.php" class=" btn  list-group-item text-center list-group-item-action " aria-current="true">
                          <p> <i class="fa-solid fa-house"></i><?=$espacios?>Principal</p>  </a>
-                         <br>   <a href="e_nuevoCaso.php" class=" btn  btn-primary list-group-item text-center list-group-item-action " aria-current="true">
+                         <br>   <a href="e_nuevoCaso.php?id=<?=$id?>" class=" btn btn-primary  list-group-item text-center list-group-item-action " >
                          <p> <i class="fa-solid fa-circle-plus"></i> <?=$espacios?>Atención médica</p>  </a>
                          <br>
                         <a class="list-group-item text-center list-group-item-action" href="expedienteAlumno.php"><p><img class="logos-enfermeria"
