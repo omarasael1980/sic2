@@ -10,8 +10,9 @@ abreSesion();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SICS</title>
     <link rel="icon" href="img/empresarial/logoSantee.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="css/myStyles.css">
+
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="css/myStyles.css">
     <script src="https://www.google.com/recaptcha/api.js?render=6LfXTVocAAAAACROczlljJmPqjALPJdP7n1tVjV6"></script>
     <script
 	  src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
@@ -29,60 +30,53 @@ abreSesion();
 
     <div class="container2">
     <div class="container2">
+    <?php  abreSesion();
+if(!isset($_SESSION['user'])){
+    header("Location:../");
+}?>
+   <div class="sticky-top">
         <div class="nav-logo row">
-     
-            <div class="div-logo col-lg-1 col-md-2 col-sm-12 col-xs-12">
-                <label for="" class="logoS"><center><a href="#">
-                    <p><img src="img/empresarial/logoSantee.png" alt="Colegio Santee"> </p></center>
-                </label>
-            </div>
-            <div class="button-container  col-lg-10 col-md-10 col-sm-12 col-xs-12">
-            <nav>
-                <div class="row">
-                <div class="col-lg-11 col-md-10 col-sm-12 col-xs-12">
-                <a class="nav-button" onclick="accion()">Menú</a>
+          
+                <div class="div-logo col-lg-3 col-md-4 col-sm-8 col-xs-12">
+               
+                       <a href="../"> <img src="../img/empresarial/logoSantee.png" class="logo-navbar" alt="Colegio Santee">  </a>   
                 
-                <?php if(!isset($_SESSION['user'])):?>
-                    
-                <a class="nav-bar desaparece" href="vistas/usuarios/login.php"><center>Login</center> </a>
-                      
-                        
-                <?php else:?>
-                       
-                            <?php if(in_array('Enfermeria',$_SESSION['user']->perm)):?>
-                        <a class="nav-bar desaparece" href="vistas/enfermeria/eprincipal.php"> <center>Enfermeria</center></a>
-                        <?php endif?>
-                        <?php if(in_array('Biblioteca',$_SESSION['user']->perm)):?>
-                        <a class="nav-bar desaparece" style=" vertical-align: middle;" href="vistas/biblioteca/bprincipal.php"><center>Biblioteca</center> </a>
-                        <?php endif?>
-                        <?php if(in_array('Directorio',$_SESSION['user']->perm)):?>
-                        <a class="nav-bar desaparece" href="#"> <center>Directorio</center></a>
-                        <?php endif?>
-                        <?php if(in_array('Psicopedagogico',$_SESSION['user']->perm)):?>
-                        <a class="nav-bar desaparece" href="vistas/psicopedagogico/pprincipal.php"><center>Psicopedagógico</center> </a>
-                        <?php endif?>
-                        <?php if(in_array('Prefectura',$_SESSION['user']->perm)):?>
-                        <a class="nav-bar desaparece" href="#"> <center>Prefectura</center></a>
-                        <?php endif?>
-                        <?php if(in_array('Ajustes',$_SESSION['user']->perm)):?>
-                        <a class="nav-bar desaparece" href="/vistas/usuarios/usuariosPrincipal.php"><center>Configuración</center> </a>             
-                        <?php endif?>
-                      
-                        
-                        
-                        </div>
-                          
-                    
-                <div class="col-2 col-md-2 col-sm-12 col-xs-12 "> <a class="nav-button-logout" href="../../controlador/usuarios/logout.php"> LogOut</a></div>
                 </div>
-            </nav>
-           
-                       
-           
-       
-      
-                       
-                        <?php endif?>
+            <div class="menu col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                <nav>
+                    
+                    
+                     
+                <?php if(!isset($_SESSION['user'])):?>
+                <a class="nav-bar desaparece" href="../vistas/usuarios/login.php"> Login</a>
+                <?php else:?>
+                    <?php if(in_array('Enfermeria',$_SESSION['user']->perm)):?>
+                <a class="nav-bar desaparece" href="../vistas/enfermeria/eprincipal.php"> Enfermeria</a>
+                <?php endif?>
+                <?php if(in_array('Biblioteca',$_SESSION['user']->perm)):?>
+                <a class="nav-bar desaparece" href="../vistas/biblioteca/bprincipal.php"> Biblioteca</a>
+                <?php endif?>
+              
+                <?php if(in_array('Psicopedagogico',$_SESSION['user']->perm)):?>
+                <a class="nav-bar desaparece" href="../vistas/psicopedagogico/pprincipal.php"> Psicopedagógico</a>
+                <?php endif?>
+            
+              
+                <?php if(in_array('Ajustes',$_SESSION['user']->perm)):?>
+                <a class="nav-bar desaparece" href="../vistas/usuarios/usuariosPrincipal.php"> Configuración</a>             
+                <?php endif?>
+               
+               
+                <?php endif?>
+                <button class="nav-button" onclick="accion()">Menú</button>
+                <br>
+               <a class=" nav-button" href="../controlador/usuarios/logout.php">LogOut </a>
+                 <br>
+                </nav>
+            </div>
+        </div>
+    </div>
+    
                         </div>
           
             </div>
@@ -219,28 +213,7 @@ abreSesion();
             </div>   
         </div> 
         <?php endif?>
-        <?php if(in_array('Prefectura',$_SESSION['user']->perm)):?>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-            <div class="row">
-                 <center><a href="vistas/prefectura/pprincipal.php">
-                 <img class="img-menu" src="img/icons/iconmonstr-user.png" alt="prefectura"></a></center>
-            </div>
-            <div class="row">
-                <h3><center>Prefectura</center></h3>
-            </div>   
-        </div> 
-        <?php endif?>
-        <?php if($_SESSION['user']->roles_idRol == 7):?>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-            <div class="row">
-                 <center><a href="vistas/alumnos/aprincipal.php">
-                 <img class="img-menu" src="img/icons/profile.png" alt="padres"></a></center>
-            </div>
-            <div class="row">
-                <h3><center>Padres de Familia</center></h3>
-            </div>   
-        </div> 
-        <?php endif?>
+       
         <?php endif?>
     </div>
     </div>

@@ -16,6 +16,14 @@ $motivos = cargaMotivosPsico();
 $viaComunicacion = cargaMotivosNotificacion();
 $especialistas = buscaEspecialistas();
 $categoriaCanalPsico = buscaCategoCanalPsico();
+ $estNotificaciones = 0;
+ $estcasos = 0;
+ $estActualizaciones = 0;
+ $estArchivos = 0;
+ $estSuspensiones = 0;
+ $estCitatorios =0;
+ $estCanalizac=0;
+
 ?>
 
 
@@ -45,7 +53,7 @@ $categoriaCanalPsico = buscaCategoCanalPsico();
                          <a href="pprincipal.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
                          <p> <i class="fa-solid fa-bars"> </i> <?=$espacios?>Pendientes</p>  </a>
                         <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
-                        <a href="#" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
+                        <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
                         <a href="historialPsico.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
                        
                        
@@ -57,13 +65,16 @@ $categoriaCanalPsico = buscaCategoCanalPsico();
 
     
       
-      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 form-control">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 m-0 p-0">
           <!--contenedor central -->
-            <center><h1> Casos pendientes de seguimiento.</h1></center>
+           <h1 class="text-center"> Casos pendientes de seguimiento.</h1>
           <div class="row"> <!-- INICIO CENTRO -->
             <!-- Se cargan los registros conetiqueta de seguimiento -->
+           
+    
            <?php if($pendiente != ""):?>
            <?php foreach($pendiente as $p):?>
+            <?php $estcasos = $estcasos +1;?>
            <!-- se llaman datos del alumno -->
            <?php if($pendiente !=null){
           //busca datos del estudiante
@@ -76,20 +87,20 @@ $categoriaCanalPsico = buscaCategoCanalPsico();
            <!-- inicia boton colapsable -->
            <p>
         
-          <button class="btn btn-primary form-control"  type="button" data-bs-toggle="collapse" 
+          <button class="btn btn-primary form-control m-0 p-0"  type="button" data-bs-toggle="collapse" 
               data-bs-target="#collapse<?=$p->idatencion_psico?>" aria-expanded="false" aria-controls="collapseWidthExample">
              <!--datos del boton colapsable de casos activos  -->
-              <div class="col-lg-2 col-md-2 col-sm-0 col-xs-4">Folio: <?=" ".$p->idatencion_psico?></div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">Fecha: <?=" ".$p->fecha?></div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><?=$alumno?></div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><?=$grupo?></div>
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><?=$p->motivo?></div>
+              <div class="col-lg-2 col-md-2 col-sm-0 col-xs-4"> <p ><b></b> Folio: <?=" ".$p->idatencion_psico?></b></p></div>
+              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><p ><b>Fecha: <?=" ".$p->fecha?></b></p></div>
+              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><p ><b><?=$alumno?></b></p></div>
+              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><p ><b><?=$grupo?></b></p></div>
+              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><p ><b><?=$p->motivo?></b></p></div>
               <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
                <div class="form-check form-switch">
                   <input type="hidden" name="folio" id="folio" value="<?=$p->idatencion_psico?>">
                   <input class="form-check-input" type="checkbox" checked onChange="actualizaSeg(<?=$p->idatencion_psico?>)" id="seguimientoPsico<?=$p->idatencion_psico?>"/>
 
-                    <label class="form-check-label" for="seguimientoPsico">Dar seguimiento</label>
+                    <label class="form-check-label" for="seguimientoPsico"><b><p>Dar seguimiento</b></p></label>
                 </div>
 
               </div>
@@ -104,40 +115,39 @@ $categoriaCanalPsico = buscaCategoCanalPsico();
     <div class="row" style="width: 100%;">
   
         <!-- descripcion del caso pendiente -->
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control"><b>Descripción:</b> <?=$p->descripcion?></div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control"><b>Descripción: <p><?=$p->descripcion?></p></b></div>
         <hr>
-        <center><h5><b> Acciones:</b></h5></center>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+        <h5 class="text-center"><b> Acciones:</b></h5>
+       
        
             <!-- boton para dar seguimiento a un caso -->
-           
-
-            <a href="seguimientoCaso.php?id=<?=$p->idatencion_psico?>"class="btn btn-white"> <p style="color:black;"><i class="fa-solid fa-pen-to-square"></i><?=$espacios?>Seguimiento </p></a>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 m-0 p-0">
+            <a href="seguimientoCaso.php?id=<?=$p->idatencion_psico?>"class="btn btn-white"> <p class="m-0 p-0 " style="color:black;"><i class="fa-solid fa-pen-to-square"></i><?=$espacios?>Seguimiento </p></a>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 m-0 p-0">
             <!-- Boton para notificacion -->
-        <a href="notificacion.php?id=<?=$p->idatencion_psico?>" class="btn btn-white"> <p style="color:black;"><i class="fa-regular fa-envelope"></i><?=$espacios?>Notificación </p></a>
+        <a href="notificacion.php?id=<?=$p->idatencion_psico?>" class="btn btn-white"> <p class="m-0 p-0 " style="color:black;"><i class="fa-regular fa-envelope"></i><?=$espacios?>Notificación </p></a>
         </div>
           <!-- Boton para archivo -->
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-        <a href="subirEvidenciaPsico.php?id=<?=$p->idatencion_psico?>&c=<?=$p->estudiantes_idestudiantes?>" class="btn btn-white"> <p style="color:black;"><i class="fa-solid fa-file-pdf"></i><?=$espacios?>Archivo </p></a>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 m-0 p-0">
+        <a href="subirEvidenciaPsico.php?id=<?=$p->idatencion_psico?>&c=<?=$p->estudiantes_idestudiantes?>" class="btn btn-white"> <p class="m-0 p-0 " style="color:black;"><i class="fa-solid fa-file-pdf"></i><?=$espacios?>Archivo </p></a>
         </div>
          <!-- Boton para suspension -->
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-        <a href="suspension.php?id=<?=$p->idatencion_psico?>" class="btn btn-white"> <p style="color:black;"><i class="fa-brands fa-fantasy-flight-games"></i><?=$espacios?>Suspensión </p></a>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 m-0 p-0" >
+        <a href="suspension.php?id=<?=$p->idatencion_psico?>" class="btn btn-white"> <p class="m-0 p-0 " style="color:black;"><i class="fa-brands fa-fantasy-flight-games"></i><?=$espacios?>Suspensión </p></a>
         </div>
         
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 m-0 p-0">
             <!-- Boton para citatorio -->
-        <a href="citatorio.php?id=<?=$p->idatencion_psico?>" class="btn btn-white"> <p style="color:black;"><i class="fa-solid fa-calendar-days"></i><?=$espacios?>Citatorio </p></a>
+        <a href="citatorio.php?id=<?=$p->idatencion_psico?>" class="btn btn-white"> <p class="m-0 p-0 " style="color:black;"><i class="fa-solid fa-calendar-days"></i><?=$espacios?>Citatorio </p></a>
         </div>
          <!-- Boton para canalizar -->
-         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-        <a href="canalizarPsico.php?id=<?=$p->idatencion_psico?>" class="btn btn-white"> <p style="color:black;"><i class="fa-solid fa-comment-medical"></i></i><?=$espacios?>Canalizar </p></a>
+         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 m-0 p-0" >
+        <a href="canalizarPsico.php?id=<?=$p->idatencion_psico?>" class="btn btn-white"> <p class="m-0 p-0 " style="color:black;"><i class="fa-solid fa-comment-medical"></i></i><?=$espacios?>Canalizar </p></a>
         </div>
          <!-- Boton para imprimir -->
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-        <a href="../imprimir/imprimirPsico.php?id=<?=$p->idatencion_psico?>" class="btn btn-white"> <p style="color:black;"><i class="fa-solid fa-print"></i><?=$espacios?>Imprimir </p></a>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 m-0 p-0">
+        <a href="../imprimir/imprimirPsico.php?id=<?=$p->idatencion_psico?>" class="btn btn-white"> <p class="m-0 p-0 " style="color:black;"><i class="fa-solid fa-print"></i><?=$espacios?>Imprimir </p></a>
         </div>
        <hr>
     </div>
@@ -145,17 +155,19 @@ $categoriaCanalPsico = buscaCategoCanalPsico();
    <?$actualizaciones = buscaSeguimientos($p->idatencion_psico);?>
    <?php if($actualizaciones !=""):?>
     <br>
-    <center><h5><b> Actualizaciones del caso:</b></h5></center>
+   
+    <h5 class="text-center"><b> Actualizaciones del caso:</b></h5>
    <?php foreach ($actualizaciones as $a):?>
+    <?php $estActualizaciones = $estActualizaciones+1;?>
     <!-- Inicia actualizaciones -->
    <div class="row">
     <div class="form-control">
       <div class="row">
     
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">Título: <?="  ".$a->titulo?></div>
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6"><b><p>Título: <?="  ".$a->titulo?></b></p></div>
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-0"></div>
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">Fecha:<?="  ".$a->fecha?></div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Descripción:<?="  ".$a->descipcion?></div>
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6"><b><p>Fecha:<?="  ".$a->fecha?></b></p></div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><b><p>Descripción:<?="  ".$a->descipcion?></b></p></div>
         
       </div>
    
@@ -168,17 +180,18 @@ $categoriaCanalPsico = buscaCategoCanalPsico();
    <!-- termina actualizaciones -->
    <!-- inicia notificaciones -->
    <div class="row">
-   <center><h5><b> Notificaciones</b></h5></center>
+   <h5 class="text-center"><b> Notificaciones</b></h5>
     <?php 
     $notificaciones = buscarNotificaciones($p->idatencion_psico);
     ?>
    
    <?php if($notificaciones !=""):?>
-   
+  
     <?php foreach ($notificaciones as $n):?>
+      <?php $estNotificaciones = $estNotificaciones+1;?>
       <div class="row form-control">
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>Fecha:</b><?=$n->fecha?></div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><b>Vía de comunicación:</b> 
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><p><b>Fecha:</b><?=$n->fecha?></p></div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><p><b>Vía de comunicación:</b></p> 
        
              <?php foreach($viaComunicacion as $vc){
                 if($vc->idmotivo_prefectura == "$n->motivo_prefectura_idmotivo_prefectura"){
@@ -186,7 +199,7 @@ $categoriaCanalPsico = buscaCategoCanalPsico();
                  }
            }?></div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <b>Descripción:</b><?=$n->descripcion?>
+          <p><b>Descripción:</b><?=$n->descripcion?></p>
           </div>
      
       </div>  <!-- div row -->
@@ -354,7 +367,7 @@ $categoriaCanalPsico = buscaCategoCanalPsico();
         
         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control">
     <!--contenedor derecha -->
-contenedor derecha
+ derecha
     <!--contenedor derecha -->
 
         </div>

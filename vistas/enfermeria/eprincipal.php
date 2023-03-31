@@ -72,7 +72,7 @@ $espacios = "        ";
                 <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 m-0 p-0">
                     <label for="alumno" class="form-control2"> <p class="text-center"> <b> Buscar Alumno:</b></p></label>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-10 m-0 p-0">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 m-0 p-0">
                      <input type="text" required class="form-control"name="alumno" id="alumno">
 
                         <ul id="lista"> 
@@ -82,7 +82,7 @@ $espacios = "        ";
                   </div>
                
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 m-0 p-0">
-                        <button class="form-control btn btn-success">Cargar Expediente</button>
+                        <button class="form-control nav-button-cargar">Cargar Expediente</button>
                      
                   </div>
                
@@ -101,38 +101,45 @@ $espacios = "        ";
                             
                           
                             <!--barra de encabezado de cada caso-->
-                 
+             
                     <?php if($uCasos!=false):?>
                     <?php foreach($uCasos as $caso):?>
-                      <div class="row  ">
-
-                              <p class="col-lg-4 col-md-4 col-sm-6 col-xs-6  m-0 p-0"> 
-                                  Folio: <?=$caso->idenfermeria?>
-                    </p> 
-                              <p class="col-lg-4 col-md-4 col-sm-6 col-xs-6  m-0 p-0"> 
-                              <?=$caso->nombre." ".$caso->apaterno." ".$caso->amaterno?> 
-                    </p> 
-                              <p class="col-lg-4 col-md-4 col-sm-6 col-xs-6  m-0 p-0"> 
-                                 Grupo: <?=$caso->grupo?>
-                    </p> 
-                              <p class="col-lg-4 col-md-4 col-sm-6 col-xs-6 m-0 p-0"> 
-                               <?="Fecha:".substr($caso->fecha, 0,10)." Hora: ".substr($caso->fecha, 10);?>
-                           
-                    </p> 
-                  
-                              <p class="col-lg-4 col-md-4 col-sm-6 col-xs-6 m-0 p-0 "> 
-                                  Motivo: <?=$caso->motivo?>
-                    </p> 
+                 
+                      <div class="flex-row ">
+                        <div class="enf-tabla">
+                          
+                                    <p class="col-lg-4 col-md-4 col-sm-6 col-xs-6 "> 
+                                        Folio: <b><?=$caso->idenfermeria?></b>
+                                    </p> 
+                                    <p class="col-lg-4 col-md-4 col-sm-6 col-xs-6 "> 
+                                    <b><?=$caso->nombre." ".$caso->apaterno." ".$caso->amaterno?></b> 
+                                    </p> 
+                                    <p class="col-lg-4 col-md-4 col-sm-6 col-xs-6 "> 
+                                      Grupo: <b><?=$caso->grupo?></b>
+                                    </p> 
+                                    <p class="col-lg-4 col-md-4 col-sm-6 col-xs-6"> 
+                                     Fecha:  <b><?=substr($caso->fecha, 0,10)." Hora: ".substr($caso->fecha, 10);?></b>
+                                
+                                    </p> 
+                        
+                                    <p class="col-lg-4 col-md-4 col-sm-6 col-xs-6 "> 
+                                        Motivo: <b><?=$caso->motivo?></b>
+                                      </p> 
+                                  
+                                    <p class="col-lg-4 col-md-4 col-sm-6 col-xs-6"> 
+                                      Categoría  <b><?=$caso->categoriaMedica?></b>
+                                  </p> 
+                          </div>
+                        <div class="enf-descripcion">
+                             <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+                                Descripción  <b><?=$caso->descripcion?></b>
+                            </p> 
                             
-                              <p class="col-lg-4 col-md-4 col-sm-6 col-xs-6 m-0 p-0"> 
-                                Categoría  <?=$caso->categoriaMedica?>
-                    </p> 
-
-                    <p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 m-0 p-0"> 
-                                Descripción  <?=$caso->descripcion?>
-                    </p> 
-                    </div> 
-                    <hr>
+                        </div>
+                      
+                    
+                    </div>
+                    <br><br> <hr>
                     <?php endforeach?>
                     <?php endif?>
                
@@ -167,13 +174,13 @@ $espacios = "        ";
                             <!--Se muestran las estadisticas dias sin incidentes-->
                         <div class="row m-0 p-0">
                             
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control2  " style="background:#FFFF99; font-size: small; border-radius: 20px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control2  postit" >
                                 
                               <h6 class="text-center">Días sin incidentes</h6>
                                <?php
                                if($e['ultimoEvento']<5){
                                $color = "danger";
-                            }else if($e['ultimoEvento']>4 & $e['ultimoEvento']<10){
+                            }else if($e['ultimoEvento'] >4 & $e['ultimoEvento']<10){
                                 $color ="warning";
                                }else {
                                 $color ="success";
@@ -187,64 +194,47 @@ $espacios = "        ";
                         </div>
                         <br>
                         <!--Se muestran las estadisticas  de incidentes -->
-                        <div class="row form-control2 " style="background:#FFFF99; font-size: small; border-radius: 20px;">
-                                
-                                        
-                                   <h6 class="text-center">Atenciones médicas  </h6>
-                                 
-                                   <h7 class="text-center col-12">Desde: <?=$fechaI?>  </h7>
-                                   <h7 class="text-center col-12">Hasta: <?=$fechaF?>  </h7>
-                                    <br>
+                        <div class="row form-control2 postit " >  
+                            <h6 class="text-center">Atenciones médicas  </h6>
+                            <div>
+                                <p class="text-center col-12 m-0 p-0">Desde: <?=$fechaI?>  </p>
+                                <p class="text-center col-12 m-0 p-0">Hasta: <?=$fechaF?>  </p>
+                            </div>
                                     
-                                    <?php foreach ($e['Incidencias'] as $i):?>
+                                    
+                               <?php foreach ($e['Incidencias'] as $i):?>
                                        
-                                    <H4 class="text-center"><?=$i['cantidad']['eventos']?></H4>
+                            <H4 class="text-center"><b><?=$i['cantidad']['eventos']?></b></H4>
                                   
-                                    <?php endforeach?>
-                                   
-                                    <br> 
-                                    
-                                   
+                              <?php endforeach?>   
                         </div>
                         <br>
                              <!--Se muestran las estadisticas por categoria-->
-                             <div class="row form-control2 "style="background:#FFFF99; font-size: small; border-radius: 20px;">
-                                
-                              
-                           <h6 class="text-center">Categorías con más incidentes</h6>
-                            
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 p-0"></div>
-                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 p-0">
-                            <?php foreach ($e['Categorias'] as $c):?>
-                                 <p class="text-center">
-                                <?php if($c['numero']>0):?>
-                                    <p class="text-center">  <?=$c['categoria'].' ('.$c['numero'].")"?></p>
-                            <?php endif?>
-                            <?php endforeach?>
-                            </div>
-                            <br> 
-                            
+                             <div class="row form-control2 postit">
+                                  <h6 class="text-center">Categorías con más incidentes</h6>
+                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0 m-0">
+                                        <?php foreach ($e['Categorias'] as $c):?>
+                                            <p class="text-center p-0 m-0">
+                                            <?php if($c['numero']>0):?>
+                                            <?=$c['categoria'].' ('.$c['numero'].")"?></p>
+                                        <?php endif?>
+                                        <?php endforeach?>
+                                   </div>
+                          
                            
-                </div> <br>
+                               </div> 
+                               <br>
                           <!--Se muestran las estadisticas por grupo-->
-                        <div class="row form-control2 " style="background:#FFFF99; font-size: small; border-radius: 20px;">
-                     
-                                       
-                                   <h6 class="text-center">Grupos con más incidentes</h6>
-                                    <br>
-                                    
-                                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 p-0">
+                        <div class="row form-control2  postit " >                                     
+                              <h6 class="text-center">Grupos con más incidentes</h6>
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                                  <?php foreach ($e['Grupos'] as $g):?>
-                                   <p class="text-center">
-                                        <?php if($g['numero']>0):?>
-                                   <?=$g['grupo'].' ('.$g['numero'].")"?></p>
+                                       <?php if($g['numero']>0):?>
+                                      <p class="text-center ">  <?=$g['grupo'].' ('.$g['numero'].")"?> </p>
                                     <?php endif?>
                                    
                                     <?php endforeach?>
-                                    </div>
-                                    <br> 
-                                    
-                                    
+                               </div>                                   
                         </div>
                         <?php endforeach?>
                     </div>

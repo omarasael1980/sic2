@@ -33,7 +33,7 @@ $msg = $error['msg'];
 header("Location: ../../?tipo=".$tipo."&&msg=".$msg);
 //} else {
     
-//	echo "Lo siento, por seguridad no procesaremos tu solicitud!";
+	//echo "Lo siento, por seguridad no procesaremos tu solicitud!";
 //}
 
 ?> 

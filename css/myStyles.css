@@ -436,6 +436,89 @@ div .si{
   clear: both; /* este hace que no se suban las cajas a otras filas sella huevos dejados en filas*/
   display: table; /*permite que texto viaje a otra fila o poner color a caja fila*/
 }
+.nav-button-cargar{
+  display: flex;
+  /* height: 55%; */
+  width: 15rem;
+  font-size: 1rem;
+  background-color: #0c8ce9;
+  color: white;
+  border: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 12px 0 rgb(0 0 0 / 30%);
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: lighter;
+  margin-left: 5px;
+}
+.postit{
+  background:#95DEEA ;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;  
+  padding: 20px 0;
+}
+
+.postit h6,
+.postit div,
+.postit h4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.postit div{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.postit h6{
+  font-size: 20px;
+  font-weight: bold;
+}
+.postit div p{
+  font-size: 16px;
+  gap:5px;
+}
+.enf-tabla p{
+font-size: 14px;
+padding: 0;
+margin: 0px;
+}
+.enf-tabla p b{
+color:#0F4E75;
+
+}
+.enf-descripcion p{
+  font-size: 14px;
+  padding: 0px;
+  margin: 0px;
+  padding-top: 5px;
+  color:#0F4E75;
+}
+.enf-descripcion p b{
+
+}
+
+.contenedor_grafico {
+  /* width: 70%;*/
+  height: 95%;
+  box-shadow: 0 6px 12px 0 rgb(0 0 0 / 30%);
+  transition-duration: 300ms;
+  margin: 1rem 0;
+  border-radius: 1rem;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
 /* Caracteristias de los columnas dependiendo de la cantidad de columnas */
 [class*="col-"] {
   float: left;
@@ -632,5 +715,12 @@ div .si{
   .col-xs-0 {
     display: none;
   }
-}
 
+.enf-descripcion {
+  padding-bottom: 60px;
+}
+.nav-button-cargar{
+  width: 100%;
+  margin: 0;
+}
+}
