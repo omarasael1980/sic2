@@ -10,10 +10,10 @@ abreSesion();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SICS</title>
     <link rel="icon" href="img/empresarial/logoSantee.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="css/myStyles.css">
-    <script src="https://www.google.com/recaptcha/api.js?render=6LfXTVocAAAAACROczlljJmPqjALPJdP7n1tVjV6"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../css/myStyles.css">
+    <link rel="stylesheet" type="text/css" href="../../css/navbar.css">
+  
     <script
 	  src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
  
@@ -28,55 +28,52 @@ abreSesion();
  
 
 
-    <div class="container2">
-    <div class="container2">
-    <?php  abreSesion();
-if(!isset($_SESSION['user'])){
-    header("Location:../");
-}?>
-   <div class="sticky-top">
+  
+<div class="sticky-top">
         <div class="nav-logo row">
           
-                <div class="div-logo col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                <div class="div-logo col-lg-3 col-md-4 col-sm-12 col-xs-12">
                
-                       <a href="../"> <img src="../img/empresarial/logoSantee.png" class="logo-navbar" alt="Colegio Santee">  </a>   
-                
-                </div>
-            <div class="menu col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                    <a href="./"><img src="img/empresarial/logoSantee.png" class="logo-navbar" alt="Colegio Santee"> </a>
+            
+            </div>
+            <div class="menu col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <nav>
                     
-                    
-                     
-                <?php if(!isset($_SESSION['user'])):?>
-                <a class="nav-bar desaparece" href="../vistas/usuarios/login.php"> Login</a>
-                <?php else:?>
-                    <?php if(in_array('Enfermeria',$_SESSION['user']->perm)):?>
-                <a class="nav-bar desaparece" href="../vistas/enfermeria/eprincipal.php"> Enfermeria</a>
-                <?php endif?>
-                <?php if(in_array('Biblioteca',$_SESSION['user']->perm)):?>
-                <a class="nav-bar desaparece" href="../vistas/biblioteca/bprincipal.php"> Biblioteca</a>
-                <?php endif?>
               
-                <?php if(in_array('Psicopedagogico',$_SESSION['user']->perm)):?>
-                <a class="nav-bar desaparece" href="../vistas/psicopedagogico/pprincipal.php"> Psicopedagógico</a>
-                <?php endif?>
-            
+               
+                
+                <?php if(isset($_SESSION['user'])):?>
+                        <a class="nav-button" onclick="accion()">Menú</a>
               
-                <?php if(in_array('Ajustes',$_SESSION['user']->perm)):?>
-                <a class="nav-bar desaparece" href="../vistas/usuarios/usuariosPrincipal.php"> Configuración</a>             
-                <?php endif?>
-               
-               
-                <?php endif?>
-                <button class="nav-button" onclick="accion()">Menú</button>
-                <br>
-               <a class=" nav-button" href="../controlador/usuarios/logout.php">LogOut </a>
-                 <br>
-                </nav>
-            </div>
-        </div>
-    </div>
-    
+                            <?php if(in_array('Enfermeria',$_SESSION['user']->perm)):?>
+                        <a class="nav-bar desaparece" href="vistas/enfermeria/eprincipal.php"> <center>Enfermeria</center></a>
+                        <?php endif?>
+                        <?php if(in_array('Biblioteca',$_SESSION['user']->perm)):?>
+                        <a class="nav-bar desaparece" style=" vertical-align: middle;" href="vistas/biblioteca/bprincipal.php"><center>Biblioteca</center> </a>
+                        <?php endif?>
+                        <?php if(in_array('Directorio',$_SESSION['user']->perm)):?>
+                        <a class="nav-bar desaparece" href="#"> <center>Directorio</center></a>
+                        <?php endif?>
+                        <?php if(in_array('Psicopedagogico',$_SESSION['user']->perm)):?>
+                        <a class="nav-bar desaparece" href="vistas/psicopedagogico/pprincipal.php"><center>Psicopedagógico</center> </a>
+                        <?php endif?>
+                        <?php if(in_array('Prefectura',$_SESSION['user']->perm)):?>
+                        <a class="nav-bar desaparece" href="#"> <center>Prefectura</center></a>
+                        <?php endif?>
+                        <?php if(in_array('Ajustes',$_SESSION['user']->perm)):?>
+                        <a class="nav-bar desaparece" href="/vistas/usuarios/usuariosPrincipal.php"><center>Configuración</center> </a>             
+                        <?php endif?>
+                        <a class="nav-button" href="../../controlador/usuarios/logout.php"> LogOut</a>
+                </div>
+                                </nav>
+                                
+                       
+           
+       
+      
+                       
+                        <?php endif?>
                         </div>
           
             </div>
@@ -108,7 +105,7 @@ if(!isset($_SESSION['user'])){
                 <div class="form-group " id="grupo__usuario">
                      
                         <div class="form-group-input  ">
-                        <label for="usuario" class="form-label"> <b> Usuario:</b>
+                        <label for="usuario" class="form-label form-control2"> <b> Usuario:</b>
                              <input class="form-control img-container " type="text" name="usuario" placeholder="Usuario">
                              <i class=""><img class="form-validation-state img-input" id="img-usuario"src="img/icons/cross.png" alt="incorrecto"> </i>
                         </div>
@@ -121,7 +118,7 @@ if(!isset($_SESSION['user'])){
                 <div class="form-group " id="grupo__password">
                      
                      <div class=" form-group-input">
-                     <label for="password" class="form-label"> <b> Contraseña:</b>
+                     <label for="password" class="form-label form-control2"> <b> Contraseña:</b>
                           <input class="form-control img-container " type="password" name="password" placeholder="Contraseña">
                           <i class=""><img class="form-validation-state img-input" src="img/icons/cross.png" alt="incorrecto"> </i>
                      </div>
@@ -160,23 +157,24 @@ if(!isset($_SESSION['user'])){
     <?php endif?>
     <?php if(isset($_SESSION['user'])):?>
     <div class="row">
-        <center><h1>Welcome <?=$_SESSION['user']->nombre?></h1></center>
+        <h1 class="text-center">Bienvenid@ <?=$_SESSION['user']->nombre?></h1>
         <br>
         <br>
         <br>
         <br>
-        <Center><H3>Menú de opciones</H3></Center>
+        <H3 class="text-center">Menú de opciones</H3>
         <br>
         <br>
 
         <?php if(in_array('Ajustes',$_SESSION['user']->perm)):?>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 "></div>
         <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 ">
             <div class="row ">
                  <center><a href="vistas/usuarios/usuariosPrincipal.php">
                  <img class="img-menu" src="img/icons/settings.webp" alt="Configuracion"></a></center>
             </div>
             <div class="row">
-                <h3><center>Configuración</center></h3>
+                <h3 class="text-center">Configuración</h3>
             </div>   
         </div> 
         <?php endif?>
@@ -187,7 +185,7 @@ if(!isset($_SESSION['user'])){
                  <img class="img-menu" src="img/icons/first-aid-kit.png" alt="Enfermeria"></a></center>
             </div>
             <div class="row">
-                <h3><center>Enfermeria</center></h3>
+                <h3 class="text-center">Enfermeria</h3>
             </div>   
         </div> 
         <?php endif?>
@@ -198,7 +196,7 @@ if(!isset($_SESSION['user'])){
                  <img class="img-menu" src="img/icons/psicologa.jpg" alt="Psicopedagógico"></a></center>
             </div>
             <div class="row">
-                <h3><center>Psicopedagógico</center></h3>
+                <h3 class="text-center">Psicopedagógico</h3>
             </div>   
         </div> 
         <?php endif?>
@@ -209,14 +207,14 @@ if(!isset($_SESSION['user'])){
                  <img class="img-menu" src="img/icons/libreria.jpg" alt="biblioteca"></a></center>
             </div>
             <div class="row">
-                <h3><center>Biblioteca</center></h3>
+                <h3 class="text-center">Biblioteca</h3>
             </div>   
         </div> 
         <?php endif?>
        
         <?php endif?>
     </div>
-    </div>
+
        <script src="js/nav-bar.js">        </script>
      
        <script src="js/validaciones.js">        </script>

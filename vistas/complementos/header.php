@@ -13,10 +13,8 @@
     <script src="https://kit.fontawesome.com/eff852937b.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-   
-
-    <link rel="stylesheet" type="text/css" href="../css/myStyles.css">
-    <link rel="stylesheet" type="text/css" href="../css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../../css/myStyles.css">
+    <link rel="stylesheet" type="text/css" href="../../css/navbar.css">
 </head>
 
 <body>
