@@ -177,7 +177,7 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
                  <!--Mostrar estadisticas --> 
                <h5 class="text-center"><b> Algunos datos importantes </b></h4>
                      <br>
-                     <div class="row form-control m-0 p-0"  style="background:#FFFF99; font-size: small; border-radius: 20px;">
+                     <div class="row form-control2 postit">
                         <!--inicio libros prestados-->
                           <h6 class="text-center">Libros  Prestados Actualmente</h6>
                           <hr class="m-0 p-0">
@@ -187,7 +187,7 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
                                                        </div>  
                                                        <br> 
                                                         <!--inicio libros prestados-->
-                                                        <div class="row form-control m-0 p-0"  style="background:#FFFF99; font-size: small; border-radius: 20px;">
+                                                        <div class="row form-control2 postit">
                                                      <h6 class="text-center">Total Prestados en el ciclo escolar</h6>
                                                       <hr class="m-0 p-0">
                                             
@@ -197,7 +197,7 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
                                                        <br>                       
                         <!--final libros prestados-->
                           <!--titulos mas prestados-->
-                          <div class="row form-control m-0 p-0"  style="background:#FFFF99; font-size: small; border-radius: 20px;">
+                          <div class="row form-control2 postit">
                             <h4 class="text-center">Top 10</h4>
                           <h4 class="text-center">Títulos mas leídos</h4>
                           <hr>
@@ -218,30 +218,29 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
                             </div>
                             <br>
                               <!--grupos con mas prestamos-->
-                          <div class="row form-control  " style="background:#FFFF99; font-size: small; border-radius: 20px;">
-                        <h4 class="text-center">Grupos con  más préstamos</h4>
-                          <hr>
+                              <div class="row form-control2 postit">
+                                    <h4 class="text-center">Grupos con  más préstamos</h4>
+                                 <hr>
                                                 
                                         
                                                        <?php $i=0; ?>
                                                         <?php foreach($e['xGrupo'] as $xGrupo):?>
-                                                            <div class="row m-0 p-0">
+                                                         
                                                             <?php if($xGrupo != ""):?>
                                                                 <?php $i++; 
                                                                 if($i<6): ?>
-                                                            <div class="col-lg-5 col-md-5 col-xs-7 col-sm-6 p-0">
-                                                             <p><b> <?=$xGrupo['Grupo']?>:</b></div>
+                                                           
                                                             <div class="col-lg-7 col-md-6 col-xs-4 col-sm-5 p-0">
-                                                            <p class="text-center">  <b> <?=$xGrupo['prestamos']?></b></p>
+                                                            <p class="text-center">  <b> <?=$xGrupo['Grupo']?>:<?=$xGrupo['prestamos']?></b></p>
                                                             </div>
                                                            
                                                             
                                                             <?php endif?>
                                                              <?php endif?>
-                                                             </div>
+                                                         
                                                         <?php endforeach?>
                                                      
-                            </div>
+                                 </div>
                                                         <?php endforeach?>
                                                     <?php endif?>
 

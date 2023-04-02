@@ -16,14 +16,15 @@ $motivos = cargaMotivosPsico();
 $viaComunicacion = cargaMotivosNotificacion();
 $especialistas = buscaEspecialistas();
 $categoriaCanalPsico = buscaCategoCanalPsico();
- $estNotificaciones = 0;
- $estcasos = 0;
- $estActualizaciones = 0;
- $estArchivos = 0;
- $estSuspensiones = 0;
- $estCitatorios =0;
- $estCanalizac=0;
-
+$estadisticasPsico= get_BuscaEstadisticasPsico($today);
+//se cargan para mostrar las estadisticas
+$estAtendidos = $estadisticasPsico['atendidos'][0]->atendidos;
+$estSeguimiento = $estadisticasPsico['seguimiento'][0]->seguimiento;
+$estCerrados = $estadisticasPsico['cerrados'][0]->cerrados;
+$estHoy = $estadisticasPsico['hoy'][0]->hoy;
+$estMotivos = $estadisticasPsico['motivos'];
+$estGrupos = $estadisticasPsico['grupos'];
+$estCategorias = $estadisticasPsico['categoria'];
 ?>
 
 
@@ -55,7 +56,7 @@ $categoriaCanalPsico = buscaCategoCanalPsico();
                         <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
                         <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
                         <a href="historialPsico.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
-                       
+                        
                        
           </div>
                 
@@ -74,7 +75,7 @@ $categoriaCanalPsico = buscaCategoCanalPsico();
     
            <?php if($pendiente != ""):?>
            <?php foreach($pendiente as $p):?>
-            <?php $estcasos = $estcasos +1;?>
+            
            <!-- se llaman datos del alumno -->
            <?php if($pendiente !=null){
           //busca datos del estudiante
@@ -188,7 +189,7 @@ $categoriaCanalPsico = buscaCategoCanalPsico();
    <?php if($notificaciones !=""):?>
   
     <?php foreach ($notificaciones as $n):?>
-      <?php $estNotificaciones = $estNotificaciones+1;?>
+    
       <div class="row form-control">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><p><b>Fecha:</b><?=$n->fecha?></p></div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><p><b>Vía de comunicación:</b></p> 
@@ -367,7 +368,74 @@ $categoriaCanalPsico = buscaCategoCanalPsico();
         
         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control">
     <!--contenedor derecha -->
- derecha
+ <!-- inician postit con estadisticas -->
+                             <!--Se muestran las estadisticas dias sin incidentes-->
+    <div class="row m-0 p-0">
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control2  postit" > 
+                <h6 class="text-center">Casos en seguimiento</h6>
+                               <?php
+                               if($estSeguimiento<5){
+                               $color = "success";
+                            }else if($estSeguimiento >4 & $estSeguimiento<10){
+                                $color ="warning";
+                               }else {
+                                $color ="danger";
+                               }
+                               ?>
+                             <H4  class="text-center  blink <?=$color?>"><?=$estSeguimiento?></H4>
+                               
+                              
+                            </div>
+                        </div>
+                        <br>
+                         <!--Se muestran casos atendidos-->
+    <div class="row m-0 p-0">
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control2  postit" > 
+                <h6 class="text-center">Casos atendidos en este ciclo</h6>
+                          <h4><?=$estAtendidos?></h4>
+        </div>
+    </div>
+                        <br>
+                         <!--Se muestran casos atendidos hoy-->
+    <div class="row m-0 p-0">
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control2  postit" > 
+                <h6 class="text-center">Casos atendidos hoy</h6>
+                          <h4><?=$estHoy?></h4>
+        </div>
+    </div>
+                        <br>
+                         <!--Se muestran casos atendidos por grupo-->
+    <div class="row m-0 p-0">
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control2  postit" > 
+                <h6 class="text-center">Casos atendidos por grupo:</h6>
+                <div class="row p-0 m-0">
+                                        <?php foreach ($estGrupos as $g):?>
+                                            <p class="text-center p-0 m-0">
+                                            <?php if($g->cantidad >0):?>
+                                            <?=$g->grupo.' ('.$g->cantidad.")"?></p>
+                                        <?php endif?>
+                                        <?php endforeach?>
+                                   </div>
+                            </div>
+                        </div>
+                        <br>
+                               <!--Se muestran casos atendidos-->
+    <div class="row m-0 p-0">
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control2  postit" > 
+                <h6 class="text-center">Casos atendidos por categoria:</h6>
+                <div class="row p-0 m-0">
+                                        <?php foreach ($estCategorias as $c):?>
+                                            <p class="text-center p-0 m-0">
+                                            <?php if($c->cantidad >0):?>
+                                            <?=$c->categoria_psico.' ('.$c->cantidad.")"?></p>
+                                        <?php endif?>
+                                        <?php endforeach?>
+                                   </div>
+                            </div>
+                        </div>
+                        <br>
+                   
+ <!-- termina el postit -->
     <!--contenedor derecha -->
 
         </div>

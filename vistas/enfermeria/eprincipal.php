@@ -11,7 +11,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
     header("Location:../../");
 }
 $fechaI='2022-08-21';
-date_default_timezone_set("America/Tijuana");
+date_default_timezone_set("America/Tijuana"); 
 $fechaF= date("Y-m-d");
 $estadisticas = dameEstadisticasMedicas('2022-08-21',$fechaF);
 $roles = buscaRoles();

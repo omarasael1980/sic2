@@ -14,6 +14,84 @@
           return false;
        }
   }
+  function get_BuscaEstadisticasPsico($fecha){
+    require '../../modelo/config/pdo.php';
+    //se buscan los atendidos
+    $query ="SELECT count(idatencion_psico) as atendidos FROM sisantee_sics.atencion_psico;";
+    $st = $pdo->prepare($query); 
+    $st->execute() or die (implode ('>>', $st->errorInfo()));
+    if($st->rowCount()>0){
+        $atendidos=$st->fetchAll(PDO::FETCH_OBJ);
+        
+      }else{
+        $atendidos = "";
+     }
+     //se buscan los activos 
+     $query2 ="Select count(idatencion_psico) as seguimiento from atencion_psico where darSeguimiento = 1;";
+     $st2 = $pdo->prepare($query2); 
+     $st2->execute() or die (implode ('>>', $st2->errorInfo()));
+     if($st2->rowCount()>0){
+      $seguimiento=$st2->fetchAll(PDO::FETCH_OBJ);
+     }else{
+      $seguimiento ="";
+     }
+     //se buscan cerrados
+     $query3="Select count(idatencion_psico) as cerrados from atencion_psico where darSeguimiento = 0;";
+     $st3 = $pdo->prepare($query3); 
+     $st3->execute() or die (implode ('>>', $st3->errorInfo()));
+     if($st3->rowCount()>0){
+      $cerrados=$st3->fetchAll(PDO::FETCH_OBJ);
+     }else{
+      $cerrados ="";
+     }
+     //se buscan los del dia
+     $query4 ="Select count(idatencion_psico) as hoy from atencion_psico where fecha  = :fecha;";
+     $st4 = $pdo->prepare($query4);
+     $st4->bindParam(':fecha',$fecha);
+     $st4->execute() or die (implode ('>>', $st4->errorInfo()));
+
+     if($st4->rowCount()>0){
+      $porfecha=$st4->fetchAll(PDO::FETCH_OBJ);
+     }else{
+      $porfecha ="";
+     }
+     //busqueda de motivos 
+     $query5="SELECT motivo, COUNT(*) as cantidadMotivo FROM sisantee_sics.atencion_psico  GROUP BY motivo ORDER BY cantidadMotivo DESC";
+     $st5 = $pdo->prepare($query5); 
+     $st5->execute() or die (implode ('>>', $st5->errorInfo()));
+     if($st5->rowCount()>0){
+      $motivos=$st5->fetchAll(PDO::FETCH_OBJ);
+     }else{
+      $motivos ="";
+     }
+     //busqueda de grupos
+     $query6="SELECT grupo, COUNT(*) as cantidad FROM sisantee_sics.atencion_psico join estudiantes 
+     on idestudiantes =estudiantes_idestudiantes join grupos on idgrupos = grupos_idgrupos GROUP BY grupo  
+     ORDER BY cantidad DESC;";
+     $st6 = $pdo->prepare($query6); 
+     $st6->execute() or die (implode ('>>', $st6->errorInfo()));
+     if($st6->rowCount()>0){
+      $grupos=$st6->fetchAll(PDO::FETCH_OBJ);
+     }else{
+      $grupos ="";
+     }
+     //busqueda de categoria
+      
+      $query7="SELECT categoria_psico, COUNT(*) as cantidad FROM sisantee_sics.atencion_psico  
+      join categoria on idcategoria_psico = categoria_idcategoria_psico
+     GROUP BY categoria_psico ORDER BY cantidad DESC";
+      $st7 = $pdo->prepare($query7); 
+      $st7->execute() or die (implode ('>>', $st7->errorInfo()));
+      if($st6->rowCount()>0){
+       $categoria=$st7->fetchAll(PDO::FETCH_OBJ);
+      }else{
+       $categoria ="";
+      }
+ 
+      $datos = array("atendidos"=>$atendidos, "seguimiento"=>$seguimiento, "cerrados" =>$cerrados, 
+      "hoy"=>$porfecha,"motivos"=>$motivos, "grupos"=>$grupos,"categoria"=>$categoria);
+      return $datos;
+  }
   function cargaMotivosNotificacion(){
     require '../../modelo/config/pdo.php';
     $query ="CALL select_buscaMotivoNotificaciones()";
