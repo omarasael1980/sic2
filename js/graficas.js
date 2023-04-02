@@ -1,39 +1,19 @@
 // Gráfica de barras
-var ctx = document.getElementById('graficaAtencion').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
+
+
+var graficaGrupos = document.getElementById('graficaGrupos').getContext('2d');
+var graficaCategorias= document.getElementById('graficaCategorias').getContext('2d');
+graficaBarras(graficaGrupos,(grupos.map(grupo=>grupo.grupo)), (grupos.map(grupo=>grupo.cantidad)), "Casos por Grupo",'bar');
+graficaBarras(graficaCategorias,(estcategorias.map(cat=>cat.categoria_psico)), (estcategorias.map(cat=>cat.cantidad)), "Casos por Categoría",'bar');
+function graficaBarras(elemento, etiquetas, datos, titulo,tipo){
+var myChart = new Chart(elemento, {
+    type: tipo,
     data: {
-        labels: [
-            'Azcapotzalco',
-            'Álvaro Obregón',
-            'Benito Juárez',
-            'Coyoacán',
-            'Cuajimalpa de Morelos',
-            'Cuauhtémoc',
-            'Gustavo A. Madero',
-            'Iztacalco',
-            'Iztapalapa',
-            'La Magdalena Contreras',
-            'Miguel Hidalgo',
-            'Milpa Alta'
-        ],
+        
+        labels: etiquetas,
         datasets: [{
-            label: 'Clientes por alcaldía',
-            data: [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                4,
-                2,
-                1,
-                5,
-                8,
-                9
-            
-            ],
+            label: titulo,
+            data: datos,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -72,10 +52,9 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
+        
+        responsive: true,
+      
     }
 });
+}
