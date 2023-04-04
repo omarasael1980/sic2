@@ -67,9 +67,9 @@ $motivos = cargaMotivosPsico();
                  <?php  $espacios = "        ";?>
                   <a href="pprincipal.php" class=" btn  list-group-item text-center list-group-item-action " aria-current="true">
                   <p> <i class="fa-solid fa-bars"> </i> <?=$espacios?>Pendientes</p>  </a>
-                 <a class="btn btn-primary list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
-                 <a href="historialPsico.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
-                 <a href="#" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
+                <br> <a class="btn btn-primary list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
+                <br> <a href="historialPsico.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
+               <br>  <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
                 
          </div>
                 
@@ -103,7 +103,7 @@ $motivos = cargaMotivosPsico();
                
                   <div class="col-lg-4 col-md-3 col-sm-1 col-xs-0"></div>
                     <div class="col-lg-4 col-md-2 col-sm-3 col-xs-12">
-                        <button class="form-control btn btn-success">Cargar Expediente</button>
+                        <button class="form-control nav-button-cargar">Cargar Expediente</button>
                      
                   </div>
                
@@ -261,7 +261,7 @@ $motivos = cargaMotivosPsico();
                         
                         <br>
                         <!-- boton de submit del formulario -->
-                        <button   name = "bEnviar" onclick="validarForm(event)" class="btn btn-primary form-control" id="bEnviar" value="Guardar">Guardar</button>
+                        <button   name = "bEnviar" onclick="validarForm(event)" class="nav-button-cargar form-control" id="bEnviar" value="Guardar">Guardar</button>
                     
                 </div>
             </form>
@@ -322,8 +322,8 @@ $motivos = cargaMotivosPsico();
       </div>
       <div class="modal-footer">
         <div class="row">
-            <div class="col-6"> <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button></div>
-            <div class="col-6"> <input  onclick="validaMiMotivo(event)" type="submit"  id="bMotivo"class="btn btn-success" value="Guardar">
+            <div class="col-6"> <button type="button" class="nav-button-cargar" data-bs-dismiss="modal">Cancelar</button></div>
+            <div class="col-6"> <input  onclick="validaMiMotivo(event)" type="submit"  id="bMotivo"class="nav-button-cargar" value="Guardar">
             </form>
       </div></div>
         </div>

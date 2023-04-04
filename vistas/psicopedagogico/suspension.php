@@ -30,7 +30,7 @@ $nombreAlumno =$alumno[0]->nombre." ".$alumno[0]->apaterno." ".$alumno[0]->amate
     <!--contenedor general -->
      <!--contenedor izquierda -->
      <br>
-     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control">
+     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control2">
      <div class="row">
                  <center><a href="../../vistas/psicopedagogico/pprincipal.php">
                  <img class="img-menu" src="../../img/icons/psicologa.jpg" alt="Psicopedagógico"></a></center>
@@ -48,22 +48,22 @@ $nombreAlumno =$alumno[0]->nombre." ".$alumno[0]->apaterno." ".$alumno[0]->amate
                         <?php  $espacios = "        ";?>
                          <a href="pprincipal.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
                          <p> <i class="fa-solid fa-bars"> </i> <?=$espacios?>Pendientes</p>  </a>
-                        <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
-                        <a href="#" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
-                        <a href="#" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
-                        <a href="#" class="list-group-item text-center  list-group-item-action"><p><i class="fa-solid fa-route"></i><?=$espacios?>Canalizaciones</p> </a>
+                      <br>  <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
+                     <br>   <a href="historialPsico.php?id=<?=$al?>" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
+                      <br>  <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
+                    
                 </div>
                 
             </div>
 
      </div>
       
-      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 form-control">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 form-control2">
 <!--contenedor central -->
 <center><h1>Suspensión</h1></center>
 <hr>
 <center><h3>Caso Inicial:</h3></center>
-<div class="container card  mb-3" style="background:#A3D1F7;">
+<div class="antecedentes  mb-3" style="background:#A3D1F7;">
 <div class="row ">
     <!-- datos del alumno -->
     <div class="col-lg-4 col-md-5 col-sm-5 col-xs-6"><b>Alumno:</b> <?=$nombreAlumno?></div>
@@ -188,11 +188,11 @@ $nombreAlumno =$alumno[0]->nombre." ".$alumno[0]->apaterno." ".$alumno[0]->amate
                     <div class="row">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-0"></div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <button type="submit"  name = "bEnviar" onclick="validarForm(event)" id="bEnviar"class="btn btn-success">Guardar</button>
+                        <button type="submit"  name = "bEnviar" onclick="validarForm(event)" id="bEnviar"class="nav-button-cargar">Guardar</button>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-0"></div>
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <button class="btn btn-danger"> Cancelar</button>
+                        <button class="nav-button-cargar"> Cancelar</button>
                     </div>
                     
                     </div>
@@ -206,9 +206,9 @@ $nombreAlumno =$alumno[0]->nombre." ".$alumno[0]->apaterno." ".$alumno[0]->amate
     
        
         
-        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control">
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control2">
     <!--contenedor derecha -->
-contenedor derecha
+
     <!--contenedor derecha -->
 
         </div>
@@ -255,7 +255,7 @@ contenedor derecha
         </div>
        
        
-    </div>
+    </div> 
   </div>
 </div>
 

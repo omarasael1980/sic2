@@ -15,7 +15,7 @@ function validadescripcion(valor) {
     console.log(valorCorregido);
     document.getElementById('descripcion').value = valorCorregido;
   
-    if (!/^[A-Za-z0-9ÁÉÍÓÚáéíóúÑñ,;:\s]+$/.test(valorCorregido) || valorCorregido.length < 10) {
+    if (!/^[A-Za-z0-9ÁÉÍÓÚáéíóúÑñ,.;:\s]+$/.test(valorCorregido) || valorCorregido.length < 10) {
       descripcionElement.classList.remove('form-group-correct');
       descripcionElement.classList.add('form-group-wrong');
       mensajeErrorElement.classList.add('form-message-active');
@@ -92,7 +92,7 @@ formulario.addEventListener('submit', (e) => {
   }
   
   // Validación de la descripción
-  const descripcionRegex = /^[a-zA-Z0-9,.\s]*$/;
+  const descripcionRegex = /^[A-Za-z0-9ÁÉÍÓÚáéíóúÑñ,.;:\s]*$/;
   if (!descripcionRegex.test(descripcion.value)) {
     errores.push('La descripción solo debe contener letras, números, coma, espacio y punto.');
     document.getElementById('mensaje_error__descripcion').style.display = 'block';

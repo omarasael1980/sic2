@@ -1,6 +1,6 @@
 function validadescripcion(valor){
      
-    if(!/^[A-Za-z0-9ÁÉÍÓÚáéíóúÑñ,;:\s]+$/.test(valor)|| valor.length < 10){
+    if(!/^[A-Za-z0-9ÁÉÍÓÚáéíóúÑñ,.;:\s]+$/.test(valor)|| valor.length < 10){
      
       revisaMay('descripcion');
       quitaEspacios(valor,'descripcion');
@@ -140,7 +140,7 @@ function validadescripcion(valor){
       }
   
     xformulario.addEventListener('submit',(e)=>{
-      alert("ok");
+     
       var b1 =false;// valida descripcion
       var b2 =false; // valida fecha
       var b3 =false; //valida motivo
@@ -179,7 +179,7 @@ function validadescripcion(valor){
           const inputFecha = document.getElementById("fechaCitatorio");
           var fechaInput = new Date(Date.parse(inputFecha.value)).getTime();
           if (fechaInput < fechaMin || fechaInput > fechaMax) {
-            alert("La fecha debe estar entre el 28 de febrero y el 5 de marzo de 2023.");
+            alert("La fecha debe estar entre "+fechaMin+ " y el "+fechaMax);
             inputFecha.value = "";
             b4=false;
             error("fechaCitatorio");
@@ -220,19 +220,15 @@ function validadescripcion(valor){
     
    
    if(b1 == true && b2 == true && b3 == true && b4==true ){
+    console.log("b1"+b1);
+    console.log("b2"+b2);
+    console.log("b3"+b3);
+    console.log("b4"+b4);
     xformulario.submit();
     
    }
     });
-  
-    
-  
-  
-         
-  
-     
-  
-  
+
   
   }
   

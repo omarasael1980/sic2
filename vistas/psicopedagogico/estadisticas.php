@@ -63,26 +63,41 @@ $estCategorias = $estadisticasPsico['categoria'];
                 echo "var grupos = ".json_encode($estGrupos).";";
                 echo "</script>";?>
                 <!-- id controla la grafica disenada en JS -->
-                    <canvas id="graficaGrupos">
+                    <canvas class="m-0 p-0" id="graficaGrupos" >
 
                     </canvas>
             </div>
             <!-- separador -->
          
-             <!-- contenedor_grafico tiene el css -->
-
-             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 contenedor_grafico">
+            <!-- contenedor_grafico tiene el css -->
+                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 contenedor_grafico">
                 
-                <?php  
-                //  se manda la variable a JS
-                echo "<script>";
-                echo "var estcategorias = ".json_encode($estCategorias).";";
-                echo "</script>";?>
-                <!-- id controla la grafica disenada en JS -->
-                    <canvas id="graficaCategorias">
+                        <?php  
+                        //  se manda la variable a JS
+                        echo "<script>";
+                        echo "var estMotivos = ".json_encode($estMotivos).";";
+                        echo "</script>";?>
+                        <!-- id controla la grafica disenada en JS -->
+                    <canvas class="m-0 p-0" id="graficaMotivos">
 
                     </canvas>
-            </div>
+                 </div>
+            <!-- separador -->
+             <!-- contenedor_grafico tiene el css -->
+            
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 contenedor_grafico">
+                
+                            <?php  
+                            //  se manda la variable a JS
+                            echo "<script>";
+                            echo "var estcategorias = ".json_encode($estCategorias).";";
+                            echo "</script>";?>
+                            <!-- id controla la grafica disenada en JS -->
+                    <canvas class="m-0 p-0" id="graficaCategorias">
+
+                    </canvas>
+                 </div>
+            
         </div>
     </div>
 <!-- FIN CENTRO --></div>

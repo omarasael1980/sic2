@@ -41,7 +41,7 @@ while ($contador_dias < 3) {
     <!--contenedor general -->
      <!--contenedor izquierda -->
      <br>
-     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control">
+     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control2">
      <div class="row">
                 <p class="text-center"><a href="../../vistas/psicopedagogico/pprincipal.php">
                  <img class="img-menu" src="../../img/icons/psicologa.jpg" alt="Psicopedagógico"></a></p>
@@ -57,19 +57,19 @@ while ($contador_dias < 3) {
                   
                          <!--Menu desplegable-->
                         <?php  $espacios = "        ";?>
-                         <a href="pprincipal.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
+                         <a href="pprincipal.php" class="  list-group-item text-center list-group-item-action " aria-current="true">
                          <p> <i class="fa-solid fa-bars"> </i> <?=$espacios?>Pendientes</p>  </a>
-                        <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
-                        <a href="#" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
-                        <a href="#" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
-                        <a href="#" class="list-group-item text-center  list-group-item-action"><p><i class="fa-solid fa-route"></i><?=$espacios?>Canalizaciones</p> </a>
+                      <br>  <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
+                       <br> <a href="historialPsico.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
+                       <br> <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
+                       <br> <a href="#" class="btn btn-primary list-group-item text-center  list-group-item-action"><p><i class="fa-solid fa-route"></i><?=$espacios?>Canalizaciones</p> </a>
                 </div>
                 
             </div>
 
      </div>
       
-      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 form-control">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 form-control2">
 <!--contenedor central -->
 <!-- inicia -->
 <div class="row"></div>
@@ -109,7 +109,7 @@ while ($contador_dias < 3) {
                             <label for="fecha" class="form-label form-control2"> <b> Fecha:</b>
                             <input type="hidden"  id= "alumno" name="alumno" value=<?=$caso[0]->estudiantes_idestudiantes?>>
                             <input type="hidden"  id= "folio" name="folio" value=<?=$caso[0]->idatencion_psico?>>
-                            <input type="date" required name="fecha" id="fecha" value="<?=$today?>" max="<?=$today?>" min="<?=$tresDiasHabAntes->format('Y-m-d')?>">
+                            <input type="date" class="form-control"required name="fecha" id="fecha" value="<?=$today?>" max="<?=$today?>" min="<?=$tresDiasHabAntes->format('Y-m-d')?>">
                                 <i class=""><img class="form-validation-state img-input" id="img-usuario"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                            
                             </label>
@@ -182,8 +182,14 @@ while ($contador_dias < 3) {
                                 </div>
                             <br>
                             <!-- termina categorias -->
-                            <button class="btn btn-success"  onclick="validarFormularcio(event)" type="submit"> Guardar</button>
-                   
+                            <div class="row">
+                                <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12"> <button class="nav-button-cargar "  onclick="validarFormularcio(event)" type="submit"> Guardar</button></div>
+                                <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">  <a href="pprincipal.php" class="nav-button-cargar ">Cancelar</a>  </div>
+                           
+                             
+                        </div>
 
             </form>
         </div>
@@ -194,9 +200,9 @@ while ($contador_dias < 3) {
       </div>
       </div>
         
-        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control">
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control2">
     <!--contenedor derecha -->
-contenedor derecha
+
     <!--contenedor derecha -->
 
         </div>
@@ -235,8 +241,8 @@ contenedor derecha
       </div>
       <div class="modal-footer">
         <div class="row">
-            <div class="col-6"> <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button></div>
-            <div class="col-6"> <input  onclick="validaMC(event)" type="submit"  id="bCategoria"class="btn btn-success" value="Guardar">
+            <div class="col-6"> <button type="button" class="nav-button-cargar" data-bs-dismiss="modal">Cancelar</button></div>
+            <div class="col-6"> <input  onclick="validaMC(event)" type="submit"  id="bCategoria"class="nav-button-cargar" value="Guardar">
             </form>
         
       </div></div>
@@ -280,8 +286,8 @@ contenedor derecha
       </div>
       <div class="modal-footer">
         <div class="row">
-            <div class="col-6"> <button type="button"  class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button></div>
-            <div class="col-6"> <input  onclick="" type="submit"  onclick = "validaME(this)" id="bEspecialista"class="btn btn-success" value="Guardar">
+            <div class="col-6"> <button type="button"  class="nav-button-cargar" data-bs-dismiss="modal">Cancelar</button></div>
+            <div class="col-6"> <input  onclick="" type="submit"  onclick = "validaME(this)" id="bEspecialista"class="nav-button-cargar" value="Guardar">
             </form>
         
       </div></div>

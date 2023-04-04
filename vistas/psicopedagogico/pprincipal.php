@@ -35,7 +35,7 @@ $estCategorias = $estadisticasPsico['categoria'];
     <!--contenedor general -->
      <!--contenedor izquierda -->
      <br>
-     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control">
+     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control2">
        <div class="row">
                  <center><a href="../../vistas/psicopedagogico/pprincipal.php">
                  <img class="img-menu" src="../../img/icons/psicologa.jpg" alt="Psicopedagógico"></a></center>
@@ -53,9 +53,9 @@ $estCategorias = $estadisticasPsico['categoria'];
                         <?php  $espacios = "        ";?>
                          <a href="pprincipal.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
                          <p> <i class="fa-solid fa-bars"> </i> <?=$espacios?>Pendientes</p>  </a>
-                        <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
-                        <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
-                        <a href="historialPsico.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
+                   <br>     <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
+                    <br>    <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
+                      <br>  <a href="historialPsico.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
                         
                        
           </div>
@@ -159,7 +159,7 @@ $estCategorias = $estadisticasPsico['categoria'];
    
     <h5 class="text-center"><b> Actualizaciones del caso:</b></h5>
    <?php foreach ($actualizaciones as $a):?>
-    <?php $estActualizaciones = $estActualizaciones+1;?>
+  
     <!-- Inicia actualizaciones -->
    <div class="row">
     <div class="form-control">
@@ -180,14 +180,14 @@ $estCategorias = $estadisticasPsico['categoria'];
    <?php endif?>
    <!-- termina actualizaciones -->
    <!-- inicia notificaciones -->
-   <div class="row">
-   <h5 class="text-center"><b> Notificaciones</b></h5>
+   
     <?php 
     $notificaciones = buscarNotificaciones($p->idatencion_psico);
     ?>
    
    <?php if($notificaciones !=""):?>
-  
+    <div class="row">
+   <h5 class="text-center"><b> Notificaciones</b></h5>
     <?php foreach ($notificaciones as $n):?>
     
       <div class="row form-control">
@@ -207,9 +207,9 @@ $estCategorias = $estadisticasPsico['categoria'];
       <br>
 
       <?php endforeach?>
-
+      </div>
       <?php endif?>
-   </div>
+
    <!-- termina notificaciones -->
 
     <!-- inicia seccion citatorios -->
@@ -346,29 +346,51 @@ $estCategorias = $estadisticasPsico['categoria'];
                                                         
                                                       
              </div> 
-                                                      <br>
-                                                      
+                                                    
                                                 <?php endforeach?>
                                                 
                                        
                                                 <?php endif?>
           </div> <!--Aqui terminan las evidencias si hay-->
-
+<!-- boton de imprimir -->
+<div class="row">
+  <div class="col-lg-4 col-md-3 col-sm-3 col-xs-0"></div>
+  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+    <a href="imprime.php?id=<?=$p->idatencion_psico?>" class="nav-button-cargar">Imprimir</a>
+  </div>
+  <div class="col-lg-4 col-md-3 col-sm-3 col-xs-0"></div>
+</div>
  
 <!-- Termina boton colapsable -->
+
 </div> </div>        
     <?php endforeach?>
     </div> 
     <?php endif?>
+
     </div> 
 <!-- FIN CENTRO -->
 <!--contenedor central -->
      
 
         
-        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control">
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control2">
     <!--contenedor derecha -->
  <!-- inician postit con estadisticas -->
+     <!-- contenedor_grafico tiene el css -->
+     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contenedor_grafico">
+                
+                <?php  
+                //  se manda la variable a JS
+                echo "<script>";
+                echo "var grupos = ".json_encode($estGrupos).";";
+                echo "</script>";?>
+                <!-- id controla la grafica disenada en JS -->
+                    <canvas class="m-0 p-0" id="graficaGrupos" >
+
+                    </canvas>
+            </div>
+            <!-- separador -->
                              <!--Se muestran las estadisticas dias sin incidentes-->
     <div class="row m-0 p-0">
          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control2  postit" > 
@@ -377,7 +399,7 @@ $estCategorias = $estadisticasPsico['categoria'];
                                if($estSeguimiento<5){
                                $color = "success";
                             }else if($estSeguimiento >4 & $estSeguimiento<10){
-                                $color ="warning";
+                                $color ="text-warning";
                                }else {
                                 $color ="danger";
                                }
@@ -404,23 +426,10 @@ $estCategorias = $estadisticasPsico['categoria'];
         </div>
     </div>
                         <br>
-                         <!--Se muestran casos atendidos por grupo-->
-    <div class="row m-0 p-0">
-         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control2  postit" > 
-                <h6 class="text-center">Casos atendidos por grupo:</h6>
-                <div class="row p-0 m-0">
-                                        <?php foreach ($estGrupos as $g):?>
-                                            <p class="text-center p-0 m-0">
-                                            <?php if($g->cantidad >0):?>
-                                            <?=$g->grupo.' ('.$g->cantidad.")"?></p>
-                                        <?php endif?>
-                                        <?php endforeach?>
-                                   </div>
-                            </div>
-                        </div>
-                        <br>
+                        
+    
                                <!--Se muestran casos atendidos-->
-    <div class="row m-0 p-0">
+        <div class="row m-0 p-0">
          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control2  postit" > 
                 <h6 class="text-center">Casos atendidos por categoria:</h6>
                 <div class="row p-0 m-0">
@@ -432,7 +441,10 @@ $estCategorias = $estadisticasPsico['categoria'];
                                         <?php endforeach?>
                                    </div>
                             </div>
-                        </div>
+                        </div> 
+                          <!-- contenedor_grafico tiene el css -->
+            
+              
                         <br>
                    
  <!-- termina el postit -->
@@ -476,8 +488,8 @@ $estCategorias = $estadisticasPsico['categoria'];
       </div>
       <div class="modal-footer">
         <div class="row">
-            <div class="col-6"> <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button></div>
-            <div class="col-6"> <input  onclick="validaMiMotivo(event)" type="submit"  id="bMotivo"class="btn btn-success" value="Guardar">
+            <div class="col-6"> <button type="button" class="nav-button-cargar" data-bs-dismiss="modal">Cancelar</button></div>
+            <div class="col-6"> <input  onclick="validaMiMotivo(event)" type="submit"  id="bMotivo"class="nav-button-cargar" value="Guardar">
             </form>
       </div></div>
         </div>
@@ -487,7 +499,7 @@ $estCategorias = $estadisticasPsico['categoria'];
   </div> -->
 </div>
 
-    
+<script src="../../js/graficas_pprincipal.js"></script>
  <!-- termina modal para insertar motivo-->
     
 <?php require '../complementos/footer_2.php';?>

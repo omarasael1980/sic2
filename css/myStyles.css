@@ -436,10 +436,14 @@ div .si{
   clear: both; /* este hace que no se suban las cajas a otras filas sella huevos dejados en filas*/
   display: table; /*permite que texto viaje a otra fila o poner color a caja fila*/
 }
+.encabezado{
+  background: #01016D;
+  color:#ced4da;
+}
 .nav-button-cargar{
   display: flex;
   /* height: 55%; */
-  width: 15rem;
+  width: 13rem;
   font-size: 1rem;
   background-color: #0c8ce9;
   color: white;
@@ -455,7 +459,7 @@ div .si{
   font-weight: lighter;
   margin-left: 5px;
 }
-.postit{
+/* .postit{
   background:#95DEEA ;
   border-radius: 10px;
   display: flex;
@@ -463,6 +467,39 @@ div .si{
   justify-content: space-between;
   gap: 10px;  
   padding: 20px 0;
+} */
+.postit{
+  width: 50%;
+  height: 125%;
+  box-shadow: 0 6px 12px 0 rgb(0 0 0 / 30%);
+  transition-duration: 300ms;
+  margin: 0rem 0rem;
+  border-radius: 1rem;
+  background-color: #95DEEA;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+.amarillo{
+  color:F9F54B;
+  background: F9F54B;
+  border-color: #FF5722;
+}
+.antecedentes{
+  /* width: 50%;
+  height: 125%; */
+  box-shadow: 0 6px 12px 0 rgb(0 0 0 / 30%);
+  transition-duration: 300ms;
+  margin: 0rem 0rem;
+  border-radius: 1rem;
+  background-color: #95DEEA;
+  /* display: flex; */
+  justify-content:center;
+  align-items: center;
+  /* flex-direction: row; */
+  padding: 1rem;
 }
 
 .postit h6,
@@ -506,10 +543,10 @@ color:#0F4E75;
 
 .contenedor_grafico {
   width: 50%;
-  height: 95%;
+  height: 125%;
   box-shadow: 0 6px 12px 0 rgb(0 0 0 / 30%);
   transition-duration: 300ms;
-  margin: 1rem 1rem;
+  margin: 0rem 0rem;
   border-radius: 1rem;
   background-color: #fff;
   display: flex;

@@ -167,7 +167,7 @@ $caso = buscaAtencionMedicaporId($id);
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-3 col-xs-0"></div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="col-12"><button class="btn btn-outline-primary" id="imprimirCanalizacion">Imprimir</button></div>
+                <div class="col-12"><button class="nav-button-cargar" id="imprimirCanalizacion">Imprimir</button></div>
                 </div></div>
             
             </div>

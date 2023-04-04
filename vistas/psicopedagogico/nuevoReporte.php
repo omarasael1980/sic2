@@ -46,10 +46,10 @@ $nombreAlumno =$alumno[0]->nombre." ".$alumno[0]->apaterno." ".$alumno[0]->amate
                         <?php  $espacios = "        ";?>
                          <a href="pprincipal.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
                          <p> <i class="fa-solid fa-bars"> </i> <?=$espacios?>Pendientes</p>  </a>
-                        <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
-                        <a href="#" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
-                        <a href="#" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
-                        <a href="#" class="list-group-item text-center  list-group-item-action"><p><i class="fa-solid fa-route"></i><?=$espacios?>Canalizaciones</p> </a>
+                      <br>  <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
+                    <br>    <a href="historialPsico.php?id=<?=$al?>" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
+                    <br>    <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
+                    
                 </div>
                 
             </div>
@@ -151,7 +151,7 @@ $nombreAlumno =$alumno[0]->nombre." ".$alumno[0]->apaterno." ".$alumno[0]->amate
            </div>
                    <!-- termina input descripcion -->
                        <br>
-                       <button type="submit"  name = "bEnviar" onclick="validarForm(event)" id="bEnviar"class="btn btn-success">Guardar</button>
+                       <button type="submit"  name = "bEnviar" onclick="validarForm(event)" id="bEnviar"class="nav-button-cargar">Guardar</button>
        </form></div>
     
     <!-- termina form -->
@@ -203,8 +203,8 @@ contenedor derecha
       </div>
       <div class="modal-footer">
         <div class="row">
-            <div class="col-6"> <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button></div>
-            <div class="col-6"> <input  onclick="validaMiMotivo(event)" type="submit"  id="bMotivo"class="btn btn-success" value="Guardar">
+            <div class="col-6"> <button type="button" class="nav-button-cargar" data-bs-dismiss="modal">Cancelar</button></div>
+            <div class="col-6"> <input  onclick="validaMiMotivo(event)" type="submit"  id="bMotivo"class="nav-button-cargar" value="Guardar">
             </form>
       </div></div>
         </div>

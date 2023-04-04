@@ -37,7 +37,7 @@ $nombreAlumno =$alumno[0]->nombre." ".$alumno[0]->apaterno." ".$alumno[0]->amate
     <!--contenedor general -->
      <!--contenedor izquierda -->
      <br>
-     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control">
+     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 form-control2">
      <div class="row">
                  <center><a href="../../vistas/psicopedagogico/pprincipal.php">
                  <img class="img-menu" src="../../img/icons/psicologa.jpg" alt="Psicopedagógico"></a></center>
@@ -53,24 +53,25 @@ $nombreAlumno =$alumno[0]->nombre." ".$alumno[0]->apaterno." ".$alumno[0]->amate
                   
                          <!--Menu desplegable-->
                         <?php  $espacios = "        ";?>
-                         <a href="pprincipal.php" class=" btn btn-primary list-group-item text-center list-group-item-action " aria-current="true">
+                         <a href="pprincipal.php" class="list-group-item text-center list-group-item-action " aria-current="true">
                          <p> <i class="fa-solid fa-bars"> </i> <?=$espacios?>Pendientes</p>  </a>
-                        <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
-                        <a href="#" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
-                        <a href="#" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
-                        <a href="#" class="list-group-item text-center  list-group-item-action"><p><i class="fa-solid fa-route"></i><?=$espacios?>Canalizaciones</p> </a>
+
+                      <br>  <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
+                       <br> <a href="historialPsico.php?id=<?=$al?>" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
+                       <br> <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
+                       <br> <a href="#" class="btn btn-primary list-group-item text-center  list-group-item-action"><p><i class="fa-solid fa-route"></i><?=$espacios?>Citatorio</p> </a>
                 </div>
                 
             </div>
 
      </div>
       
-      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 form-control">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 form-control2">
 <!--contenedor central -->
 <center><h1>Citatorio</h1></center>
 <hr>
 <center><h3>Caso Inicial:</h3></center>
-<div class="container card  mb-3" style="background:#A3D1F7;">
+<div class="antecedentes mb-3" >
 <div class="row ">
     <!-- datos del alumno -->
     <div class="col-lg-4 col-md-5 col-sm-5 col-xs-6"><b>Alumno:</b> <?=$nombreAlumno?></div>
@@ -111,7 +112,7 @@ $nombreAlumno =$alumno[0]->nombre." ".$alumno[0]->apaterno." ".$alumno[0]->amate
            <!--input fecha-->
            <div class="form-group" id="grupo__fecha">
               <div class="form-group-input  ">
-                    <label for="fecha" class="form-label"> <b> Fecha de registro:</b>
+                    <label for="fecha" class="form-label form-control2"> <b> Fecha de registro:</b>
                        <input class="form-control text-rigth" name="fecha"  id="fecha"value="<?=$today?>" min="2022-09-11" max="<?=$today?>" type="date">
                            <i class=""><img class="form-validation-state img-input" id="img-fecha"src="../../img/icons/cross.png" alt="incorrecto"></i>
                    </label>   
@@ -124,7 +125,7 @@ $nombreAlumno =$alumno[0]->nombre." ".$alumno[0]->apaterno." ".$alumno[0]->amate
                          <!--input fechaCitatorio-->
            <div class="form-group" id="grupo__fechaCitatorio">
               <div class="form-group-input  ">
-                    <label for="fechaCitatorio" class="form-label"> <b> Fecha y  Hora de la cita</b>
+                    <label for="fechaCitatorio" class="form-label form-control2"> <b> Fecha y  Hora de la cita</b>
                        <input  class="form-control text-rigth" name="fechaCitatorio"  id="fechaCitatorio" 
                        min="<?php echo date('Y-m-d\TH:i', strtotime('+1 days')); ?>" max="<?php echo date('Y-m-d\TH:i', strtotime('+14 days')); ?>" step="1800"type="datetime-local">
                            <i class=""><img class="form-validation-state img-input" id="img-fechaCitatorio"src="../../img/icons/cross.png" alt="incorrecto"></i>
@@ -176,10 +177,13 @@ $nombreAlumno =$alumno[0]->nombre." ".$alumno[0]->apaterno." ".$alumno[0]->amate
            </div>
                    <!-- termina input descripcion -->
                        <br>
-                       <div class="col-lg-4 col-md-5 col-sm-5 col-xs-6"><button type="submit"  name = "bEnviar" onclick="validarForm(event)" id="bEnviar"class="btn btn-success">Guardar</button></div>
-                       <div class="col-lg-4 col-md-2 col-sm-2 col-xs-0"><button class="btn btn-danger"> Cancelar</button></div>
+                       <div class="row">
+                       <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+                       <div class="col-lg-4 col-md-4 col-sm-5 col-xs-5"><button type="submit"  name = "bEnviar" onclick="validarForm(event)" id="bEnviar"class="nav-button-cargar">Guardar</button></div>
+                       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+                       <div class="col-lg-4 col-md-4 col-sm-5 col-xs-5"><a href="pprincipal.php " class="nav-button-cargar"> Cancelar</a></div>
                        
-                       
+                                                    </div>
        
             </form>
 
@@ -193,9 +197,9 @@ $nombreAlumno =$alumno[0]->nombre." ".$alumno[0]->apaterno." ".$alumno[0]->amate
     
        
         
-        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control">
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control2">
     <!--contenedor derecha -->
-contenedor derecha
+
     <!--contenedor derecha -->
 
         </div>
