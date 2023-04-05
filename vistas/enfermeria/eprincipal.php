@@ -194,7 +194,7 @@ $espacios = "        ";
                         </div>
                         <br>
                         <!--Se muestran las estadisticas  de incidentes -->
-                        <div class="row form-control2 postit " >  
+                        <div class="row form-control postit2 " >  
                             <h6 class="text-center">Atenciones médicas  </h6>
                             <div>
                                 <p class="text-center col-12 m-0 p-0">Desde: <?=$fechaI?>  </p>
@@ -210,13 +210,15 @@ $espacios = "        ";
                         </div>
                         <br>
                              <!--Se muestran las estadisticas por categoria-->
-                             <div class="row form-control2 postit">
+                             <div class="row form-control2 postit2">
                                   <h6 class="text-center">Categorías con más incidentes</h6>
                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0 m-0">
+                                    <?php $array=[];?>
                                         <?php foreach ($e['Categorias'] as $c):?>
                                             <p class="text-center p-0 m-0">
                                             <?php if($c['numero']>0):?>
                                             <?=$c['categoria'].' ('.$c['numero'].")"?></p>
+                                            <?php $array[$c['categoria']]=$c['numero'];?>
                                         <?php endif?>
                                         <?php endforeach?>
                                    </div>
@@ -224,8 +226,22 @@ $espacios = "        ";
                            
                                </div> 
                                <br>
+                               <!-- grafuca de categorias -->
+                               
+                <!-- <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 contenedor_grafico">
+                        <?php 
+                           //  se manda la variable a JS
+                          //  echo "<script>";
+                           // echo "var estcategorias = ".json_encode($array).";";
+                           // echo "</script>";?>
+                    <!-- id controla la grafica disenada en JS -->
+                        <!-- <canvas class="m-0 p-0" id="graficaCategorias">
+
+                        </canvas>
+                 </div> --> 
+                               <!-- termina grafica categorias -->
                           <!--Se muestran las estadisticas por grupo-->
-                        <div class="row form-control2  postit " >                                     
+                        <div class="row form-control2  postit2 " >                                     
                               <h6 class="text-center">Grupos con más incidentes</h6>
                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                                  <?php foreach ($e['Grupos'] as $g):?>
@@ -246,5 +262,6 @@ $espacios = "        ";
         </div>
     </div>
 </div>
+<script src="../../js/graficasEPrincipal.js"></script>
 <script src="../../js/peticiones.js">        </script>
 <?php require '../complementos/footer_2.php';?>

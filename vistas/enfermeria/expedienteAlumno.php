@@ -249,11 +249,10 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
                                         <?php endforeach?>
                                         <?php endif?>
 
-                                     <!-- termina cierre de etiquetas caja colapsable -->
+                                  
                                        <!-- aqui inicia seguro  escolar-->
                                 <!--Aqui se cargan los folios de gastos medicos si hay-->
-                              
-                               <!--Aqui se cargan los folios de gastos medicos si hay-->
+                        
                             
                                <?php if($c['seguros']!=""):?>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  <hr></div>
@@ -270,11 +269,18 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
                                                     <p>Folio: <b><?=$seguro->idseguro_escolar ?></b></p>
                                                 <?php $fechaSE = substr($seguro->date,0,-9);
                                                     ?>
-                                                <p>Fecha:<b><?=$fechaSE?></b></p> </div>
+                                                <p>Fecha:<b><?=$fechaSE?></b></p>
+                                                <p>Monto:<b><?php
+                                                $numero = $seguro->monto.$espacios;
+                                                $valor_moneda = '$' . number_format($numero, 2, '.', ',');
+                                                echo $valor_moneda; 
+                                               ?></b> </p> </div>
                                                 <div class="col-lg-4 col-md-2 col-sm-4 col-xs-6"></div>
                                                     <div class="col-lg-4 col-md-2 col-sm-4 col-xs-6 m-0 p-0">
-                                                    <a href="../imprimir/seguroEscolar.php?f=<?=$seguro->idseguro_escolar ?>" class="btn btn-primary form-control">Imprimir</a>
-                                                    </div>
+                                                    <a href="../imprimir/seguroEscolar.php?f=<?=$seguro->idseguro_escolar ?>" class="nav-button-cargar"><i class="fa-solid fa-print"></i>.  Imprimir </a><br>
+                                                    <a  href="actualizaMonto.php?id=<?=$seguro->idseguro_escolar?>" class="nav-button-cargar">
+                                                    <i class="fa-solid fa-circle-dollar-to-slot"></i>.   Actualizar Monto</a>   
+                                                </div>
                                         </div>
                                             <br class="m-0 p-0">
                                             <?php endforeach?>
@@ -376,8 +382,10 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
        
     </div>
 </div>
+<!--  modal monto-->
 
-    
+
+
  
 <script src="../../js/colapsables.js"></script>
 

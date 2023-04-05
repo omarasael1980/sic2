@@ -19,7 +19,18 @@ function ponerPermisos($rol, $permisos, $pdo){
   return true;
 }
 
-
+function buscaUsuarioID($id){
+  require '../../modelo/config/pdo.php';
+  $query = "CALL select_buscaNombreUsuarioxId(:id)";
+  $st = $pdo->prepare($query);
+  $st->bindParam(':id',$id);
+  $st->execute() or die($st->errorInfo());
+  if($st->rowCount()>0){
+    return $st->fetchAll(PDO::FETCH_OBJ);
+  }else{
+      return false;
+  }
+}
 function insertarUsuario($nombre, $apaterno, $amaterno, $username, $pass, $rol, $dom, $tel,$cel){
  
   require '../../modelo/config/pdo.php';

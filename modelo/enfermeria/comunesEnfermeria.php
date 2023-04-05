@@ -29,7 +29,21 @@
       
      
     }
-   
+   function actualizaMontoSE($monto, $folio){
+    require '../../modelo/config/pdo.php';
+      $query= "CALL  update_ActualizaMontoSeguroEscolar(:monto, :folio)";
+      $st = $pdo->prepare($query);
+      $st->bindParam(':monto',$monto);
+      $st->bindParam(':folio',$folio);
+      $st->execute() or die (implode ('>>', $st->errorInfo()));
+      if($st->rowCount()>0){
+          
+            return true;
+        }else{
+          return false;
+        
+    }
+   }
     function insertarAutoridadesContactadas($pdo,$autoridad, $folio, $idSeguroEscolar){
       
         $query ="CALL insert_ingresaAutoridad`(:acta, :autoridad, :idSeguridadEscolar);";
