@@ -10,6 +10,7 @@
             $espacios ="   ";
             $casos =cargarAtencionesMedicasAlumno($id);
             $especialistas = buscaEspecialista();
+            $expediente = buscaExpedienteMedico($id);
 ?>
 
 <?php
@@ -48,7 +49,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
                          <br>   <a href="e_nuevoCaso.php?id=<?=$al[0]->idestudiantes?>" class=" btn  list-group-item text-center list-group-item-action " aria-current="true">
                          <p> <i class="fa-solid fa-circle-plus"></i> <?=$espacios?>Atención médica</p>  </a>
                          <br>
-                        <a class="btn-primary list-group-item text-center list-group-item-action" href="expedienteAlumno.php"><p><i class="fa-regular fa-folder"></i><?=$espacios?> Expedientes </p></a>
+                        <a class="btn-primary list-group-item text-center list-group-item-action" href="expedienteAlumno.php?id=<?=$id?>"><p><i class="fa-regular fa-folder"></i><?=$espacios?> Expedientes </p></a>
                      
                         <br> <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-simple"></i> <?=$espacios?>Estadísticas</p></a>
                        
@@ -69,34 +70,45 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
         
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           
-                <h1 class="text-center">Expediente Médico</h1>
+                <h1 class="text-center ">Expediente Médico</h1>
                     <h4 class="text-center"><?=$al['0']->nombre." ".$al['0']->apaterno." ".$al['0']->amaterno." ".$al['0']->apaterno?></h4>
                 <h6 class="text-center">Grupo <?=$al['0']->grupo?></h6>
         </div>
     </div>
 
     <!-- Informacion de expediente Medico  -->
-    <div class="row expediente">
+    <div class="row expediente  <?php if($expediente[0]->estado ==1){echo "blink";}?>">
         <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0"></div>
         <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
-        <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Expediente Médico
         </button>
         </div>
     </div>
     <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-         </div>
+        <div class="">
+    <div class="antecedentes">
+        <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 m-0 p-0">
+                    <p><b>Alergias: <?=$espacios.$expediente[0]->alergias?></b> </p>
+                    <p class=""><b>Enfermedades Crónicas: <?=$espacios.$expediente[0]->enfermedadesCronicas?></b> </p>
+                    <p class=""><b>Medicación permanente: <?=$espacios.$expediente[0]->medicacion?></b> </p>
+                    <p class=""><b>Alerta activa: <?php if($espacios.$expediente[0]->estado==1){echo "si";}else{echo "no";}?></b> </p>
+                </div>
+                <!-- Boton para editar expediente medico  -->
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 m-0 p-0"><a href="editaExpediente.php?id=<?=$id?>">
+                    <img class="logos-enfermeria" src="../../img/icons/edit.png" alt="editaExpediente"> </a>
+                </div> 
+        </div>
+           
+       
+         
+                
+    </div>
+         </div> 
     </div>
 <!-- termina expediente medico -->
-        <!-- Boton para editar expediente medico  -->
-        <div class="row">
-             <div class="col-lg-2 col-md-1 col-sm-0 col-xs-0">
-                 <a href="editaExpediente.php?id=<?=$id?>">
-                 <img class="logos-enfermeria" src="../../img/icons/edit.png" alt="editaExpediente"> </a>
-             </div>
-        </div>
+      
                  <!-- Titulo ultimas atenciones medicas  -->
     <hr>
          <div class="row " >

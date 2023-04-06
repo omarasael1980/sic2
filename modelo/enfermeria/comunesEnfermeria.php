@@ -44,6 +44,117 @@
         
     }
    }
+   //busca el expediente del alumno para ver historia clinica
+   function buscaExpedienteMedico($id){
+    require '../../modelo/config/pdo.php';
+    $query ="CALL select_buscaExpedienteMedico(:idalumno)";
+    $st = $pdo->prepare($query);
+    $st->bindparam('idalumno',$id);
+    $st->execute() or die (implode ('>>', $st->errorInfo()));
+    if($st->rowCount()>0){
+        $expediente=$st->fetchAll(PDO::FETCH_OBJ);
+          return $expediente;
+      }else{
+        return false;
+      
+   }
+   }
+   function buscaTodasEnfermedades(){
+    $query ="CALL select_buscaEnfermedadesCronicas()";
+    require '../../modelo/config/pdo.php';
+    $st = $pdo->prepare($query);
+  
+    $st->execute() or die (implode ('>>', $st->errorInfo()));
+    if($st->rowCount()>0){
+        $enfermedades=$st->fetchAll(PDO::FETCH_OBJ);
+          return $enfermedades;
+      }else{
+        return false;
+      
+   }
+   }
+   function actualizaExpedienteMedico($alergias, $enfermedades, $medicacion, $folio){
+    require '../../modelo/config/pdo.php';
+    $query= "CALL  update_actualizaExpedienteMedico (:alergias, :enfermedades, 
+    :medicacion, :folio);";
+    $st = $pdo->prepare($query);
+    $st->bindParam(':alergias',$alergias);
+    $st->bindParam(':enfermedades',$enfermedades);
+    $st->bindParam(':medicacion',$medicacion);
+    $st->bindParam(':folio',$folio);
+   
+    $st->execute() or die (implode ('>>', $st->errorInfo()));
+    if($st->rowCount()>0){
+        
+          return true;
+      }else{
+        return false;
+      
+  }
+   }
+   function actualizaEnfermedadesCronicas($enfermedades, $id){
+    require '../../modelo/config/pdo.php';
+    $query= "CALL  update_actualizaEnfermedades(:enfermedades, :id)";
+    $st = $pdo->prepare($query);
+    $st->bindParam(':enfermedades',$enfermedades);
+    $st->bindParam(':id',$id);
+    $st->execute() or die (implode ('>>', $st->errorInfo()));
+    if($st->rowCount()>0){
+        
+          return true;
+      }else{
+        return false;
+      
+  }
+   }
+   function guardaNuevasEnfermedades($enfermedad){
+    $query = "CALL insert_guardaEnfermedades(:enfermedad);";
+    require '../../modelo/config/pdo.php';
+    
+    $st = $pdo->prepare($query);
+    $st->bindParam(':enfermedad',$enfermedad);
+   
+    $st->execute() or die (implode ('>>', $st->errorInfo()));
+    if($st->rowCount()>0){
+        
+          return true;
+      }else{
+        return false;
+      
+  }
+   }
+   function buscaTodaslasAlergias(){
+    $query = "CALL select_buscaTodasAlergia();";
+    require '../../modelo/config/pdo.php';
+    $st = $pdo->prepare($query);
+  
+    $st->execute() or die (implode ('>>', $st->errorInfo()));
+    if($st->rowCount()>0){
+        $alergias=$st->fetchAll(PDO::FETCH_OBJ);
+          return $alergias;
+      }else{
+        return false;
+      
+   }
+   }
+   function insertaExpedienteMedico($alergia, $enfermedades, $med, $estado, $alumno){
+    require '../../modelo/config/pdo.php';
+    $query ="CALL insert_guardaExpedienteMedico (:alergia,:enfermedades,:med,:estado,:idalumno);";
+    $st = $pdo->prepare($query);
+    $st->bindParam(':alergia',$alergia);
+    $st->bindParam(':enfermedades',$enfermedades);
+    $st->bindParam(':med',$med);
+    $st->bindParam(':estado',$estado);
+    $st->bindParam(':alumno',$alumno);
+    $st->execute() or die (implode ('>>', $st->errorInfo()));
+    if($st->rowCount()>0){
+        return true;
+      }else{
+        return false;
+      
+   }
+   }
+
     function insertarAutoridadesContactadas($pdo,$autoridad, $folio, $idSeguroEscolar){
       
         $query ="CALL insert_ingresaAutoridad`(:acta, :autoridad, :idSeguridadEscolar);";
