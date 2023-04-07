@@ -89,7 +89,20 @@ function buscaAlumno($id){
     return false;
   }
 }
+//obtener alumnos para generar tokens
+function buscaTokens(){
+  require 'pdo.php';
+  $query= "Select nombre, apaterno, amaterno, user , pass as token, grupo from estudiantes JOIN grupos ON grupos_idgrupos = idgrupos";
+  $consulta= $pdo->prepare($query);
 
+  $consulta->execute() or die (implode( " >> ", $consulta->errorInfo()));
+  if($consulta->rowCount()>0){
+    $al=$consulta->fetchAll(PDO::FETCH_OBJ);
+      return $al;
+  }else{
+    return false;
+  }
+}
 //filtrar alumnos
 function getAlumnos($string,$pdo){
   $campo = $_POST["alumno"];

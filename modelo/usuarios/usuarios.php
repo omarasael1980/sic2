@@ -18,7 +18,42 @@ function ponerPermisos($rol, $permisos, $pdo){
       }
   return true;
 }
+function logearAlumno($usuario, $password){
+  require '../../modelo/config/pdo.php';
+  $query = "SELECT * FROM estudiantes JOIN grupos on idgrupos = grupos_idgrupos Where estudiantes.user = :usuario";
+  $stmt=$pdo->prepare($query);
 
+  $stmt->bindparam(":usuario",$usuario);
+  $stmt->execute() or die (implode(" >> ", $stmt->errorInfo()));
+ //Existe usuario
+  if($stmt->rowCount()>0){
+      $user=$stmt->fetch(PDO::FETCH_OBJ);
+      
+      //se verifica pass
+      if($password == $user->pass){
+        
+        abreSesion();
+         
+        $user->perm[] = "Alumno";
+       unset($user->pass);
+       unset($user->user);
+       
+       $_SESSION['user']=$user;
+       
+       return 1;
+      }else{
+        $error=array("tipo"=>'error', "msg"=>'Contraseña incorrecta '." ".$pass);
+       
+        $_SESSION['msg']=$error;
+        return 2; //pass incorrecto
+      }
+  }else{
+    $error=array("tipo"=>'error', "msg"=>'Usuario incorrecto');
+       
+    $_SESSION['msg']=$error;
+    return 3;//el usuario no existe
+  }
+}
 function buscaUsuarioID($id){
   require '../../modelo/config/pdo.php';
   $query = "CALL select_buscaNombreUsuarioxId(:id)";

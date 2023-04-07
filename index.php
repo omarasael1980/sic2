@@ -66,14 +66,9 @@ abreSesion();
                         <?php endif?>
                         <a class="nav-button" href="../../controlador/usuarios/logout.php"> LogOut</a>
                 </div>
-                                </nav>
-                                
-                       
-           
-       
-      
-                       
+                               
                         <?php endif?>
+                        </nav>
                         </div>
           
             </div>

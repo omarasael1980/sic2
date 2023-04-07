@@ -77,6 +77,8 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
     </div>
 
     <!-- Informacion de expediente Medico  -->
+   
+    <?php if($expediente != ""):?>
     <div class="row expediente  <?php if($expediente[0]->estado ==1){echo "blink";}?>">
         <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0"></div>
         <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
@@ -108,7 +110,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
          </div> 
     </div>
 <!-- termina expediente medico -->
-      
+      <?php endif?>
                  <!-- Titulo ultimas atenciones medicas  -->
     <hr>
          <div class="row " >

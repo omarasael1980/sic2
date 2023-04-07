@@ -73,6 +73,26 @@
       
    }
    }
+   function crearExpedienteMedico($alergias, $enfermedades, $medicacion,$estado,  $id){
+    require '../../modelo/config/pdo.php';
+    $query= "CALL  insert_nuevoExpedienteMedico(:alergias, :enfermedades, 
+    :medicacion,:estado, :id);";
+    $st = $pdo->prepare($query);
+    $st->bindParam(':alergias',$alergias);
+    $st->bindParam(':enfermedades',$enfermedades);
+    $st->bindParam(':medicacion',$medicacion);
+    $st->bindParam(':estado',$estado);
+    $st->bindParam(':id',$id);
+   
+    $st->execute() or die (implode ('>>', $st->errorInfo()));
+    if($st->rowCount()>0){
+        
+          return true;
+      }else{
+        return false;
+      
+  }
+   }
    function actualizaExpedienteMedico($alergias, $enfermedades, $medicacion, $folio){
     require '../../modelo/config/pdo.php';
     $query= "CALL  update_actualizaExpedienteMedico (:alergias, :enfermedades, 
