@@ -9,10 +9,15 @@ $espacios = "       ";
 if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
     header("Location:../../");
 }
-
+$gastado =buscaCantidadGastada();
+$seguro = 3000000;
+$disponible = $seguro - $gastado[0]->total;
+$disponibleseguro[]="";
+$disponibleseguro[0]= ['titulo'=>'gastado','cantidad'=>$gastado[0]->total];
+$disponibleseguro[1]= ['titulo'=>'disponible','cantidad'=>$disponible];
+$estCat =atencionesxCategoria();
 
 ?>
-
 
 <!-- body  -->
 <div class="container-fluid">
@@ -50,7 +55,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
 <!-- termina barra lateral izquierda -->
     
       
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
+        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 ">
           <!--contenedor central -->
   <!-- contenedor_grafico tiene el css -->
   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 contenedor_grafico">
@@ -58,10 +63,25 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
                 <?php  
                 //  se manda la variable a JS
                 echo "<script>";
-                echo "var estMotivos = ".json_encode($estMotivos).";";
+                echo "var disponible = ".json_encode($disponibleseguro).";";
                 echo "</script>";?>
                 <!-- id controla la grafica disenada en JS -->
-            <canvas class="m-0 p-0" id="graficaMotivos">
+            <canvas class="m-0 p-0" id="graficaDisponible">
+
+            </canvas>
+         </div>
+    <!-- separador -->
+    <!-- contenedor_grafico tiene el css -->
+ 
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 contenedor_grafico">
+                
+                <?php  
+                //  se manda la variable a JS
+                echo "<script>";
+                echo "var categorias = ".json_encode($estCat).";";
+                echo "</script>";?>
+                <!-- id controla la grafica disenada en JS -->
+            <canvas class="m-0 p-0" id="graficoCategoria">
 
             </canvas>
          </div>
@@ -76,19 +96,10 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
      
 
         
-        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control2">
-    <!--contenedor derecha -->
-                 <!--Mostrar estadisticas --> 
-             
-
-
-                     
-    <!--contenedor derecha -->
-
-        </div>
+       
     </div>
 </div>
 
  
-
+<script src="../../js/graficasEnfEstadisticas.js"></script>
 <?php require '../complementos/footer_2.php';?>

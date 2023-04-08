@@ -44,6 +44,38 @@
         
     }
    }
+    
+ 
+   function atencionesxCategoria(){
+    $query ="CALL select_estadisticaCategoriaMedica()";
+    require '../../modelo/config/pdo.php';
+   
+    $st = $pdo->prepare($query);
+  
+    $st->execute() or die (implode ('>>', $st->errorInfo()));
+    if($st->rowCount()>0){
+        $cantidad=$st->fetchAll(PDO::FETCH_OBJ);
+          return $cantidad;
+      }else{
+        return false;
+      
+   }
+   }
+   function buscaCantidadGastada(){
+    $query ="CALL select_cantidadGastada() ";
+    require '../../modelo/config/pdo.php';
+   
+    $st = $pdo->prepare($query);
+  
+    $st->execute() or die (implode ('>>', $st->errorInfo()));
+    if($st->rowCount()>0){
+        $cantidad=$st->fetchAll(PDO::FETCH_OBJ);
+          return $cantidad;
+      }else{
+        return false;
+      
+   }
+   }
    //busca el expediente del alumno para ver historia clinica
    function buscaExpedienteMedico($id){
     require '../../modelo/config/pdo.php';
