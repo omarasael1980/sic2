@@ -6,7 +6,7 @@ require_once '../../modelo/enfermeria/comunesEnfermeria.php';
 require '../../modelo/config/comunes.php';
 
 
-if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
+if(!isset($_SESSION['user']) || !in_array('Psicopedagogico',$_SESSION['user']->perm)){
     header("Location:../../");
 }
 ?>

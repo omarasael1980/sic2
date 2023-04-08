@@ -4,6 +4,9 @@ require '../complementos/cabeceraGraficos.php';
 require '../complementos/nav_2.php';
 require_once '../../modelo/psicologia/psico.php';
 require '../../modelo/config/comunes.php';
+if(!isset($_SESSION['user']) || !in_array('Psicopedagogico',$_SESSION['user']->perm)){
+    header("Location:../../");
+}
 $today =  date('Y-m-d');
 $estadisticasPsico= get_BuscaEstadisticasPsico($today);
 $estAtendidos = $estadisticasPsico['atendidos'][0]->atendidos;

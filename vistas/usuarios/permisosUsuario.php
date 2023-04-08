@@ -3,7 +3,7 @@ include '../../modelo/usuarios/usuarios.php';
 include '../../modelo/config/comunes.php';
 $permisos = buscaPermisos();
 abreSesion();
-if(!isset($_SESSION['user'])){
+if(!isset($_SESSION['user']) || !in_array('Directivo',$_SESSION['user']->perm)){
     header("Location:../../");
 }
 ?>

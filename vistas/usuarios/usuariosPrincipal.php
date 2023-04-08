@@ -1,8 +1,8 @@
 <?php
 include '../../modelo/usuarios/usuarios.php';
 abreSesion();
-if(!isset($_SESSION['user'])){
-    header("Location:../../");
+if(!isset($_SESSION['user']) || !in_array('Directivo',$_SESSION['user']->perm)){
+  header("Location:../../");
 }
 
  require '../complementos/header_2.php';

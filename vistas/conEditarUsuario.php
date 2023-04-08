@@ -2,7 +2,11 @@
 
 <?php 
 require '../modelo/config/pdo.php';
-require '../modelo/config/usuarios.php';
+include '../../modelo/usuarios/usuarios.php';
+abreSesion();
+if(!isset($_SESSION['user']) || !in_array('Directivo',$_SESSION['user']->perm)){
+  header("Location:../../");
+}
 $usuarios = dameUsuarios($pdo);
 $roles = damePerfiles($pdo);
 ?>

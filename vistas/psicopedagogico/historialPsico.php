@@ -6,6 +6,9 @@ require '../complementos/header_2.php';
 require '../complementos/nav_2.php';
 require_once '../../modelo/psicologia/psico.php';
 require '../../modelo/config/comunes.php';
+if(!isset($_SESSION['user']) || !in_array('Psicopedagogico',$_SESSION['user']->perm)){
+  header("Location:../../");
+}
 $motivos = cargaMotivosPsico();
 $viaComunicacion = cargaMotivosNotificacion();
 $especialistas = buscaEspecialistas();

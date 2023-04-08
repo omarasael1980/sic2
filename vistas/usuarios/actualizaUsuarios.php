@@ -2,9 +2,9 @@
 <?php
 include '../../modelo/usuarios/usuarios.php';
 abreSesion();
-if(!isset($_SESSION['user'])){
-    header("Location:../../");
-}
+if(!isset($_SESSION['user']) || !in_array('Directivo',$_SESSION['user']->perm)){
+        header("Location:../../");
+    }
 ?>
 <?php require '../complementos/header_2.php';?>
 <?php require '../complementos/nav_2.php';
