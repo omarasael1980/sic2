@@ -4,6 +4,7 @@ include '../../modelo/usuarios/usuarios.php';
 require '../complementos/nav_2.php';
 require_once '../../modelo/enfermeria/comunesEnfermeria.php';
 require '../../modelo/config/comunes.php';
+
 $id = $_GET['id'];
 $al =buscaAlumno($id);
 date_default_timezone_set("America/Tijuana");

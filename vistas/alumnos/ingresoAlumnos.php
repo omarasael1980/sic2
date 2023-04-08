@@ -2,6 +2,9 @@
 include_once '../../modelo/usuarios/usuarios.php';
 require_once '../../modelo/enfermeria/comunesEnfermeria.php';
 abreSesion();
+if(!isset($_SESSION['user']) || !in_array('Alumno',$_SESSION['user']->perm)){
+    header("Location:../../");
+}
 $expediente="";
 if(isset($_SESSION['user'])){
     $id = $_SESSION['user']->idestudiantes;

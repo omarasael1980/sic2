@@ -33,8 +33,3 @@ if($resp){
 
 
 ?>
-<pre>
-    <?php
-    print_r($seguimiento);
-    ?>
-</pre>

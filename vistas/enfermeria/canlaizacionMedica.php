@@ -4,6 +4,9 @@ require '../complementos/header_2.php';
 require '../complementos/nav_2.php';
 require_once '../../modelo/enfermeria/comunesEnfermeria.php';
 require '../../modelo/config/comunes.php';
+if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
+    header("Location:../../");
+}
 $id=$_GET['id'];
 $c=$_GET['c'];
 $today = date("Y-m-d");
