@@ -643,16 +643,17 @@ color:#0F4E75;
 
 
 .contenedor_grafico {
+  margin: 10px;
   width: 50%;
-  height: 125%;
+  height: auto;
   box-shadow: 0 6px 12px 0 rgb(0 0 0 / 30%);
   transition-duration: 300ms;
   margin: 0rem 0rem;
   border-radius: 1rem;
   background-color: #fff;
   display: flex;
-  justify-content:center;
-  align-items: center;
+  justify-content:space-between;
+  align-items:center;
   
   padding: 1rem;
 }

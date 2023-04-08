@@ -19,7 +19,31 @@ if(isset ($_POST['grupo'])){
     } 
 }
   $espacios = "        ";
-$estadisticas =  buscaEstadisticasPrestamos();?>
+$estadisticas =  buscaEstadisticasPrestamos();
+$libros =buscaTodosLibros();
+foreach ( $libros as $l){
+  $titlosMasPrestados = buscaPrestamosLibro($l->idlibros);
+  $i=0;
+ 
+    //se cuentan cuantos prestamos tiene el titulo
+    if($titlosMasPrestados != false){
+        foreach($titlosMasPrestados as $tmp){
+          $i=$i+1;
+        }
+        $estTitulo[]=array( "prestamos"=>$i, "titulo"=>$l->titulo);
+        arsort($estTitulo);
+      }
+}
+$titulos[] ="" ;
+
+$i=0;
+foreach( $estTitulo as $t){
+if($i<10){
+  $titulos[$i] = $t;
+}
+$i++;
+}
+?>
 
 
 <!-- body  -->
@@ -64,7 +88,7 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
 <!-- termina barra lateral izquierda -->
     
       
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
+        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 ">
           <!--contenedor central -->
         <div class="row"><h1 class="text-center">Estadísticas</h1></div>
                 <!-- aqui inicia estadisticas -->
@@ -72,12 +96,14 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
  <br>
                      
             <div class="row">
+            
                         <!--inicio libros prestados-->
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                             <h4 class="text-center">Libros  Prestados Actualmente</h4>
                             <hr>
                                 <?php if(isset($estadisticas)):?>
                                     <?php foreach($estadisticas as $e):?>
+
                                       <h3 class="text-center"> <b> <?=$e['prestados']->prestados?> </b></h3>
                                         <br>                          
                      </div>                    
@@ -93,64 +119,63 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
                                 
                         </div>  
             </div> 
-                        <div class="row">
-                              <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6 "> 
+                       
+                             
                                                        <br>   
-                           <h2 class=" text-center">Top 10</h2>
-                         <h3 class="text-center">Títulos mas leídos</h3>
-                          <hr>
+                          
                                                 
-                      
-                                                        <?php $x=0; ?>
-                                    <?php foreach($e['xTitulo'] as $xtitulo):?>
-                                        
-                                            <?php if($xtitulo != ""):?>
-                                                <?php $x++; 
-                                                if($x<11): ?>
-                                                <div class="row " >
-                                                    
-                                                <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6 ">
-                                                <b> <p ><?=$xtitulo['titulo']?>:
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-xs-5 col-sm-5 ">
-                                            <p > <?=$xtitulo['prestamos']?></p></b>
-                                                </div>
-                                                </div>
-                                            <?php endif?>
-                                            <?php endif?>
-                                            
-                                    <?php endforeach?>
+                                     
+                                          <!-- contenedor_grafico tiene el css -->
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <h1 class="text-center"><b>TOP 10</b></h1>
+                                <hr>
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contenedor_grafico">
+                              <?php  
+                                                      //  se manda la variable a JS
+                                                      echo "<script>";
+                                                      echo "var titulos = ".json_encode($titulos).";";
+                                                      echo "</script>";?>
+                                        <!-- id controla la grafica disenada en JS -->
+                                    <canvas class="m-0 p-0" id="graficaTitulos">
 
-                            </div>
-                         
-                            <br>
-                              <!--grupos con mas prestamos-->
-                              <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6 form-control2"> 
-                                <br><br>
-                        <h3 class="text-center">Grupos con  más préstamos</h3>
-                          <hr>
-                                                
-                                        
-                                                       <?php $i=0; ?>
+                                    </canvas>
+                                    </div>
+                                </div>
+                            <!-- separador -->  
+                           
+                            <?php $i=0; $gruposEst[] =""; ?>
                                                         <?php foreach($e['xGrupo'] as $xGrupo):?>
-                                                            <?php if($xGrupo != ""):?>
-                                                                <?php $i++; 
+                                                         
+                                                          <?php if($xGrupo != ""):?>
+                                                         
+                                                         <?php 
                                                                 if($i<6): ?>
-                                                                <div class="row">
-                                                                 <div class="col-lg-4 col-md-4 col-xs-0 col-sm-0 form-control2"> </div>
-                                                            <div class="col-lg-3 col-md-3 col-xs-6 col-sm-6">
-                                                             <label for=""><b> <p><?=$xGrupo['Grupo']?>:</div>
-                                                            <div class="col-lg-2 col-md-2 col-xs-6 col-sm-6">
-                                                            <p class="text-center">  <?=$xGrupo['prestamos']?></p></b></label></p>
-                                                            </div>
-                                                            <div class="col-lg-2 col-md-2 col-xs-0 col-sm-0 form-control2"> </div>
-                                                           
-                                                            </div>
+                                                                <?php $gruposEst[$i]= ['grupo'=>$xGrupo['Grupo'],'cantidad'=> $xGrupo['prestamos']];  $i++; ?>
+                                                             
+                                                              
                                                             <?php endif?>
                                                              <?php endif?>
-                                                        <?php endforeach?>
-                                                     
-                            </div>
+                                                        <?php endforeach?>                                     
+                                <!-- contenedor_grafico tiene el css -->
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <h1 class="text-center"><b>Grupos con  más préstamos</b></h1>
+                                <hr>
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contenedor_grafico">
+                              <?php  
+                                                      //  se manda la variable a JS
+                                                      echo "<script>";
+                                                      echo "var grupos = ".json_encode($gruposEst).";";
+                                                      echo "</script>";?>
+                                        <!-- id controla la grafica disenada en JS -->
+                                    <canvas class="m-0 p-0" id="graficaGrupos">
+
+                                    </canvas>
+                                    </div>
+                                </div>
+                            <!-- separador -->  
+
+                              <!--grupos con mas prestamos-->
+                             
                                                         <?php endforeach?>
                                                     <?php endif?>
 
@@ -168,12 +193,7 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
      
 
         
-        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12  ">
-    <!--contenedor derecha -->
-
-    <!--contenedor derecha -->
-
-        </div>
+  
     </div>
 </div>
-   
+<script src="../../js/graficasBiblioteca.js"></script>

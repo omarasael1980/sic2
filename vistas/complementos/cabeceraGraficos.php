@@ -13,10 +13,11 @@
     <script src="https://kit.fontawesome.com/eff852937b.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/jdhvwvsz2aw35nl4azu5nfjc98oy54smk26abgv7xnjfj2j9/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <link rel="stylesheet" type="text/css" href="../../css/myStyles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/myStyles.css">
+   
 </head>
-
+ 
 <body>
     
 <?php  abreSesion();

@@ -98,14 +98,14 @@ header("Location: nuevoPrestamo.php");
     <div class="row">
         <div class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></div>
                 <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
-                        <form action="nuevoPrestamo.php"  class="form-control"  method="post" autocomplete="off">
+                        <form action="nuevoPrestamo.php"  class="form-control2"  method="post" autocomplete="off">
                         <div>
                             <label for="alumno">Buscar Alumno:</label>
                             <input type="text" class="form-control" name="alumno"  id="alumno">
                             <ul id="lista">        
                                     </ul>
                             </div>
-                        <button class="btn btn-success form-control">Cargar Alumno</button>
+                        <button class="nav-button-cargar form-control">Cargar Alumno</button>
                          </form>
                  </div>
     </div>

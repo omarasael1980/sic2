@@ -1,11 +1,11 @@
 // Gráfica de barras o pie
 
-var graficaMotivos = document.getElementById('graficaMotivos').getContext('2d');
+var graficaTitulos = document.getElementById('graficaTitulos').getContext('2d');
 var graficaGrupos = document.getElementById('graficaGrupos').getContext('2d');
-var graficaCategorias= document.getElementById('graficaCategorias').getContext('2d');
-graficaBarras(graficaGrupos,(grupos.map(grupo=>grupo.grupo)), (grupos.map(grupo=>grupo.cantidad)), "Casos por Grupo",'pie');
-graficaBarras(graficaCategorias,(estcategorias.map(cat=>cat.categoria_psico)), (estcategorias.map(cat=>cat.cantidad)), "Casos por Categoría",'bar');
-graficaBarras(graficaMotivos,(estMotivos.map(m=>m.motivo)), (estMotivos.map(m=>m.cantidadMotivo)), "Casos por Motivo de atención",'pie');
+//var graficaCategorias= document.getElementById('graficaCategorias').getContext('2d');
+graficaBarras(graficaTitulos,(titulos.map(tit=>tit.titulo)), (titulos.map(tit=>tit.prestamos)), "Títulos más solicitados",'bar');
+graficaBarras(graficaGrupos,(grupos.map(g=>g.grupo)), (grupos.map(g=>g.cantidad)), "Grupos con más préstamos",'bar');
+//graficaBarras(graficaMotivos,(estMotivos.map(m=>m.motivo)), (estMotivos.map(m=>m.cantidadMotivo)), "Casos por Motivo de atención",'pie');
 function graficaBarras(elemento, etiquetas, datos, titulo,tipo){
 var myChart = new Chart(elemento, {
     type: tipo,
@@ -13,7 +13,7 @@ var myChart = new Chart(elemento, {
         
         labels: etiquetas,
         datasets: [{ 
-            label: titulo,
+            label: "",
             data: datos,
            
             backgroundColor: [

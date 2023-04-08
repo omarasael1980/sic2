@@ -136,7 +136,7 @@ if(isset($_POST['libro'])){
                                         </div>
                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-0"></div>
                                         <div class="col-lg-3 col-sm-4 col-md-4 col-xs-6">
-                                        <a href="historialPrestamos.php"  class=" form-control  btn btn-danger">Regresar</a>
+                                        <a href="historialPrestamos.php"  class=" form-control  nav-button-cargar">Regresar</a>
                                         </div>
                                      </div>
                                    
@@ -177,7 +177,7 @@ if(isset($_POST['libro'])){
                             <div class="row">
                                         <div class="col-lg-1 col-md-2 col-sm-2 col-xs-12"></div>
                                         <div class="col-lg-4 col-sm-6 col-md-6 col-xs-12"> 
-                                            <a href="historialPrestamos.php" style ="height: 40px" class="  btn btn-danger">Regresar</a>
+                                            <a href="historialPrestamos.php" style ="height: 40px" class="  nav-button-cargar">Regresar</a>
                                         </div>
                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
                                        
@@ -219,11 +219,11 @@ if(isset($_POST['libro'])){
                             <div class="row">
                                 
                                 <div class="col-lg-6 col-sm-6 col-md-12 col-xs-12"> 
-                                    <button type="submit" class=" form-control btn btn-primary">Cargar préstamos</button>
+                                    <button type="submit" class=" form-control nav-button-cargar">Cargar préstamos</button>
                                 </div>
                                 
                                 <div class="col-lg-6 col-sm-6 col-md-12 col-xs-12">
-                                <a href="historialPrestamos.php"  class=" form-control  btn btn-danger">Regresar</a>
+                                <a href="historialPrestamos.php"  class=" form-control  nav-button-cargar">Regresar</a>
                                 </div>
                             </div>
                             <?php if(isset($_POST['libro'])):?>
@@ -385,8 +385,9 @@ if(isset($_POST['libro'])){
     
    
             <h1 class="text-center">Historial de préstamos de libros</h1><br><br><br>
-             <div class="row form-control">
-                <form class="form-control2"  action="historialPrestamos.php" method="post">
+             <div class="row form-control2">
+                <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+                <form class="form-control2 col-lg-8 col-md-8 col-sm-12 col-xs-12"  action="historialPrestamos.php" method="post">
                     
                 <select name="busca" id="busca" class="form-control">
                 <option value="0">Selecciona un tipo de busqueda</option>

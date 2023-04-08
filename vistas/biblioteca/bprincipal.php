@@ -75,7 +75,7 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
                           <br>
                             <div class="">
                                         <!--combobox para seleccionar  grupo-->
-                                    <form class="form-control" action="bprincipal.php" method="post">
+                                    <form class="form-control2" action="bprincipal.php" method="post">
                                             <div class="form-group">
                                                         <div class="row">
                                                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
@@ -96,7 +96,7 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
                                                                     </select>
                                                             </div>
                                                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                                                <button type="submit" class="form-control btn btn-success">
+                                                                <button type="submit" class="form-control nav-button-cargar">
                                                                 <p class="text-center">Cargar Préstamos</p> 
                                                             </div>
                                                         </div>
@@ -177,7 +177,7 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
                  <!--Mostrar estadisticas --> 
                <h5 class="text-center"><b> Algunos datos importantes </b></h4>
                      <br>
-                     <div class="row form-control2 postit">
+                     <div class="row form-control2 postit2">
                         <!--inicio libros prestados-->
                           <h6 class="text-center">Libros  Prestados Actualmente</h6>
                           <hr class="m-0 p-0">
@@ -187,7 +187,7 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
                                                        </div>  
                                                        <br> 
                                                         <!--inicio libros prestados-->
-                                                        <div class="row form-control2 postit">
+                                                        <div class="row form-control2 postit2">
                                                      <h6 class="text-center">Total Prestados en el ciclo escolar</h6>
                                                       <hr class="m-0 p-0">
                                             
@@ -197,7 +197,7 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
                                                        <br>                       
                         <!--final libros prestados-->
                           <!--titulos mas prestados-->
-                          <div class="row form-control2 postit">
+                          <div class="row form-control2 postit2">
                             <h4 class="text-center">Top 10</h4>
                           <h4 class="text-center">Títulos mas leídos</h4>
                           <hr>
@@ -218,7 +218,7 @@ $estadisticas =  buscaEstadisticasPrestamos();?>
                             </div>
                             <br>
                               <!--grupos con mas prestamos-->
-                              <div class="row form-control2 postit">
+                              <div class="row form-control2 postit2">
                                     <h4 class="text-center">Grupos con  más préstamos</h4>
                                  <hr>
                                                 

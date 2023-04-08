@@ -205,7 +205,7 @@ function actualizarCustodia($idejemplar, $idUsuario){
   }
 }
 // busca los prestamos activos por grupo
-function buscaPrestamosActivosGrupo($grupo){
+function buscaPrestamosActivosGrupo($grupo){ 
   
   require '../../modelo/config/pdo.php';
     $query="CALL select_buscaPrestamosGrupo(:idgrupo);";

@@ -1,6 +1,6 @@
 <?php
 include '../../modelo/usuarios/usuarios.php';
-require '../complementos/header_2.php';
+require '../complementos/cabeceraGraficos.php';
 require '../complementos/nav_2.php';
 require_once '../../modelo/psicologia/psico.php';
 require '../../modelo/config/comunes.php';
@@ -84,7 +84,7 @@ $estCategorias = $estadisticasPsico['categoria'];
                  </div>
             <!-- separador -->
              <!-- contenedor_grafico tiene el css -->
-            
+          
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 contenedor_grafico">
                 
                             <?php  

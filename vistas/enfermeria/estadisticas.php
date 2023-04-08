@@ -1,7 +1,7 @@
 <?php
 
 include '../../modelo/usuarios/usuarios.php';
-require '../complementos/header_2.php';
+require '../complementos/cabeceraGraficos.php';
 require '../complementos/nav_2.php';
 require_once '../../modelo/enfermeria/comunesEnfermeria.php';
 require '../../modelo/config/comunes.php';
