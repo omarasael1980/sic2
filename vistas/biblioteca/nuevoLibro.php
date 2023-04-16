@@ -10,6 +10,10 @@ require "../../modelo/biblioteca/comunesBiblioteca.php";
 if(!isset($_SESSION['user']) || !in_array('Ajustes',$_SESSION['user']->perm)){
     header("Location:../../");
 }
+date_default_timezone_set("America/Tijuana"); 
+$hoy= date("Y-m-d");
+$min = date("Y-m-d",strtotime($hoy."- 7 days"));
+$max = date("Y-m-d",strtotime($hoy."+ 5 days"));
 
 if(isset($_POST)){
     if(isset($_POST['libro'])){
@@ -37,7 +41,6 @@ $editorial = buscaEditoriales();
 }
 ?>
 
-
 <!-- body  -->
 <div class="container"><!--inicia contenedor principal-->
         <div class="row"><!--inicia row titulo-->
@@ -62,9 +65,9 @@ $editorial = buscaEditoriales();
                                     <input type="text" required class="form-control" value =""name="libro" id="libro">
                                     <ul id="listaLibro"></ul>  </div> 
                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"> 
-                                    <button class="form-control btn btn-success">Seleccionar</button>           
+                                    <button class="form-control nav-button-cargar">Seleccionar</button>           
                                     </div>
-                                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-6"><a href="nuevoLibro.php?id=1" class="form-control btn btn-primary"><center>Nuevo Libro</center></a></div>
+                                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-6"><a href="nuevoLibro.php?id=1" class="form-control nav-button-cargar"><center>Nuevo Libro</center></a></div>
                                 </div>
                             </div> 
                             <div class="row"><label for="error" hidden class="form-message form-message-active" id="error" name="error"></label></div>
@@ -128,7 +131,8 @@ $editorial = buscaEditoriales();
                         <div class="col-lg-6 col-md-6 col-sm-8 col-xs-10 form-control2" >
                             <input type="hidden" name="idlibro" value="<?=$idlibro[0]->idlibros?>">
                         <br> <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">Nuevo Ejemplar:   <input readonly type="text" value="  <?=$i?>" name="ejemplarNuevo"  ><br></div>
-                        <br><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">Fecha de Alta:<input class="form-control"  required type="date" name="f_alta" id=""><br></div>
+                        <br><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">Fecha de Alta:
+                            <input class="form-control"  required type="date" min ="<?=$min?>" max="<?=$max?>"value="<?=$hoy?>"name="f_alta" id=""><br></div>
                         <br><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " >
                         Procedencia: <select class="form-control" name="procedencia" id="">
                             <?php foreach($procedencia as $pr):?>
@@ -148,8 +152,8 @@ $editorial = buscaEditoriales();
                     <br>
                         <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-0 col-xs-0"> </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><button type="submit" class="form-control2 btn btn-success">Guardar</button></div>
-                        <div class="col-lg-3  col-md-3 col-sm-6 col-xs-6"> <a href="nuevoLibro.php" class="form-control btn btn-danger"> <center>Cancelar</center> </a></div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6"><button type="submit" class="form-control2 nav-button-cargar">Guardar</button></div>
+                        <div class="col-lg-3  col-md-3 col-sm-6 col-xs-6"> <a href="nuevoLibro.php" class="form-control nav-button-cargar"> <center>Cancelar</center> </a></div>
                         </div> 
                     
                     </div>
@@ -252,7 +256,7 @@ $editorial = buscaEditoriales();
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs12"></div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs12">
-                    <p class="center "><button class="btn btn-primary form-control" type="submit">
+                    <p class="center "><button class="nav-button-cargar form-control" type="submit">
                      Guardar Libro</button></p> 
                     </div>
                 </div>

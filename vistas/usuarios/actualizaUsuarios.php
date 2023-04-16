@@ -2,7 +2,7 @@
 <?php
 include '../../modelo/usuarios/usuarios.php';
 abreSesion();
-if(!isset($_SESSION['user']) || !in_array('Directivo',$_SESSION['user']->perm)){
+if(!isset($_SESSION['user']) || !in_array('Ajustes',$_SESSION['user']->perm)){
         header("Location:../../");
     }
 ?>

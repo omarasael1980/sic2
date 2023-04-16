@@ -31,7 +31,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
             <input type="text" required hidden name = "idenfermeria" autocomplete="off"value="<?=$_GET['id']?>">
             <input type="text" name="nombre" placeholder ="nombre" class="form-control"><br><br>
             <input type="file" name="imagen" class="form-control"><br><br>
-            <input type="submit" class="btn btn-success form-control" value="Aceptar">
+            <input type="submit" class="nav-button-cargar form-control" value="Aceptar">
         </form>
        
         </div>

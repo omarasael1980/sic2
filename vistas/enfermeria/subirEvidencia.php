@@ -70,7 +70,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
         <div class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></div>
         <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
           
-        <form class="form-control"action="../../controlador/enfermeria/subirArchivo.php" autocomplete ="off"method="post" enctype="multipart/form-data">
+        <form class="form-control2"action="../../controlador/enfermeria/subirArchivo.php" autocomplete ="off"method="post" enctype="multipart/form-data">
             <input type="text" required hidden name = "idestudiante" autocomplete="off"value="<?=$_GET['c']?>">
             <input type="text" required hidden name = "idenfermeria" autocomplete="off"value="<?=$_GET['id']?>">
             <!-- inicia input nombre -->
@@ -106,7 +106,7 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
            <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12"></div>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <input type="submit" onclick="validarform()" class="btn btn-outline-success form-control" value="Aceptar">
+                <input type="submit" onclick="validarform()" class="nav-button-cargar form-control" value="Aceptar">
             </div>
             </div>
         </form>

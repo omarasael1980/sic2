@@ -156,10 +156,11 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
                          <!--cajas para validacion de campos-->
     
         <div class="row">
-        <div class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></div>
-        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12"><button style="height:30px;" type="submit" class="btn btn-outline-primary form-control"><p>Guardar</p></button></div>
-        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12"><a href="expedienteAlumno.php?id=<?=$_GET['c']?>" class=
-        "form-control btn btn-outline-danger"style="height:30px;"><p class="text-center">Cancelar</p></a></div>
+        <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"><button type="submit" class="nav-button-cargar "><p>Guardar</p></button></div>
+        <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"><a href="expedienteAlumno.php?id=<?=$_GET['c']?>" class=
+        "nav-button-cargar"><p class="text-center">Cancelar</p></a></div>
         </div>
         </form>
     </div>

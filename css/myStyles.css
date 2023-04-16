@@ -440,11 +440,15 @@ div .si{
   background: #01016D;
   color:#ced4da;
 }
-.nav-button-cargar{
+
+
+.nav-button-icono{
   display: flex;
   /* height: 55%; */
   width: 13rem;
   font-size: 1rem;
+  display: flex;
+  flex-direction: column;
   background-color: #0c8ce9;
   color: white;
   border: 0;
@@ -457,8 +461,10 @@ div .si{
   text-align: center;
   font-family: "Ubuntu", sans-serif;
   font-weight: lighter;
-  margin-left: 5px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .logo-login{
   display: flex;
   width: 100px;
@@ -500,6 +506,16 @@ div .si{
   font-family: "Ubuntu", sans-serif;
   font-weight: lighter;
   margin-left: 5px;
+}
+.nav-button-chico p{
+  padding-left: 10px;
+  color:white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
+
 }
 .bajoBoton{
   margin-top: 10px;
@@ -641,7 +657,111 @@ color:#0F4E75;
   color:#0F4E75;
 } 
 
+.ajustes{
+  
+  display: flex;
+  flex-direction:row;
+  width: 80%;
+  justify-content:center ;
+  align-items: center;
+  
 
+}
+.nav-button-cargar{
+  display: flex;
+  /* height: 55%; */
+  width: 100%;
+  background-color: #0c8ce9;
+  color: white;
+  border: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 12px 0 rgb(0 0 0 / 30%);
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  align-content: center;
+  font-weight: lighter;
+  padding-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nav-button-cargar2{
+  display: flex;
+  /* height: 55%; */
+  width: 100%;
+  background-color:white ;
+  color: #0c8ce9;
+  border: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 12px 0 rgb(0 0 0 / 30%);
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  align-content: center;
+  font-weight: lighter;
+  padding-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nav-button-cargar2  i {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.cabeceraTabla{
+  background: #063970;
+  color:white
+}
+.nav-button-cargar2:hover{
+  background: #0c8ce9;
+  color: white;
+}
+.ajustes img{
+  width: 80px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ajustes p{
+  font-size: 14px;
+  text-align: center;
+ 
+}
+.ajustes a{
+  width: 150px;
+  height: 130px;
+ 
+  color:rgba(9,9,121,1);
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 10px;
+  /* background: rgb(2,0,36); */
+  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
+  align-items: center;
+  box-shadow: 0 6px 12px 0 rgb(0 0 0 / 30%);
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: lighter;
+  margin-left: 5px;
+}
+.misAjustes input{
+  width: 150px;
+  background:#9fc5e8; 
+  color:white;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 10px;
+  padding-bottom: 0px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px 0 rgb(0 0 0 / 30%);
+  transition-duration: 300ms;
+  }
 .contenedor_grafico {
   margin: 10px;
   width: 50%;
@@ -662,6 +782,12 @@ color:#0F4E75;
   float: left;
   padding: 05px;
 }
+.micheck{
+  display: flex;
+  justify-content: center;
+
+ 
+ }
 /*=========================================================================================
     PANTALLA GRANDE (LARGE) LG
     ==========================================================================================*/

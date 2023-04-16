@@ -103,6 +103,39 @@ function buscaTokens(){
     return false;
   }
 }
+//obtener alumnos para generar tokens
+function buscSettings(){
+  require 'pdo.php';
+  $query= "CALL select_buscaSettings();";
+  $consulta= $pdo->prepare($query);
+
+  $consulta->execute() or die (implode( " >> ", $consulta->errorInfo()));
+  if($consulta->rowCount()>0){
+    $ajustes=$consulta->fetchAll(PDO::FETCH_OBJ);
+      return $ajustes;
+  }else{
+    return false;
+  }
+}
+//actrualiza setting
+function actualizaSettings($fic, $ih, $fh, $diasA, $diasD){
+  require 'pdo.php';
+  $query= "CALL update_actualizaSettings (:fic, :ih,:fh, :diasA, :diasD);";
+  $consulta= $pdo->prepare($query);
+  $consulta->bindParam(":fic", $fic);
+  $consulta->bindParam(":ih", $ih);
+  $consulta->bindParam(":fh", $fh);
+  $consulta->bindParam(":diasA", $diasA);
+  $consulta->bindParam(":diasD", $diasD);
+  $consulta->execute() or die (implode( " >> ", $consulta->errorInfo()));
+  if($consulta->rowCount()>0){
+    $ajustes=$consulta->fetchAll(PDO::FETCH_OBJ);
+      return $ajustes;
+  }else{
+    return false;
+  }
+}
+
 //filtrar alumnos
 function getAlumnos($string,$pdo){
   $campo = $_POST["alumno"];

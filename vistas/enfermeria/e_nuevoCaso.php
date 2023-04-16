@@ -128,15 +128,15 @@ $espacios = "        ";
              </div>
                  <br>
          <div class="row">
-         <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0"></div>
-         <input type="hidden"name="id" value="<?=$_GET['id']?> ">
          
-         <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6">
-         <button class="form-control btn btn-success" type="submit">Guardar</button>
+         <input type="hidden"name="id" value="<?=$_GET['id']?> ">
+         <div class="col-lg-2 col-md-2 col-sm-0 col-xs-0"></div>
+         <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6">
+         <button class="form-control nav-button-cargar" type="submit">Guardar</button>
          </div>
-
-         <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6">
-         <a class="form-control btn btn-danger" href="expedienteAlumno.php?id=<?=$id?>"><p class="text-center"> Cancelar</p> </a>
+         <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0"></div>
+         <div class="col-lg-3 col-md-3 col-sm-5 col-xs-6">
+         <a class="form-control nav-button-cargar" href="expedienteAlumno.php?id=<?=$id?>"><p class="text-center"> Cancelar</p> </a>
          </div>
          </div>
         </form>

@@ -163,47 +163,29 @@ abreSesion();
 
         <?php if(in_array('Ajustes',$_SESSION['user']->perm)):?>
             <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 "></div>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 ">
-            <div class="row ">
-                 <center><a href="vistas/usuarios/usuariosPrincipal.php">
-                 <img class="img-menu" src="img/icons/settings.webp" alt="Configuracion"></a></center>
-            </div>
-            <div class="row">
-                <h3 class="text-center">Configuración</h3>
-            </div>   
+        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 ajustes ">
+                 <a href="vistas/usuarios/usuariosPrincipal.php">
+                 <img class="img-menu-settings" src="img/icons/settings2.png" alt="Configuracion"> 
+                 <p class="text-center">Configuración</p></a>
+        
         </div> 
         <?php endif?>
         <?php if(in_array('Enfermeria',$_SESSION['user']->perm)):?>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-            <div class="row">
-                 <center><a href="vistas/enfermeria/eprincipal.php">
-                 <img class="img-menu" src="img/icons/first-aid-kit.png" alt="Enfermeria"></a></center>
-            </div>
-            <div class="row">
-                <h3 class="text-center">Enfermeria</h3>
-            </div>   
+        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 ajustes">
+            <a href="vistas/enfermeria/eprincipal.php">
+            <img class="img-menu-settings" src="img/icons/first-aid-kit.png" alt="Enfermeria"><p class="text-center">Enfermeria</p></a>         
         </div> 
         <?php endif?>
         <?php if(in_array('Psicopedagogico',$_SESSION['user']->perm)):?>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-            <div class="row">
-                 <center><a href="vistas/psicopedagogico/pprincipal.php">
-                 <img class="img-menu" src="img/icons/psicologa.jpg" alt="Psicopedagógico"></a></center>
-            </div>
-            <div class="row">
-                <h3 class="text-center">Psicopedagógico</h3>
-            </div>   
+        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 ajustes">
+              <a href="vistas/psicopedagogico/pprincipal.php">
+                 <img class="img-menu-settings" src="img/icons/psicologa.jpg" alt="Psicopedagógico"> <p class="text-center">Psicopedagógico</p></a>
         </div> 
         <?php endif?>
         <?php if(in_array('Biblioteca',$_SESSION['user']->perm)):?>
-        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-            <div class="row">
-                 <center><a href="vistas/biblioteca/bprincipal.php">
-                 <img class="img-menu" src="img/icons/libreria.jpg" alt="biblioteca"></a></center>
-            </div>
-            <div class="row">
-                <h3 class="text-center">Biblioteca</h3>
-            </div>   
+        <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12 ajustes">
+              <a href="vistas/biblioteca/bprincipal.php">
+                 <img class="img-menu-settings" src="img/icons/libreria.jpg" alt="biblioteca">  <p class="text-center">Biblioteca</p></a>
         </div> 
         <?php endif?>
        
