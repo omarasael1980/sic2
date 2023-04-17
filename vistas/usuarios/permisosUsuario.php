@@ -70,7 +70,7 @@ $usuarios = cargaUsuarios();
                             <br><a class="nav-button-cargar2" href="../biblioteca/nuevoLibro.php"><p>
                             <i class="fa-solid fa-plus"></i>Alta de libro</p> </a>
                             <br><a class="nav-button-cargar2" href="../biblioteca/editaEjemplar.php"><p><i class="fa-solid fa-pen"></i> Editar Ejemplares</p></a>
-                            <br><a class="nav-button-cargar2" href="../biblioteca/binventario.php"><p><i class="fa-brands fa-hive"></i> Asignar custodia de libro</p></a>
+                            <br><a class="nav-button-cargar2" href="../biblioteca/binventario.php?idprocedencia='Ajustes"><p><i class="fa-brands fa-hive"></i> Asignar custodia de libro</p></a>
                           </div>
                         </div>
                         <!-- termina menu desplegable biblioteca -->

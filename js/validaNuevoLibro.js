@@ -63,7 +63,7 @@ const validarCampo = (expresion, input, campo)=>{
     
     document.getElementById(`grupo__${campo}`).classList.add('form-group-wrong');
     document.getElementById(`mensaje_error__${campo}`).classList.add('form-message-active');
-    document.getElementById(`mensaje_error__${campo}`).classList.remove('form-message');
+   // document.getElementById(`mensaje_error__${campo}`).classList.remove('form-message');
     campos[campo]=false;
   }
 }

@@ -96,6 +96,25 @@ function agregarNuevoLibro($titulo, $autor, $editorial, $isbn){
     return false;
   }
 }
+//insertar nuevos libros
+function agregarEjemplar($idLibro, $ejemplar, $falta, $procedencia, $custodiaNejemplar){
+  require '../../modelo/config/pdo.php';
+ 
+  $query="CALL insert_nuevoEjemplar(:ejemplar,:falta,:procedencia,:idlibro, :idusuario)";
+  $st = $pdo->prepare($query);
+  $st->bindParam(":ejemplar", $ejemplar);
+  $st->bindParam(':falta', $falta);
+  $st->bindParam(':procedencia', $procedencia);
+  $st->bindParam(':idlibro', $idLibro);
+  $st->bindParam(':idusuario', $custodiaNejemplar);
+  
+  $exitoA = $st->execute() or die (implode ('>>', $st->errorInfo()));
+  if($exitoA){
+    return true;
+  }else{
+    return false;
+  }
+}
 //guarda los prestamos de libros
 function insertaPrestamo($fecha, $idestudiantes, $idEjemplar){
   require '../../modelo/config/pdo.php';
@@ -184,8 +203,46 @@ function buscaEjemplaresPorLibro($idLibro) {
     }else{
       return false;
     
- 
+    }
 }
+function update_actualizaEjemplar($idEjemplar, $fechaAlta, $observaciones){
+   
+  require '../../modelo/config/pdo.php';
+ 
+  $query="UPDATE `sisantee_sics`.`ejemplar` 
+  SET `fecha_alta` = :falta, `observaciones` = :observaciones
+   WHERE (`idEjemplar` = :ejemplar);
+  ";
+  $st = $pdo->prepare($query);
+  $st->bindParam(":ejemplar", $idEjemplar);
+  $st->bindParam(":falta", $fechaAlta);
+  $st->bindParam(":observaciones", $observaciones);
+
+  $st->execute() or die (implode ('>>', $st->errorInfo()));
+  if($st->rowCount()>0){
+     
+        return true;
+    }else{
+      return false;
+    }
+}
+function buscaEjemplaresPorEjemplar($idEjemplar) {
+  
+  require '../../modelo/config/pdo.php';
+ 
+  $query="SELECT idejemplar, ejemplar, fecha_alta,fecha_baja, disponible, observaciones, titulo, autor,isbn, editorial, procedencia, nombre, apaterno, amaterno
+  FROM sisantee_sics.ejemplar join libros on libros_idlibros = idlibros join editorial on idEditorial = editorial_idEditorial 
+  join procedencia on procedencia_idProcedencia = idProcedencia join usuario on idUsuario = usuario_idUsuario WHERE idEjemplar =:ejemplar";
+  $st = $pdo->prepare($query);
+  $st->bindParam(":ejemplar", $idEjemplar);
+
+  $st->execute() or die (implode ('>>', $st->errorInfo()));
+  if($st->rowCount()>0){
+      $ejmplares=$st->fetchAll(PDO::FETCH_OBJ);
+        return $ejmplares;
+    }else{
+      return false;
+    }
 }
 
 //actualiza  el usuario que tiene la custodia

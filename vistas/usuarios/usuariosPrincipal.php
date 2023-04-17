@@ -118,7 +118,7 @@ function ampm ($hora){
                               <br><a class="nav-button-cargar2" href="../biblioteca/nuevoLibro.php"><p>
                               <i class="fa-solid fa-plus"></i>Alta de libro</p> </a>
                               <br><a class="nav-button-cargar2" href="../biblioteca/editaEjemplar.php">Editar Ejemplares</a>
-                              <br><a class="nav-button-cargar2" href="../biblioteca/binventario.php">Asignar custodia de libro</a>
+                              <br><a class="nav-button-cargar2" href="../biblioteca/binventario.php?idprocedencia='Ajustes">Asignar custodia de libro</a>
                             </div>
                           </div>
                           <!-- termina menu desplegable enfermeria -->
