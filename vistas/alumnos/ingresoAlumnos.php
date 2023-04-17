@@ -6,7 +6,7 @@ if(!isset($_SESSION['user']) || !in_array('Alumno',$_SESSION['user']->perm)){
     header("Location:../../");
 }
 $expediente="";
-if(isset($_SESSION['user'])){
+if(isset($_SESSION['user']->idestudiantes)){
     $id = $_SESSION['user']->idestudiantes;
     $expediente = buscaExpedienteMedico($id);
 }
@@ -72,7 +72,7 @@ $espacios = "      ";
        
 <!--AQui inicia todo el contenido de index-->
 <!--AQui inicia todo el formulario de login-->
-<?php if(!isset($_SESSION['user'])):?>
+<?php if(!isset($_SESSION['user']->idestudiantes)):?>
 <div class="container2">
     <div class="row">
         <div class="col-lg-4 col-md-3 col-sm-3 col-xs-0"></div>
@@ -148,7 +148,7 @@ $espacios = "      ";
 
 
     <?php endif?>
-    <?php if(isset($_SESSION['user'])):?>
+    <?php if(isset($_SESSION['user']->idestudiantes)):?>
     <div class="row">
         <h1 class="text-center">Bienvenidos tutores de: </h1>
         <?php $u =$_SESSION['user']; ?>

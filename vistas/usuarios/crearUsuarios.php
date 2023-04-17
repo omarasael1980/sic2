@@ -74,24 +74,15 @@ $roles = buscaRoles();
                         </div>
                         <!-- termina menu desplegable biblioteca -->
                                <!-- menu desplegable enfermeria -->
-                       
-                      <br>  <div class="dropdown">
-                          <a class="list-group-item text-center list-group-item-action" data-bs-toggle="collapse" 
-                           data-bs-target="#collapseEnfermeria" aria-expanded="false" aria-controls="collapseWidthExample">
-                          <p> <i class="fa-solid fa-user-nurse"></i>
-                            Ajustes de Enfermería</p>
-                          </a>
-                          <div class="collapse"  id="collapseEnfermeria" >
-                            <br><a class="nav-button-cargar2" href="../biblioteca/nuevoLibro.php"><p>
-                            <i class="fa-solid fa-plus"></i>Alta de libro</p> </a>
-                            <br><a class="nav-button-cargar2" href="../biblioteca/editaEjemplar.php">Editar Ejemplares</a>
-                            <br><a class="nav-button-cargar2" href="../biblioteca/binventario.php">Asignar custodia de libro</a>
+                               <br>  <div class="dropdown">
+                        <a href="usuariosPrincipal.php?id=3" class=" <?=$id3?> list-group-item text-center list-group-item-action " aria-current="true">
+                         <p> <i class="fa-solid fa-list-check"></i><?=$espacios?>Enfermería</p>  </a>
+                           
                           </div>
-                        </div>
                         <!-- termina menu desplegable enfermeria -->
                            <!-- menu desplegable Psicopedagogia -->
                        
-                      <br>  <div class="dropdown">
+                      <!-- <br>  <div class="dropdown">
                           <a class="list-group-item text-center list-group-item-action" data-bs-toggle="collapse" 
                            data-bs-target="#collapsePsicopedagogica" aria-expanded="false" aria-controls="collapseWidthExample">
                           <p> <i class="fa-solid fa-head-side-virus"></i> 
@@ -103,7 +94,7 @@ $roles = buscaRoles();
                             <br><a class="nav-button-cargar2" href="../biblioteca/editaEjemplar.php">Editar Ejemplares</a>
                             <br><a class="nav-button-cargar2" href="../biblioteca/binventario.php">Asignar custodia de libro</a>
                           </div>
-                        </div>
+                        </div> -->
                         <!-- termina menu desplegable enfermeria -->
                       
                     

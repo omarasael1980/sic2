@@ -11,8 +11,10 @@ if(!isset($_SESSION['user']) || !in_array('Ajustes',$_SESSION['user']->perm)){
     header("Location:../../");
 }
 $id =0;
+$id0="";$id1="";$id2="";$id3="";$id4="";
 if(isset($_GET['id'])){
   $id = $_GET['id'];
+
 }
       switch($id){
       case 0:
@@ -102,28 +104,20 @@ function ampm ($hora){
                               <br><a class="nav-button-cargar2" href="../biblioteca/nuevoLibro.php"><p>
                               <i class="fa-solid fa-plus"></i>Alta de libro</p> </a>
                               <br><a class="nav-button-cargar2" href="../biblioteca/editaEjemplar.php"><p><i class="fa-solid fa-pen"></i> Editar Ejemplares</p></a>
-                              <br><a class="nav-button-cargar2" href="../biblioteca/binventario.php"><p><i class="fa-brands fa-hive"></i> Asignar custodia de libro</p></a>
+                              <br><a class="nav-button-cargar2" href="../biblioteca/binventario.php?idprocedencia='Ajustes"><p><i class="fa-brands fa-hive"></i> Asignar custodia de libro</p></a>
                             </div>
                           </div>
                           <!-- termina menu desplegable biblioteca -->
                                  <!-- menu desplegable enfermeria -->
                          
                         <br>  <div class="dropdown">
-                            <a class="list-group-item text-center list-group-item-action" data-bs-toggle="collapse" 
-                             data-bs-target="#collapseEnfermeria" aria-expanded="false" aria-controls="collapseWidthExample">
-                            <p> <i class="fa-solid fa-user-nurse"></i>
-                              Ajustes de Enfermería</p>
-                            </a>
-                            <div class="collapse"  id="collapseEnfermeria" >
-                              <br><a class="nav-button-cargar2" href="../biblioteca/nuevoLibro.php"><p>
-                              <i class="fa-solid fa-plus"></i>Alta de libro</p> </a>
-                              <br><a class="nav-button-cargar2" href="../biblioteca/editaEjemplar.php">Editar Ejemplares</a>
-                              <br><a class="nav-button-cargar2" href="../biblioteca/binventario.php?idprocedencia='Ajustes">Asignar custodia de libro</a>
-                            </div>
+                        <a href="usuariosPrincipal.php?id=3" class=" <?=$id3?> list-group-item text-center list-group-item-action " aria-current="true">
+                         <p> <i class="fa-solid fa-list-check"></i><?=$espacios?>Enfermería</p>  </a>
+                           
                           </div>
                           <!-- termina menu desplegable enfermeria -->
                              <!-- menu desplegable Psicopedagogia -->
-                         
+<!--                          
                         <br>  <div class="dropdown">
                             <a class="list-group-item text-center list-group-item-action" data-bs-toggle="collapse" 
                              data-bs-target="#collapsePsicopedagogica" aria-expanded="false" aria-controls="collapseWidthExample">
@@ -136,7 +130,7 @@ function ampm ($hora){
                               <br><a class="nav-button-cargar2" href="../biblioteca/editaEjemplar.php">Editar Ejemplares</a>
                               <br><a class="nav-button-cargar2" href="../biblioteca/binventario.php">Asignar custodia de libro</a>
                             </div>
-                          </div>
+                          </div> -->
                           <!-- termina menu desplegable enfermeria -->
                         
                       
@@ -191,25 +185,41 @@ function ampm ($hora){
                   </div>  
                    
                   </div>
-                  
-<!--                   
-                  <div class="row">
-        <div class="ajustes col-lg-4 col-md-4 col-sm-6 col-xs-12"><a href="crearUsuarios.php">
-          <img  class="img-menu-settings" src="../../img/icons/plus.png" alt="crearUsuarios">
-         <p>Agregar Usuarios</p></a>
-        </div>     
-        
-         <div class="ajustes col-lg-4 col-md-4 col-sm-6 col-xs-12"><a href="editaUsuarios.php">
-           <img  class="img-menu-settings" src="../../img/icons/edit.png" alt="editaUsuario">
-         <p class="text-center">Ver/Modificar Usuarios</p> </a>
-        </div> 
-         
-         <div class="ajustes col-lg-4 col-md-4 col-sm-6 col-xs-12"><a href="permisosUsuario.php">
-           <img  class="img-menu-settings" src="../../img/icons/profile.png" alt="permisosUsuario">
-         <p class="text-center">Modificar Permisos</p> </a>
-        </div>
-    </div> -->
-                <?php endif?>
+                  <?php elseif($id ==3):?>  
+                    <form action="../../controlador/usuarios/ajustesEnfermeria.php" method="post">
+                     <h6><b>Monto del Seguro:</b>En este campo puedes modificar el monto asegurado para el seguro escolar.
+                      Debes borrar toda la cantidad e introducir una cantidad nueva, luego presiona el botón para guardar el cambio.</h6>
+                     <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <input name="monto" min="0"class="form-control"type="text"
+                        onmouseleave="return maskMoneda(this)" 
+                        onkeypress="return filterFloat(event,this);"  value="<?=$a->montoSeguro?>">
+                      </div>
+                      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                      <button class="nav-button-cargar"type="submit">Guardar Cambio</button>
+                      </div>
+                      
+                       
+                     </div>
+                    </form>
+                    <hr>
+                    <div class="row">
+                      <h6><b>Sistema de actualización de expedientes médicos:</b> El enlace te permite realizar las tareas necesarias 
+                      para que los tutores puedan realizar las actualizaciones al expediente médico del alumno.</h6>
+                      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                      <a  href="../enfermeria/configSubirExpMasivo.php"class="nav-button-cargar">Iniciar proceso</a>
+                      </div>
+                      
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <h6><b>Página de acceso para tutores:/b> El enlace permite realizar el login de los tutores una vez que se hayan mandado el usuario y el token.</h6>
+                      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                      <a  href="../alumnos/ingresoAlumnos.php"class="nav-button-cargar">Ir a inicio para estudiantes</a>
+                      </div>
+                      
+                    </div>
+                  <?php endif?>
                   <?php endforeach ?>    
                   
             <!--contenedor central -->
@@ -238,5 +248,52 @@ function ampm ($hora){
 </div>
 
  
+<script>
+  function filterFloat(evt,input){
+    // Backspace = 8, Enter = 13, ‘0′ = 48, ‘9′ = 57, ‘.’ = 46, ‘-’ = 43
+    var key = window.Event ? evt.which : evt.keyCode;    
+    var chark = String.fromCharCode(key);
+    var tempValue = input.value+chark;
+    if(key >= 48 && key <= 57){
+        if(filter(tempValue)=== false){
+            return false;
+        }else{       
+            return true;
+        }
+    }else{
+          if(key == 8 || key == 13 || key == 0) {     
+              return true;              
+          }else if(key == 46){
+                if(filter(tempValue)=== false){
+                    return false;
+                }else{    
+                    
+                    return true;
+                }
+          }else{
+              return false;
+          }
+    }
 
+}
+function filter(__val__) {
+  var preg = /^([0-9]+\.?[0-9]{0,2})$/; 
+  return preg.test(__val__);
+}
+
+
+function maskMoneda(input) {
+  const monto = input.value.replace(/[^\d.]/g, ''); // eliminar cualquier caracter que no sea dígito o punto
+  const parts = monto.split('.');
+  let formattedValue = `$${parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+  if (parts.length > 1) {
+    formattedValue += `.${parts[1].substring(0, 2).padEnd(2, '0')}`;
+  } else {
+    formattedValue += '.00';
+  }
+  input.value = formattedValue;
+}
+
+    
+</script>
 <?php require '../complementos/footer_2.php';?>

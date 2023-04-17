@@ -121,8 +121,8 @@ if(!isset($_SESSION['user']) || !in_array('Psicopedagogico',$_SESSION['user']->p
                   </div>
                
                   <div class="col-lg-5 col-md-5 col-sm-4 col-xs-2"></div>
-                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-8">
-                        <button class="form-control btn btn-success">Cargar Expediente</button>
+                    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+                        <button class="form-control nav-button-cargar">Cargar Expediente</button>
                      
                   </div>
                

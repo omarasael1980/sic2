@@ -1,7 +1,4 @@
 
-<pre>
-    <?php print_r($_POST);?>
-</pre>
 <?php
 require '../../modelo/config/comunes.php';
 $fechaInicioClases = $_POST['fechaInicioClases'];

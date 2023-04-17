@@ -135,7 +135,21 @@ function actualizaSettings($fic, $ih, $fh, $diasA, $diasD){
     return false;
   }
 }
+//actrualiza monto seguro escolar
+function actualizaMontoSeguroEscolar($monto){
+  require 'pdo.php';
+  $query= "UPDATE `sisantee_sics`.`settings` SET `montoSeguro` = :monto WHERE (`idsettings` = '1');";
+  $consulta= $pdo->prepare($query);
+  $consulta->bindParam(":monto", $monto);
 
+  $consulta->execute() or die (implode( " >> ", $consulta->errorInfo()));
+  if($consulta->rowCount()>0){
+ 
+      return true;
+  }else{
+    return false;
+  }
+}
 //filtrar alumnos
 function getAlumnos($string,$pdo){
   $campo = $_POST["alumno"];
