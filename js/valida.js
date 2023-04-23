@@ -18,7 +18,7 @@ const campos={
   amaterno: false,
   domicilio:false,
   tel:false, 
-  cell:false 
+  cell:false  
 }
 const validarCampo = (expresion, input, campo)=>{
   if(expresion.test(input.value)){
