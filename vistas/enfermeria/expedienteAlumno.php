@@ -11,6 +11,7 @@
             $casos =cargarAtencionesMedicasAlumno($id);
             $especialistas = buscaEspecialista();
             $expediente = buscaExpedienteMedico($id);
+
 ?>
 
 <?php
@@ -19,6 +20,21 @@
 if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
     header("Location:../../");
 }
+if(isset( $_SESSION['msg'])){
+    $mensaje =  $_SESSION['msg']['msg'];
+    $tipo = $_SESSION['msg']['tipo'];
+    if($tipo == "success"){ $encabezado = "Excelente!";}else{ $encabezado = "Lo siento!";}
+    echo"<script   type= text/javascript >
+  
+    Swal.fire(
+    '$encabezado',
+    '$mensaje',
+    '$tipo'
+  )
+  
+  </script>";
+  unset($_SESSION['msg']);
+  }
 ?>
 
 
@@ -110,6 +126,8 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
          </div> 
     </div>
 <!-- termina expediente medico -->
+<?php else:?>
+    <h1 class="text-center blink"> No se ha actualizado el expediente, debe llamar a los padres o tutores antes de medicar</h1>
       <?php endif?>
                  <!-- Titulo ultimas atenciones medicas  -->
     <hr>

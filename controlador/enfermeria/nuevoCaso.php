@@ -18,10 +18,25 @@ $id = $_POST['id'];
 $idUsuario =$_SESSION['user']->idUsuario;
 
 
+$posicion=trim($posicion);
+$motivo = trim($motivo);
+$categoria = trim($categoria);
+$descripcion = trim($descripcion);
+
+
+
+
 
 $resp = insertaAtencionMedica($motivo, $descripcion, $date, $id, $idUsuario, $categoria);
 if($resp){
     header('Location:../../vistas/enfermeria/expedienteAlumno.php?id='.$id);
-}else{exit("Hubo un error al guardar la atención médica");}
+    $error=array("tipo"=>'success', "msg"=>'Nuevo caso de atención médica');
+    $_SESSION['msg']=$error;
+}else{
+    header('Location:../../vistas/enfermeria/expedienteAlumno.php?id='.$id);
+    
+    $error=array("tipo"=>'error', "msg"=>'Hubo un error al guardar la atención médica');
+    $_SESSION['msg']=$error;
+}
 
 ?>

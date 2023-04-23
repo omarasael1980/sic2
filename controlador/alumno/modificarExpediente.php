@@ -1,6 +1,8 @@
 
 <?php
 require '../../modelo/enfermeria/comunesEnfermeria.php';
+require_once '../../modelo/usuarios/usuarios.php';
+abreSesion();
 $folio = $_POST['folio'];
 $idal = $_POST['idalumno'];
 $enf = ""; // Variable para almacenar los valores de las claves que comiencen con "enf"
@@ -17,13 +19,21 @@ foreach ($_POST as $clave => $valor) {
     }
 
 }
+$folio =trim($folio);
+$idal = trim($idal);
+$medicacion = trim($medicacion);
+
 
 
 $resp = actualizaExpedienteMedico($al, $enf, $medicacion, $folio);
 if($resp){
-    header('Location:../../vistas/alumnos/ingresoAlumnos.php');
+    header('Location:../../vistas/alumnos/expedienteMedico.php?id='.$idal);
+    $error=array("tipo"=>'success', "msg"=>'Expediente modificado');
+    $_SESSION['msg']=$error;
 }else{
     header('Location:../../vistas/alumnos/expedienteMedico.php?id='.$idal);
+    $error=array("tipo"=>'error', "msg"=>'Hubo un error al modificar el expediente ');
+    $_SESSION['msg']=$error;
 }
 
 ?>

@@ -3,8 +3,11 @@
 $folio = $_POST['folio']; 
 $seguimiento = $_POST['seguimiento'];
 
+$folio =trim($folio);
+$seguimiento =trim($seguimiento);
 
 require '../../modelo/config/pdo.php';
+
 
 $sql = "CALL update_actualizaEstadoAlertaEM(:estado, :folio)";
 $st = $pdo->prepare($sql);

@@ -22,6 +22,12 @@ Array
 )*/
 
    require_once '../../modelo/psicologia/psico.php';
+   require_once '../../modelo/usuarios/usuarios.php';
+   abreSesion();
+   if(!isset($_SESSION['user']) || !in_array('Psicopedagogico',$_SESSION['user']->perm)){
+       header("Location:../../");
+   }
+
    $nombre = $_POST['nombre'];
     $folio=$_POST['folioPsico'];
     $idal = $_POST['idestudiante'];
@@ -33,6 +39,9 @@ Array
     $id=uniqid();
     $maxKb = 400;
     echo $id;
+
+    $nombre =trim($nombre);
+    $folio =trim($folio);
 
     
    $extensionesPermitidas = "jpg, jpeg, png, mp4, pdf";
@@ -59,10 +68,14 @@ Array
             $st = insertaEvidenciaPsico($nombre, $imagen,$tipo, $folio);
             
             Header("Location: ../../vistas/psicopedagogico/pprincipal.php");
+            $error=array("tipo"=>'success', "msg"=>'Evidencia guardada correctamente');
+            $_SESSION['msg']=$error;
 
         }
    }else{
-    exit ("Este archivo no está permitido");
+    Header("Location: ../../vistas/psicopedagogico/pprincipal.php");
+    $error=array("tipo"=>'error', "msg"=>'Este archivo no está permitido');
+    $_SESSION['msg']=$error;
    }
 
 

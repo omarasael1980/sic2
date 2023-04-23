@@ -1,3 +1,4 @@
+
 <?php
 
 include '../../modelo/usuarios/usuarios.php';
@@ -19,7 +20,26 @@ if(isset($_GET['idprocedencia'])){
 }else{
     $idprocedencia ="Biblioteca";
 }
+if(isset( $_SESSION['msg'])){
+  $mensaje =  $_SESSION['msg']['msg'];
+  $tipo = $_SESSION['msg']['tipo'];
+  if($tipo == "success"){ $encabezado = "Excelente!";}else{ $encabezado = "Lo siento!";}
+  echo"<script   type= text/javascript >
+
+  Swal.fire(
+  '$encabezado',
+  '$mensaje',
+  '$tipo'
+)
+
+</script>";
+unset($_SESSION['msg']);
+}
+
 ?>
+
+
+
 
 
 <!-- body  -->
@@ -289,6 +309,7 @@ if(isset($_GET['idprocedencia'])){
         </div>
     </div>
 </div>
-<script src="../../js/peticiones.js">        </script>
+<!-- <script src="../../js/peticiones.js">        </script> -->
+
                <script src="../../js/colapsables.js"></script>
            <?php require '../complementos/footer_2.php';?>

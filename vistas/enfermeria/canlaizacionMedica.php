@@ -153,9 +153,9 @@ if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm))
             </div> 
             <div class="row">
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-0"></div>
-                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6"><button class="form-control btn btn-outline-success">Guardar</button></div>
+                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6"><button class="form-control nav-button-cargar">Guardar</button></div>
                 <div class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></div>
-                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6"><center><a  class="form-control  btn btn-outline-danger"href="expedienteAlumno.php?id=<?=$c?>">Cancelar</a></center></div>
+                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6"><center><a  class="form-control  nav-button-cargar"href="expedienteAlumno.php?id=<?=$c?>">Cancelar</a></center></div>
             </div>
                     
                     

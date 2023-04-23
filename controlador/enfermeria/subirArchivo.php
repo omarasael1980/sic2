@@ -1,6 +1,11 @@
 <?php
 
    require_once '../../modelo/enfermeria/comunesEnfermeria.php';
+   require_once '../../modelo/usuarios/usuarios.php';
+abreSesion();
+if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
+    header("Location:../../");
+}
    $nombre = $_POST['nombre'];
     $idenfermeria=$_POST['idenfermeria'];
     $idal = $_POST['idestudiante'];
@@ -13,7 +18,8 @@
     $maxKb = 400;
     echo $id;
 
-    
+    $nombre =trim($nombre);
+
    $extensionesPermitidas = "jpg, jpeg, png, mp4, pdf";
    if(strstr($extensionesPermitidas, $tipo)){
         switch($tipo){
@@ -38,16 +44,22 @@
             $st = insertaEvidenciaMedica($nombre, $imagen,$tipo, $idenfermeria);
             
             Header("Location: ../../vistas/enfermeria/expedienteAlumno.php?id=".$idal);
+            $error=array("tipo"=>'success', "msg"=>'Archivo guardado');
+            $_SESSION['msg']=$error;
 
         }
    }else{
-    exit ("Este archivo no está permitido");
+  
+    Header("Location: ../../vistas/enfermeria/expedienteAlumno.php?id=".$idal);
+    $error=array("tipo"=>'error', "msg"=>'Este archivo no está permitido');
+    $_SESSION['msg']=$error;
    }
 
 
 
 
    Header("Location: ../../vistas/enfermeria/expedienteAlumno.php?id=".$idal);
+
 
 
 ?> 

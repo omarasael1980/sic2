@@ -12,11 +12,22 @@
    $monto = $_POST["monto"]; 
    $monto= str_replace(array("$", ","), "", $monto);
  
+   $folio =trim($folio);
+   $alumno =trim($alumno);
    
+
    $resp = actualizaMontoSE($monto, $folio);
    if($resp){
        header('Location:../../vistas/enfermeria/expedienteAlumno.php?id='.$alumno);
-   }else{exit("Hubo un error al guardar el nuevo monto ");}
+       $error=array("tipo"=>'success', "msg"=>'Monto actualizado');
+       $_SESSION['msg']=$error;
+   }else{
+    
+    header('Location:../../vistas/enfermeria/expedienteAlumno.php?id='.$alumno);
+    $error=array("tipo"=>'error', "msg"=>'Hubo un error al guardar el nuevo monto');
+    $_SESSION['msg']=$error;
+
+}
    
    
    

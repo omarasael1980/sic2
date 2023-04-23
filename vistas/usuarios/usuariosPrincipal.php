@@ -46,7 +46,21 @@ function ampm ($hora){
   $mediodia = strtotime("12:00:00");
   if($hora > $mediodia ){echo ' pm';}else{echo ' am';}
 }
+if(isset( $_SESSION['msg'])){
+  $mensaje =  $_SESSION['msg']['msg'];
+  $tipo = $_SESSION['msg']['tipo'];
+  if($tipo == "success"){ $encabezado = "Excelente!";}else{ $encabezado = "Lo siento!";}
+  echo"<script   type= text/javascript >
 
+  Swal.fire(
+  '$encabezado',
+  '$mensaje',
+  '$tipo'
+)
+
+</script>";
+unset($_SESSION['msg']);
+}
 ?>
 
 

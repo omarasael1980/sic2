@@ -9,8 +9,9 @@ $espacios = "       ";
 if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
     header("Location:../../");
 }
+$ajustes = buscSettings();
 $gastado =buscaCantidadGastada();
-$seguro = 3000000;
+$seguro = $ajustes[0]->montoSeguro;
 $disponible = $seguro - $gastado[0]->total;
 $disponibleseguro[]="";
 $disponibleseguro[0]= ['titulo'=>'gastado','cantidad'=>$gastado[0]->total];
@@ -43,8 +44,7 @@ $estCat =atencionesxCategoria();
                          <!--Menu desplegable-->
                          <a href="eprincipal.php" class="  list-group-item text-center list-group-item-action " aria-current="true">
                          <p> <i class="fa-solid fa-house"></i><?=$espacios?>Principal</p>  </a>
-                         <br>   <a href="e_nuevoCaso.php" class=" btn  list-group-item text-center list-group-item-action " aria-current="true">
-                         <p> <i class="fa-solid fa-circle-plus"></i> <?=$espacios?>Atención médica</p>  </a>
+                       
                                              
                         <br> <a href="estadisticas.php" class="btn btn-primary list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-simple"></i> <?=$espacios?>Estadísticas</p></a>
           </div>

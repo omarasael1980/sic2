@@ -5,7 +5,7 @@ const expresiones = {
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
 	password: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^\w\d\s]).{8,12}$/ 
   , // 8 a 12 digitos.
-  domicilio: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // 8 a 100 digitos.
+  domicilio: /^[a-zA-Z0-9À-ÿ,.\s]{1,100}$/, // 8 a 100 digitos.
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	telefono: /^\d{3}-\d{3}-\d{4}$/ // 10  numeros 343-233-4322.
 }

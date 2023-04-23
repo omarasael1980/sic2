@@ -50,7 +50,7 @@ function logearAlumno($usuario, $password){
   }else{
     $error=array("tipo"=>'error', "msg"=>'Usuario incorrecto');
        
-    $_SESSION['msg']=$error;
+    $_SESSION['msg']=$error; 
     return 3;//el usuario no existe
   }
 }

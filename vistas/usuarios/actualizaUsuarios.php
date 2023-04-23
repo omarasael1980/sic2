@@ -113,7 +113,7 @@ $usuario = cargarUsuariosID($_GET['id']);
                      <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 " id="grupo__tel">
                         
                         <div class="form-group-input  ">
-                        <label class="form-label" for="">Tel. Fijo:</label>    <input type="text" id="tel" name="tel" value="<?=$usuario['0']->tel?>" class="form-control"placeholder="Contraseña"autocomplete="off" >
+                        <label class="form-label" for="">Tel. Fijo:</label>    <input type="text" id="tel" name="tel" value="<?=$usuario['0']->tel?>" class="form-control"placeholder="Teléfono"autocomplete="off" >
                            
                                 <i class=""><img class="form-validation-state img-input" id="img-tel"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                         </div>
@@ -126,7 +126,7 @@ $usuario = cargarUsuariosID($_GET['id']);
                      <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 " id="grupo__cell">
                         
                         <div class="form-group-input  ">
-                        <label class="form-label" for="">Tel. Celular:</label>    <input type="text" id="cell" name="cell" value="<?=$usuario['0']->cell?>" class="form-control"placeholder="Contraseña"autocomplete="off" >
+                        <label class="form-label" for="">Tel. Celular:</label>    <input type="text" id="cell" name="cell" value="<?=$usuario['0']->cell?>" class="form-control"placeholder="Celular"autocomplete="off" >
                            
                                 <i class=""><img class="form-validation-state img-input" id="img-cell"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                         </div>

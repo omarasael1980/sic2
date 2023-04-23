@@ -31,7 +31,21 @@ while ($contador_dias < 3) {
     $contador_dias++;
   }
 }
-
+if(isset( $_SESSION['msg'])){
+    $mensaje =  $_SESSION['msg']['msg'];
+    $tipo = $_SESSION['msg']['tipo'];
+    if($tipo == "success"){ $encabezado = "Excelente!";}else{ $encabezado = "Lo siento!";}
+    echo"<script   type= text/javascript >
+  
+    Swal.fire(
+    '$encabezado',
+    '$mensaje',
+    '$tipo'
+  )
+  
+  </script>";
+  unset($_SESSION['msg']);
+  }
 
 ?>
 <!-- body  -->

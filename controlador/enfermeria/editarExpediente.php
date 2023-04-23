@@ -1,6 +1,11 @@
 
 <?php
 require '../../modelo/enfermeria/comunesEnfermeria.php';
+require_once '../../modelo/usuarios/usuarios.php';
+abreSesion();
+if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
+    header("Location:../../");
+}
 $folio = $_POST['folio'];
 $idal = $_POST['idalumno'];
 $enf = ""; // Variable para almacenar los valores de las claves que comiencen con "enf"
@@ -21,9 +26,14 @@ foreach ($_POST as $clave => $valor) {
 
 $resp = actualizaExpedienteMedico($al, $enf, $medicacion, $folio);
 if($resp){
+
     header('Location:../../vistas/enfermeria/expedienteAlumno.php?id='.$idal);
+    $error=array("tipo"=>'success', "msg"=>'Cambios guardados');
+    $_SESSION['msg']=$error;
 }else{
     header('Location:../../vistas/enfermeria/expedienteAlumno.php?id='.$idal);
+    $error=array("tipo"=>'error', "msg"=>'Hubo un error guardar cambios');
+    $_SESSION['msg']=$error;
 }
 
 ?>

@@ -111,8 +111,10 @@ $caso = buscaAtencionMedicaporId($id);
             <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12" id="grupo__mensaje">
                     <div class="form-group-input col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                      <label for="mensaje" class="form-label col-lg-12 col-md-12 col-sm-12 col-xs-12"> <b> Mensaje:</b>
-                     <textarea autocomplete="off" value="<?php if(isset($mensaje)){echo $mensaje;}?>" spellcheck="true" lang="es" type="search" rows="20" name="mensaje" id="mensaje" class="form-control "></textarea>
-                          <i class=""><img class="form-validation-state img-input" id="img-mensaje"src="../../img/icons/cross.png" alt="incorrecto"> </i>
+                     <textarea autocomplete="off" value="<?php if(isset($mensaje)){echo $mensaje;}?>" spellcheck="true" lang="es" 
+                     type="search" rows="20" name="mensaje" id="mensaje" class="form-control "></textarea>
+                          <i class=""><img class="form-validation-state img-input" id="img-mensaje"src="../../img/icons/cross.png" 
+                          alt="incorrecto"> </i>
                           </label>
                     </div>
          </div>

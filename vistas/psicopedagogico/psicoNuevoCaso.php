@@ -39,6 +39,21 @@ header("Location:./psicoNuevoCaso.php");
 }
 $categorias = cargaCategoriasPsico();
 $motivos = cargaMotivosPsico();
+if(isset( $_SESSION['msg'])){
+    $mensaje =  $_SESSION['msg']['msg'];
+    $tipo = $_SESSION['msg']['tipo'];
+    if($tipo == "success"){ $encabezado = "Excelente!";}else{ $encabezado = "Lo siento!";}
+    echo"<script   type= text/javascript >
+  
+    Swal.fire(
+    '$encabezado',
+    '$mensaje',
+    '$tipo'
+  )
+  
+  </script>";
+  unset($_SESSION['msg']);
+  }
 ?>
 
 

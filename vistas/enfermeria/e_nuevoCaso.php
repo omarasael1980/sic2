@@ -47,7 +47,7 @@ $espacios = "        ";
                          <br>   <a href="e_nuevoCaso.php?id=<?=$id?>" class=" btn btn-primary  list-group-item text-center list-group-item-action " >
                          <p> <i class="fa-solid fa-circle-plus"></i> <?=$espacios?>Atención médica</p>  </a>
                          <br>
-                        <a class="list-group-item text-center list-group-item-action" href="expedienteAlumno.php"><p><img class="logos-enfermeria"
+                        <a class="list-group-item text-center list-group-item-action" href="expedienteAlumno.php?id=<?=$id?>"><p><img class="logos-enfermeria"
                                         src="../../img/icons/history.png" alt=""><?=$espacios?> Expedientes </p></a>
                      
                         <br> <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-simple"></i> <?=$espacios?>Estadísticas</p></a>

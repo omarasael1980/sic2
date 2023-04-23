@@ -15,7 +15,7 @@ $min = date("Y-m-d",strtotime($hoy."- 7 days"));
 $max = date("Y-m-d",strtotime($hoy."+ 5 days"));
 
 if(isset($_POST)){
-    if(isset($_POST['libro'])){
+    if(isset($_POST['libro'])){ 
         if($_POST['libro'] != ""){
                     $libro = $_POST['libro'];
                     $idlibro = buscaLibroXTitulo($libro);
@@ -39,6 +39,21 @@ if(isset($_GET['idejemplar'])){
 $proceso="editaEjemplar";
 $editorial = buscaEditoriales();
 }
+if(isset( $_SESSION['msg'])){
+    $mensaje =  $_SESSION['msg']['msg'];
+    $tipo = $_SESSION['msg']['tipo'];
+    if($tipo == "success"){ $encabezado = "Excelente!";}else{ $encabezado = "Lo siento!";}
+    echo"<script   type= text/javascript >
+  
+    Swal.fire(
+    '$encabezado',
+    '$mensaje',
+    '$tipo'
+  )
+  
+  </script>";
+  unset($_SESSION['msg']);
+  }
 ?>
 
 

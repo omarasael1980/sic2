@@ -2,9 +2,7 @@
 include_once '../../modelo/usuarios/usuarios.php';
 require_once '../../modelo/enfermeria/comunesEnfermeria.php';
 abreSesion();
-if(!isset($_SESSION['user']) || !in_array('Alumno',$_SESSION['user']->perm)){
-    header("Location:../../");
-}
+
 $expediente="";
 if(isset($_SESSION['user']->idestudiantes)){
     $id = $_SESSION['user']->idestudiantes;
@@ -13,7 +11,23 @@ if(isset($_SESSION['user']->idestudiantes)){
 
 
 $espacios = "      ";
+if(isset( $_SESSION['msg'])){
+    $mensaje =  $_SESSION['msg']['msg'];
+    $tipo = $_SESSION['msg']['tipo'];
+    if($tipo == "success"){ $encabezado = "Excelente!";}else{ $encabezado = "Lo siento!";}
+    echo"<script   type= text/javascript >
+  
+    Swal.fire(
+    '$encabezado',
+    '$mensaje',
+    '$tipo'
+  )
+  
+  </script>";
+  unset($_SESSION['msg']);
+  }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -26,7 +40,7 @@ $espacios = "      ";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../../css/myStyles.css">
     <link rel="stylesheet" type="text/css" href="../../css/navbar.css">
-  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
 	  src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
  

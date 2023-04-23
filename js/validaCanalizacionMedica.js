@@ -41,7 +41,7 @@ function primeraMaydemasMin(palabra){
   }else{
     let letra =  palabra[0].toUpperCase();
 
-   let resto = palabra.substr(1).toLowerCase();
+   let resto = palabra.substr(1);
     console.log(letra+resto);
     
     return letra+resto;

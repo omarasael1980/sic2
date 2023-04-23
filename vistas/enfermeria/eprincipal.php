@@ -64,15 +64,16 @@ $espacios = "        ";
       
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
           <!--contenedor central -->
-<br><br>
-         
+<br>
+         <h3 class="text-center"><b>Inicio de atención médica</b></h3>
     <div class="row m-0 p-0">
     <form action="../../controlador/enfermeria/atencion_enfermeria.php"  class="form-control2"method="post" autocomplete="off">
-                <div class="col-lg-2 col-md-3 col-sm-1 col-xs-0 m-0 p-0"></div>
+            
+    <div class="col-lg-2 col-md-3 col-sm-1 col-xs-0 m-0 p-0"></div>
                 <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 m-0 p-0">
-                    <label for="alumno" class="form-control2"> <p class="text-center"> <b> Buscar Alumno:</b></p></label>
+                    <label for="alumno" class="form-control2"> <h6 class="text-center"> <b> Buscar Alumno:</b></h6></label>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 m-0 p-0">
+                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 m-0 p-0">
                      <input type="text" required class="form-control"name="alumno" id="alumno">
 
                         <ul id="lista"> 
@@ -80,15 +81,15 @@ $espacios = "        ";
                              </ul>
                   
                   </div>
-               
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 m-0 p-0">
+                 
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 m-0 p-0">
                         <button class="form-control nav-button-cargar">Cargar Expediente</button>
                      
                   </div>
                
           </form>
     </div>
-              
+              <br>
                 
           
             <div class="row m-0 p-0">
@@ -96,6 +97,7 @@ $espacios = "        ";
                         <!--Se muestran los ultimos casos atendidos-->
                         
                         <h1 class="text-center">Últimos casos atendidos</h1>  
+                        <hr><br>
                         <div class="container">
                         
                             
@@ -166,7 +168,7 @@ $espacios = "        ";
              
               
                         <!--Se muestran las estadisticas de atencion-->
-                        <div class="form-control"   >
+                        <div class="form-control2"   >
                            
                          <h4 class="text-center">Estadísticas</h4>
                           <?php foreach($estadisticas as $e):?>

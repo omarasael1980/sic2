@@ -130,7 +130,7 @@ function actualizaSettings($fic, $ih, $fh, $diasA, $diasD){
   $consulta->execute() or die (implode( " >> ", $consulta->errorInfo()));
   if($consulta->rowCount()>0){
     $ajustes=$consulta->fetchAll(PDO::FETCH_OBJ);
-      return $ajustes;
+      return true;
   }else{
     return false;
   }

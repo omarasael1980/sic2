@@ -26,6 +26,7 @@
     
     <?php
     header("Location: ../../vistas/enfermeria/expedienteAlumno.php?id=".$idAlumno);
+ 
          }
     ?>
 
