@@ -183,7 +183,7 @@ if(isset($_POST['libro'])){
                                        
                         </form>
                                         <div class="col-lg-4 col-sm-6 col-md-6 col-xs-12">
-                                        <button href="historialPrestamos.php" style ="height: 40px" class="   btn btn-primary"> 
+                                        <button href="historialPrestamos.php" style ="height: 40px" class="   nav-button-cargar"> 
                                             <p class="text-center">  Buscar</p></button>
                                         </div>
                                      </div>

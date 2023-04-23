@@ -115,7 +115,7 @@ header("Location: nuevoPrestamo.php");
                <h1 class="text-center"><?=$grupo?></h1>
                 <div class="col-lg-5 col-md-1 col-sm-1 col-xs-0"></div>
                 <div class="col-lg-2 col-md-10 col-sm-10 col-xs-12">
-            <p class="text-center">   <a class="form-control btn btn-danger" href="nuevoPrestamo.php">Regresar</a></p>
+            <p class="text-center">   <a class="form-control nav-button-cargar" href="nuevoPrestamo.php">Regresar</a></p>
                <?php if(isset($_POST['ejemplar'])):?> 
                 <br>
                            <h3 class="text-center">Confirmar Préstamo</h3>
@@ -201,7 +201,7 @@ header("Location: nuevoPrestamo.php");
                                     <br>
                         <?php if(isset($_POST['ejemplar'])):?> 
                            
-                            <button class="form-control btn btn-success">Guardar Prestamo</button>
+                            <button class="form-control nav-button-cargar">Guardar Prestamo</button>
                             
                         <?php else:?>
 

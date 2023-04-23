@@ -164,7 +164,7 @@ if(isset( $_SESSION['msg'])){
                                             </div>
                                             
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 si m-0 p-0"> <p class="text-center">
-                                               <p class="text-center"> <a href="seguimientoCaso.php?id=<?=$presta->idPrestamos?>">
+                                               <p class="text-center"> <a href="../../controlador/biblioteca/eliminarPrestamo.php?id=<?=$presta->idPrestamos?>">
                                                 <img class="icono-seguimiento"
                                             src="../../img/icons/delete.png" alt="otra nota">    </a></p>
                                            <p class="text-center">Eliminar Préstamo</p>

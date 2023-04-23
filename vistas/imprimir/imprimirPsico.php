@@ -3,6 +3,7 @@
 ob_start();
 include '../../modelo/usuarios/usuarios.php';
  include '../complementos/cabeceraImpresion.php';
+ require_once '../complementos/nav_2.php';
 ?>
 <?php
 $html = ob_clean();

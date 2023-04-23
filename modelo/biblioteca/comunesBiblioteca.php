@@ -135,10 +135,10 @@ function insertaPrestamo($fecha, $idestudiantes, $idEjemplar){
   $exitoB = $st->execute() or die (implode ('>>', $st->errorInfo()));
  if($exitoA && $exitoB){
   $pdo->commit();
-  header("Location:../../vistas/biblioteca/bprincipal.php");
+  return true;
  }else{
   $pdo->rollback();
-  exit("Se presentó un problema al guardar el préstamo, comunícate con el administrador ");
+  return false;
  }
 }
 function devolverLibro($idPrestamo, $idEjemplar, $fregreso, $observaciones){
@@ -161,10 +161,10 @@ function devolverLibro($idPrestamo, $idEjemplar, $fregreso, $observaciones){
   $exitoB = $st->execute() or die (implode ('>>', $st->errorInfo()));
  if($exitoA && $exitoB){
   $pdo->commit();
-  header("Location:../../vistas/biblioteca/bprincipal.php");
+ return true;
  }else{
   $pdo->rollback();
-  exit("Se presentó un problema al devolver el libro, comunícate con el administrador ");
+  return false;
  }
 }
 
@@ -187,6 +187,22 @@ function buscaEjemplares($idLibro, $idUsuario) {
       
    
 }
+}
+function eliminarPrestamo($prestamo) {
+  
+  require '../../modelo/config/pdo.php';
+ 
+  $query="DELETE FROM `sisantee_sics`.`prestamos` WHERE (`idPrestamos` = :idprestamo);";
+  $st = $pdo->prepare($query);
+  $st->bindParam(":idprestamo", $prestamo);
+
+  $st->execute() or die (implode ('>>', $st->errorInfo()));
+  if($st->rowCount()>0){
+     return true;
+    }else{
+      return false;
+    
+    }
 }
 function buscaEjemplaresPorLibro($idLibro) {
   

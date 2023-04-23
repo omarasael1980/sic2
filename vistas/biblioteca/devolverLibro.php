@@ -76,7 +76,7 @@ $espacios = "        ";
                    <b>Fecha de Préstamo:</b>   <input class="form-control" type="date" name="fprestamo" readonly value="<?=$p->fecha_prestamo?>">
                     <b>Fecha de regreso:</b>   <input class="form-control" type="date" min="<?=$p->fecha_prestamo?>" max="<?=$hoy?>" name="fregreso"  value="<?=$hoy?>">
                     <b>Observaciones:</b>   <input class="form-control" type="text" name="observaciones"  value="" >
-                 <br><button class="form-control btn btn-success">Finalizar Regreso de libro</button>
+                 <br><button class="form-control nav-button-cargar">Finalizar Regreso de libro</button>
                     </form>
 
                     <?php endforeach?>

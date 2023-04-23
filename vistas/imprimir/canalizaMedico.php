@@ -2,6 +2,7 @@
 
 include '../../modelo/usuarios/usuarios.php';
 require '../complementos/cabeceraImpresion.php';
+require_once '../complementos/nav_2.php';
 require_once '../../modelo/enfermeria/comunesEnfermeria.php';
 require '../../modelo/config/comunes.php';
 if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
