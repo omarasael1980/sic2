@@ -10,8 +10,8 @@ if(!isset($_SESSION['user']) || !in_array('Ajustes',$_SESSION['user']->perm)){
 
 require '../../modelo/config/comunes.php';
 
-$roles = buscaRoles();
-$usuario = cargarUsuariosID($_GET['id']);
+
+
 $espacios ="         ";
 ?>
 
@@ -98,17 +98,49 @@ $espacios ="         ";
     
       
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-11 ">
-          <!--contenedor central -->
-          <h1 class="text-center">Subir archivos masivamente</h1>
+                <div class="row">
+                <h1 class="text-center">Subir archivos masivamente</h1>
 
-          <form action="../../controlador/ajustes/subirMasivamente.php" method="post" enctype="multipart/form-data">
-                       <h6>Elige el archivo CSV</h6> 
-                       <input type="file" name="archivo" id="archivo">
-                       <input type="submit" value="Cargar">
-          </form>
-
+                <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0 "></div> 
+                <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 ">
+                                    <!--contenedor central -->
+                     
+                        <form action="../../controlador/ajustes/subirMasivamente.php" method="post" enctype="multipart/form-data">
+                                    <h6>Elige el archivo CSV</h6> 
+                                    <input class="btn btn-primary" type="file" name="archivo" id="archivo">
+                                    <br> <br>
+                                    <button type="submit" name= "subir" class="col-lg-4 col-md-4 col-sm-6 col-xs-12 nav-button-cargar">Cargar</button>
+                        </form>
+                    </div> 
+                 </div>
             <!--contenedor central -->
-          
+          <?php
+          if(isset($_REQUEST['subir'])){
+            $nombre = $_FILES['archivo']['name'];
+            $tipo = $_FILES['archivo']['type'];
+            if($tipo != 'text/csv'){
+                die("Archivo no valido");
+                }
+            $destino = "../../private/docs/csv/$nombre";
+            $res = copy($_FILES['archivo']['tmp_name'],$destino);
+            ?>
+             <div class="alert alert-<?php echo $res? "primary":"danger"?> alert-dismissible fade show" role="alert" >
+                <button type="button " class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true" >&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <?php echo $res? "Archivo subido correctamente":"Problemas al cargar archivo"?>
+             </div>
+            <?php
+                if(file_exists($destino)){
+                    $archivo = fopen($destino,"r");
+                    while(fgetcsv($archivo) !=false){
+                        echo $columna[0]."-----".$columna[1]."-----".$columna[2]."-----".$columna[3]."-----".$columna[4]."-----".$columna[5]."-----".$columna[6]."<br>";
+                    }
+                }
+
+          }
+          ?>
        
             </div>
 <!-- FIN CENTRO -->

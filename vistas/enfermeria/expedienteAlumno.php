@@ -98,12 +98,12 @@ if(isset( $_SESSION['msg'])){
     <div class="row expediente  <?php if($expediente[0]->estado ==1){echo "blink";}?>">
         <div class="col-lg-3 col-md-2 col-sm-1 col-xs-0"></div>
         <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button class="<?php if($expediente[0]->estado ==1){echo "btn btn-warning";}else{echo "btn btn-primary";}?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Expediente Médico
         </button>
         </div>
     </div>
-    <div class="collapse" id="collapseExample">
+    <div class="collapse <?php if($expediente[0]->estado ==1){echo "show";}?>" id="collapseExample">
         <div class="">
     <div class="antecedentes">
         <div class="row">
@@ -201,7 +201,7 @@ if(isset( $_SESSION['msg'])){
                                    
                                    <div class="row"> 
                                    
-                                           <div class=" col-lg-10 col-md-10 col-sm-12 col-xs-12 form-control2">
+                                           <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 form-control2">
                                                <div class="row">
                                                     <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                                                       Fecha: <b> <?=$ac->fecha_ACE?></b>
@@ -211,7 +211,7 @@ if(isset( $_SESSION['msg'])){
                                                          </div>
                                              </div>
                                            <div class="row">
-                                                <div class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             Descripción: <?=$ac->descripcion?>
                                            </div>
                                          </div>

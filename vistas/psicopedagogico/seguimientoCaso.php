@@ -158,16 +158,16 @@ $nombreAlumno =$alumno[0]->nombre." ".$alumno[0]->apaterno." ".$alumno[0]->amate
        </form></div>
     
     <!-- termina form -->
-</div>
+
 
 </div><!-- FIN CENTRO -->
 <!--contenedor central -->
       </div>
        
         
-        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control">
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control2">
     <!--contenedor derecha -->
-contenedor derecha
+
     <!--contenedor derecha -->
 
         </div>

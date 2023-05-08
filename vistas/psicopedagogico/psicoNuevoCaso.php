@@ -82,7 +82,7 @@ if(isset( $_SESSION['msg'])){
                  <?php  $espacios = "        ";?>
                   <a href="pprincipal.php" class=" btn  list-group-item text-center list-group-item-action " aria-current="true">
                   <p> <i class="fa-solid fa-bars"> </i> <?=$espacios?>Pendientes</p>  </a>
-                <br> <a class="btn btn-primary list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
+                <br> <a class="nav-button-cargar list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
                 <br> <a href="historialPsico.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
                <br>  <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
                 
@@ -130,7 +130,7 @@ if(isset( $_SESSION['msg'])){
  <div class="row">
     <div class="col-lg-9 col-md-8 col-sm-8 col-xs-0"></div>
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <a class="btn btn-danger " href="psicoNuevoCaso.php">
+            <a class="nav-button-cargar" href="psicoNuevoCaso.php">
             <i class="fa-solid fa-door-closed"></i>Cerrar </a>
             
     </div>
@@ -193,7 +193,8 @@ if(isset( $_SESSION['msg'])){
                                  
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                         
-                                        <a title =" Agregar Motivo" data-bs-toggle="modal" data-bs-target="#registroMotivo" data-bs-whatever="@mdo" class="btn btn-primary align-items-center " ><i class="fa-solid fa-plus"></i></a>
+            
+                                        <a title =" Agregar Motivo" data-bs-toggle="modal" data-bs-target="#registroMotivo" data-bs-whatever="@mdo" class="btn btn-primary  align-items-center " ><i class="fa-solid fa-plus"></i></a>
                                     </div>
                                    
                                  
@@ -381,8 +382,8 @@ if(isset( $_SESSION['msg'])){
       </div>
       <div class="modal-footer">
         <div class="row">
-            <div class="col-6"> <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button></div>
-            <div class="col-6"> <input  onclick="validaMiCategoria(event)" type="submit"  id="bCategoria"class="btn btn-success" value="Guardar">
+            <div class="col-6"> <button type="button" class="nav-button-cargar" data-bs-dismiss="modal">Cancelar</button></div>
+            <div class="col-6"> <input  onclick="validaMiCategoria(event)" type="submit"  id="bCategoria"class="nav-button-cargar " value="Guardar">
             </form>
         
       </div></div>

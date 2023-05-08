@@ -122,7 +122,7 @@ if(isset($_POST['libro'])){
             <div class="col-lg-2 col-md-2 col-sm-1 col-xs-0"></div>
             <div class="col-lg-8 col-md-8 col-sm-5 col-xs-12">
                                  <form action="historialPrestamos.php"  class="form-control"  method="post" autocomplete="off">
-                                    <input type="hidden" name="busca" value="1" >
+                                    <input type="hidden" name="busca" value="2" >
                                      <div>
                                         <label for="alumno"><h1>Buscar historial por alumno:</h1></label><br><br>
                                         <input type="text" required class="form-control" name="alumno"  id="alumno">
@@ -202,7 +202,7 @@ if(isset($_POST['libro'])){
             <div class="col-lg-8 col-sm-8 col-md-5 col-xs-12"> 
                 <form action="historialPrestamos.php"  class="form-control2"method="post">
                     <div class="row">
-                    <input type="hidden" name="busca" value="2">
+                    <input type="hidden" name="busca" value="3">
                       Elige un libro  <select class="form-control" name="libro" id="libro">
                       <option value="0" >Selecciona un libro</option>
                         <?php foreach($libros as $l):?>

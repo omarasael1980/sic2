@@ -163,7 +163,7 @@ unset($_SESSION['msg']);
         </div>
          <!-- Boton para imprimir -->
         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 m-0 p-0">
-        <a href="../imprimir/imprimirPsico.php?id=<?=$p->idatencion_psico?>" class="btn btn-white"> <p class="m-0 p-0 " style="color:black;"><i class="fa-solid fa-print"></i><?=$espacios?>Imprimir </p></a>
+        <a href="imprime.php?id=<?=$p->idatencion_psico?>" class="btn btn-white"> <p class="m-0 p-0 " style="color:black;"><i class="fa-solid fa-print"></i><?=$espacios?>Imprimir </p></a>
         </div>
        <hr>
     </div>
@@ -296,11 +296,12 @@ unset($_SESSION['msg']);
       <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>Fecha Final:</b> <?=$can->fecha?> </div>
       <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>Especialista:</b> <?php
       foreach($especialistas as $e){
-        if( $can->idpsico_canaliza == $e->idespecialista_canaliza){
+        if( $can->especialista_canaliza_idespecialista_canaliza == $e->idespecialista_canaliza){
           echo $e->especialista;
         }
       }
      ?> </div>
+     
       <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><b>Categoria:</b> <?php
       foreach ($categoriaCanalPsico as $cat){
        if($can->categoria_canaliza_psico_idcategoria_canaliza_psico == $cat->idcategoria_canaliza_psico){
@@ -312,11 +313,11 @@ unset($_SESSION['msg']);
 
          </div>
           <?php endforeach?>
-          <?php endif?>
+                  <?php endif?>
             </div>                                        
                    
               
-                      
+                    
                                                       <br>
    <!-- termina carga de canalizaciones -->
     <!--Aqui se cargan las evidencias si hay-->
@@ -368,14 +369,14 @@ unset($_SESSION['msg']);
                                                 <?php endif?>
           </div> <!--Aqui terminan las evidencias si hay-->
 <!-- boton de imprimir -->
-<div class="row">
+<!-- <div class="row">
   <div class="col-lg-4 col-md-3 col-sm-3 col-xs-0"></div>
   <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <a href="imprime.php?id=<?=$p->idatencion_psico?>" class="nav-button-cargar">Imprimir</a>
   </div>
   <div class="col-lg-4 col-md-3 col-sm-3 col-xs-0"></div>
 </div>
- 
+  -->
 <!-- Termina boton colapsable -->
 
 </div> </div>        

@@ -81,23 +81,7 @@ $espacios ="         ";
                          <p> <i class="fa-solid fa-list-check"></i><?=$espacios?>Enfermería</p>  </a>
                            
                           </div>
-                        <!-- termina menu desplegable enfermeria -->
-                           <!-- menu desplegable Psicopedagogia -->
-                       
-                      <!-- <br>  <div class="dropdown">
-                          <a class="list-group-item text-center list-group-item-action" data-bs-toggle="collapse" 
-                           data-bs-target="#collapsePsicopedagogica" aria-expanded="false" aria-controls="collapseWidthExample">
-                          <p> <i class="fa-solid fa-head-side-virus"></i> 
-                            Ajustes de Psicopedagogía</p>
-                          </a>
-                          <div class="collapse"  id="collapsePsicopedagogica" >
-                            <br><a class="nav-button-cargar2" href="../biblioteca/nuevoLibro.php"><p>
-                            <i class="fa-solid fa-plus"></i>Alta de libro</p> </a>
-                            <br><a class="nav-button-cargar2" href="../biblioteca/editaEjemplar.php">Editar Ejemplares</a>
-                            <br><a class="nav-button-cargar2" href="../biblioteca/binventario.php">Asignar custodia de libro</a>
-                          </div>
-                        </div> -->
-                        <!-- termina menu desplegable enfermeria -->
+                      
                       
                     
                      

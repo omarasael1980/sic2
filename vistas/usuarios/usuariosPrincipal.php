@@ -62,6 +62,11 @@ if(isset( $_SESSION['msg'])){
 unset($_SESSION['msg']);
 }
 ?>
+<pre>
+  <?php
+  print_r($ajustes);
+  ?>
+</pre>
 
 
 <!-- body  -->
@@ -129,28 +134,6 @@ unset($_SESSION['msg']);
                          <p> <i class="fa-solid fa-list-check"></i><?=$espacios?>Enfermería</p>  </a>
                            
                           </div>
-                          <!-- termina menu desplegable enfermeria -->
-                             <!-- menu desplegable Psicopedagogia -->
-<!--                          
-                        <br>  <div class="dropdown">
-                            <a class="list-group-item text-center list-group-item-action" data-bs-toggle="collapse" 
-                             data-bs-target="#collapsePsicopedagogica" aria-expanded="false" aria-controls="collapseWidthExample">
-                            <p> <i class="fa-solid fa-head-side-virus"></i> 
-                              Ajustes de Psicopedagogía</p>
-                            </a>
-                            <div class="collapse"  id="collapsePsicopedagogica" >
-                              <br><a class="nav-button-cargar2" href="../biblioteca/nuevoLibro.php"><p>
-                              <i class="fa-solid fa-plus"></i>Alta de libro</p> </a>
-                              <br><a class="nav-button-cargar2" href="../biblioteca/editaEjemplar.php">Editar Ejemplares</a>
-                              <br><a class="nav-button-cargar2" href="../biblioteca/binventario.php">Asignar custodia de libro</a>
-                            </div>
-                          </div> -->
-                          <!-- termina menu desplegable enfermeria -->
-                        
-                      
-                       
-                     
-                       
           </div>
                 
         </div>
@@ -227,7 +210,7 @@ unset($_SESSION['msg']);
                     </div>
                     <hr>
                     <div class="row">
-                      <h6><b>Página de acceso para tutores:/b> El enlace permite realizar el login de los tutores una vez que se hayan mandado el usuario y el token.</h6>
+                      <h6><b>Página de acceso para tutores:</b> El enlace permite realizar el login de los tutores una vez que se hayan mandado el usuario y el token.</h6>
                       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                       <a  href="../alumnos/ingresoAlumnos.php"class="nav-button-cargar">Ir a inicio para estudiantes</a>
                       </div>

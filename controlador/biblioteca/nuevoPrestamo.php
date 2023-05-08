@@ -4,6 +4,8 @@
 require '../../modelo/config/pdo.php';
 require '../../modelo/biblioteca/comunesBiblioteca.php';
 require_once '../../modelo/usuarios/usuarios.php';
+require '../../modelo/config/comunes.php';
+
 abreSesion();
 if(!isset($_SESSION['user']) || !in_array('Biblioteca',$_SESSION['user']->perm)){
     header("Location:../../");
@@ -21,6 +23,8 @@ $fecha = trim($fecha);
 $libros = trim($libros);
 $idlibro =trim($idlibro);
 $ejemplar =trim($ejemplar);
+$ajustes = buscSettings();
+
 
 $resp =insertaPrestamo($fecha, $idalumno, $ejemplar);
 if($resp){
@@ -31,6 +35,6 @@ if($resp){
     header('Location:../../vistas/biblioteca/bprincipal.php');
     $error=array("tipo"=>'error', "msg"=>'Hubo un error al insertar el Préstamo de libro');
     $_SESSION['msg']=$error;
-  
+   
 }
 ?>
