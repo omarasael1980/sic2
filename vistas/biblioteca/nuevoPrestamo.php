@@ -25,7 +25,32 @@ header("Location: nuevoPrestamo.php");
     $grupo = $separada[3];
     $quien=$separada[4];
     $prestamoALumno =buscaPrestamosAlumno($quien);
+    if($prestamoALumno !=""){
+        $librosPrestados=0;
+        foreach($prestamoALumno as $prestado){
+            if($prestado->fecha_regreso == ""){
+                $librosPrestados +=1;
+            }
+        }
+        $ajustes = buscSettings();
+        $limite =$ajustes[0]->cantidadPrestamos;
+        if($librosPrestados >=$limite){
+    // lanzar alerta de que no puede prestarse libros por tener el limite permitido
+    ?>
+                <script>
+                        
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'el(a) alumn@ ha alcanzado el límite de libros prestados',
+                   
+                })</script>
+            
+              <?php
+        }
+    }
     //busca los libros del usuario logeado para que cada docente pueda prestar los libros que tiene
+    //cambiaron politicas de la empresa, ahora se pueden prestar todos los ejemplares
     $libros =buscaTodosLibros();
     if(isset($_POST['libros'])){
         
@@ -41,6 +66,7 @@ header("Location: nuevoPrestamo.php");
     }
        
 }
+
 }
 
   $espacios = "        ";
@@ -92,7 +118,8 @@ header("Location: nuevoPrestamo.php");
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
           <!--contenedor central -->
 <div class="row"><h1 class="text-center">Nuevo Préstamo</h1></div>
-<!-- aqui -->
+<!-- aqui inicia el prestamo del libro seleccionando a un alumno para jalar la informacion 
+de historial de prestamos y ver si puede recibir libro -->
 
 <?php if(!isset($_POST['alumno'])):?>
     <div class="row">
@@ -110,17 +137,24 @@ header("Location: nuevoPrestamo.php");
                  </div>
     </div>
            <?php else :?>
+<!-- inicia prestamo una vez cargado el alumno
+ -->
+ <pre>
+    <?php print_r($librosPrestados);?>
+</pre>
             <div class="row">
                <h1 class="text-center"><?=$nombre?></h1>
                <h1 class="text-center"><?=$grupo?></h1>
                 <div class="col-lg-5 col-md-1 col-sm-1 col-xs-0"></div>
                 <div class="col-lg-2 col-md-10 col-sm-10 col-xs-12">
             <p class="text-center">   <a class="form-control nav-button-cargar" href="nuevoPrestamo.php">Regresar</a></p>
+            <!-- si ya se selecciono ejemplar se confirma prestamo -->
                <?php if(isset($_POST['ejemplar'])):?> 
                 <br>
                            <h3 class="text-center">Confirmar Préstamo</h3>
                             <br>
                         <?php else:?>
+                            <!-- si no se ha seleccionado ejemplar se inicia seleccionando un libro -->
                             <br>
                            <h3 class="text-center">Iniciar Préstamo</h3>
                             <br>
@@ -134,7 +168,8 @@ header("Location: nuevoPrestamo.php");
                      <!--columna izquierda formulario para pedir libro-->  
                      <?php if(isset($_POST['ejemplar'])):?> 
                        <form class="form-control" action="../../controlador/biblioteca/nuevoPrestamo.php" method="post">
-                        <?php else:?>
+                        <?php else:?> 
+                            <!--  confirmacion del prestamo y se manda al controlador la info -->
                             <form class="form-control" action="nuevoPrestamo.php" method="post">
                             <input type="hidden" name = "idalumno" value="<?=$quien?>">
                         <?php endif?>
@@ -145,10 +180,12 @@ header("Location: nuevoPrestamo.php");
                                         <?php if(isset($_POST['fecha'])):?>
                                                Fecha Seleccionada: <input type="date" required name="fecha" id="fecha"  value ="<?=$_POST['fecha']?>" min="2022-09-11" max="<?=$today?>" class="form-control">
                                             <?php else:?>
+                                                <!-- inicio de prestamo,  -->
                                                Selecciona Fecha: <input type="date" required name="fecha" id="fecha" value="<?=$today?>" min="2022-09-11" max="<?=$today?>" class="form-control">
                                          <?php endif?>
                                 <?php endif;?>
                                 <?php if(!isset($_POST['libros'])):?>
+                                    <!--  -->
                                 <label for="libros">Selecciona Libro:</label>
                                 <select class ="form-control" name="libros" id="libros">
                                 <?php foreach($libros as $libro):?>
@@ -174,7 +211,7 @@ header("Location: nuevoPrestamo.php");
                                         <div class="row">
                                             <div class="form-message  me_formulario-active" id="">
                                             <?php foreach ($advertencia as $adv):?>
-                                                        <p class="text-center"><b><h3>El alumno ya leyó este libro (Fecha de Préstamo: <?=$adv->fecha_prestamo?>)</h3></b> </p>
+                                                        <p class="text-center"><b><h6>El alumno ya leyó este libro (Fecha de Préstamo: <?=$adv->fecha_prestamo?>)</h6></b> </p>
                                               <?php endforeach?>
                                                 
                                             </div>    

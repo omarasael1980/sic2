@@ -23,7 +23,7 @@ $fecha = trim($fecha);
 $libros = trim($libros);
 $idlibro =trim($idlibro);
 $ejemplar =trim($ejemplar);
-$ajustes = buscSettings();
+//$ajustes = buscaSettings();
 
 
 $resp =insertaPrestamo($fecha, $idalumno, $ejemplar);

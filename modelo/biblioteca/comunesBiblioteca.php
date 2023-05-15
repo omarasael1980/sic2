@@ -208,7 +208,7 @@ function buscaEjemplaresPorLibro($idLibro) {
   
   require '../../modelo/config/pdo.php';
  
-  $query="CALL select_buscaEjemplaresXLibro(:idlibro);";
+  $query="CALL select_buscaEjemplaresxLibroDisponibles(:idlibro);";
   $st = $pdo->prepare($query);
   $st->bindParam(":idlibro", $idLibro);
 
