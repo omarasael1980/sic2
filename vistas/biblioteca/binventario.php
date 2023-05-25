@@ -285,7 +285,7 @@ unset($_SESSION['msg']);
    
   
    
-                <div class="row"  style="background:#FFFF99; font-size: small; border-radius: 20px;">
+                <div class="row postit2" >
             
                 <h4 class="text-center xs-3"><b>Algunos datos:</b> </h4>
                 

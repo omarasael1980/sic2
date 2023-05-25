@@ -107,7 +107,7 @@ header("Location: nuevoPrestamo.php");
                         <br> <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-simple"></i> <?=$espacios?>Estadísticas</p></a>
                        
                        
-         `````` </div>
+         </div>
                 
         </div>
         </div> 
@@ -139,9 +139,7 @@ de historial de prestamos y ver si puede recibir libro -->
            <?php else :?>
 <!-- inicia prestamo una vez cargado el alumno
  -->
- <pre>
-    <?php print_r($librosPrestados);?>
-</pre>
+
             <div class="row">
                <h1 class="text-center"><?=$nombre?></h1>
                <h1 class="text-center"><?=$grupo?></h1>
@@ -178,10 +176,12 @@ de historial de prestamos y ver si puede recibir libro -->
                                     <input type="hidden" name = "idalumno" value="<?=$quien?>">
                                               <input type="hidden" name="alumno" value="<?=$_POST['alumno']?>">
                                         <?php if(isset($_POST['fecha'])):?>
-                                               Fecha Seleccionada: <input type="date" required name="fecha" id="fecha"  value ="<?=$_POST['fecha']?>" min="2022-09-11" max="<?=$today?>" class="form-control">
+                                               Fecha Seleccionada: <input type="date" required name="fecha" id="fecha"  value ="<?=$_POST['fecha']?>" min="2022-09-11" 
+                                               max="<?=$today?>" class="form-date__input form-control ">
                                             <?php else:?>
                                                 <!-- inicio de prestamo,  -->
-                                               Selecciona Fecha: <input type="date" required name="fecha" id="fecha" value="<?=$today?>" min="2022-09-11" max="<?=$today?>" class="form-control">
+                                               Selecciona Fecha: <input type="date" required name="fecha" id="fecha" value="<?=$today?>" 
+                                               min="2022-09-11" max="<?=$today?>" class="form-date__input form-control ">
                                          <?php endif?>
                                 <?php endif;?>
                                 <?php if(!isset($_POST['libros'])):?>

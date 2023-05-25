@@ -58,7 +58,7 @@ $estCat =atencionesxCategoria();
         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 ">
           <!--contenedor central -->
   <!-- contenedor_grafico tiene el css -->
-  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 contenedor_grafico">
+  <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 contenedor_grafico">
                 
                 <?php  
                 //  se manda la variable a JS
@@ -66,14 +66,15 @@ $estCat =atencionesxCategoria();
                 echo "var disponible = ".json_encode($disponibleseguro).";";
                 echo "</script>";?>
                 <!-- id controla la grafica disenada en JS -->
-            <canvas class="m-0 p-0" id="graficaDisponible">
+            <canvas class="graficas" id="graficaDisponible">
 
             </canvas>
          </div>
+         <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0 "></div>
     <!-- separador -->
     <!-- contenedor_grafico tiene el css -->
  
-  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 contenedor_grafico">
+  <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 contenedor_grafico">
                 
                 <?php  
                 //  se manda la variable a JS
@@ -81,7 +82,7 @@ $estCat =atencionesxCategoria();
                 echo "var categorias = ".json_encode($estCat).";";
                 echo "</script>";?>
                 <!-- id controla la grafica disenada en JS -->
-            <canvas class="m-0 p-0" id="graficoCategoria">
+            <canvas class="graficas" id="graficoCategoria">
 
             </canvas>
          </div>

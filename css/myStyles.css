@@ -517,9 +517,10 @@ div .si{
   justify-content: center;
   align-items: center;
   margin-top: auto;
-  margin-bottom: auto;
+  margin-bottom: auto; 
 
 }
+
 .bajoBoton{
   margin-top: 10px;
   padding-top: 10px;
@@ -552,6 +553,12 @@ div .si{
   justify-content:space-between;
   align-items: center
 
+}
+.graficas{
+  padding: 10px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
 }
 .postit{
   width: 50%;
@@ -621,7 +628,19 @@ div .si{
   /* flex-direction: row; */
   padding: 1rem;
 }
-
+.form-date__input[type=”date”]::-webkit-calendar-picker-indicator {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: transparent;
+  background: red;
+  margin: 0;
+  opacity: 0;
+  pointer-events: auto;
+  border: #2E8B57, solid;
+  }
 .postit h6,
 .postit div,
 .postit h4{
@@ -753,10 +772,17 @@ color:#0F4E75;
   font-weight: lighter;
   margin-left: 5px;
 }
+
+.form-message_permanente p{
+  padding-top: 10px;
+  color:#01016D;
+  font-weight: bolder;
+}
 .misAjustes input{
   width: 150px;
   background:#9fc5e8; 
-  color:white;
+  border-color:#0075ff;
+  color:black;
   text-align: center;
   margin: 0;
   margin-bottom: 10px;

@@ -304,68 +304,69 @@ if(isset( $_SESSION['msg'])){
                 <div class="form-group row " id="grupo__titulo">
                      
                         <div class="form-group-input form-control2  ">
-                        <label for="titulo" class="form-label form-control2"> <b> Título:</b>
+                        <label for="titulo" class="form-label form-control2"> <b> Título:</b>   </label>
                              <input class="form-control img-container " type="text" id="titulo"name="titulo" placeholder="titulo">
                              <i class=""><img class="form-validation-state img-input" id="img-titulo"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                         </div>
-                        </label>
-                   <div class="form-message" id="mensaje_error__titulo">
-                    <h6 class="text-center"><b> Puede contener letras y números </b></h6>
-                   </div>
+                     
+                   <div class="form-message_permanente" id="mensaje_error__titulo">
+                    <p class=""> Escribe el titulo del libro, puede contener letras y números </p>
+                   </div> 
                 </div>
                     <br>
                     <!--autor-->
                 <div class="form-group row " id="grupo__autor">
                      <div class=" form-group-input ">
-                     <label for="autor" class="form-label form-control2"> <b> Autor:</b>
+                     <label for="autor" class="form-label form-control2"> <b> Autor:</b></label>  
                           <input class="form-control img-container " type="text" id="autor" name="autor" placeholder="Autor">
                           <i class=""><img class="form-validation-state img-input" src="../../img/icons/cross.png" alt="incorrecto"> </i>
                      </div>
-                     <div class="form-message" id="mensaje_error__autor">
-                    <h6 class="text-center"><b>Solo puede contener letras mayúsculas y minúsculas</b></h6>
-                    </label>   
+                     <div class="form-message_permanente" id="mensaje_error__autor">
+                    <p class="">Escribe el nombre del autor. Solo puede contener letras mayúsculas y minúsculas</p>
+                     
                     </div>
                 </div>
                     <!--editorial-->
-                    <div class="form-group " id="grupo__editorial row">
+                    <div class="form-group " id="grupo__editorial">
                      <div class=" form-group-input col-lg-9 col-md-8 col-sm-8 col-xs-8">
-                     <label for="editorial" class="form-label form-control2"> <b> Editorial:</b>
-                         <select name="editorial" id="editorial" class="form-control">
+                     <label for="editorial" id ="label-editorial"class="form-label form-control2"> <b> Editorial:</b>   </label> 
+                         <select name="editorial" onblur ="revisa_editorial()" id="editorial" class="form-control">
+                            <option value="0">Selecciona una editorial</option>
                          <?php foreach($editorial as $ed):?>
                             <option value="<?=$ed->idEditorial?>"><?=$ed->editorial?></option>
                             <?php endforeach?>
                         </select>
                      </div>
                      <div  class=" form-group-input col-lg-3 col-md-4 col-sm-4 col-xs-4">
-                        <div class="row">
-                        <b> <center>Nueva Editorial:</center><b>
+                        <div class="row m-0">
+                         <p class="text-center">Nueva Editorial </p>
                         </div>
                         <div class="row">
                         <center><a href="nuevaEditorial.php"><img class="icono-seguimiento"src="../../img/icons/plus.png" alt=""></a></center> 
                         </div>
                     
                      </div>
-                     <div class="form-message" id="mensaje_error__Editorial">
-                    <h6><b>Elige una opción</b></h6>
-                    </label>   
+                     <div class="form-message_permanente row" id="mensaje_error__Editorial">
+                    <p>Selecciona una editorial o presiona el botón + para agregar una editorial que no esté en la lista</p>
+                   
                     </div>
                 </div>
                      <!--isbn-->
                      <div class="form-group row" id="grupo__isbn">
                      <div class=" form-group-input">
                      <label for="isbn" class="form-label form-control2"> <b> ISBN:</b>
-                          <input class="form-control img-container "id="isbn" type="text" name="isbn" placeholder="isbn">
+                          <input class="form-control img-container "id="isbn" type="text" name="isbn" placeholder="978-3-16-1484-10-0">
                           <i class=""><img class="form-validation-state img-input" src="../../img/icons/cross.png" alt="incorrecto"> </i>
                      </div>
-                     <div class="form-message" id="mensaje_error__isbn">
-                    <p><b>Este campo admite solo números, deben ser 13 caracteres</b></p>
+                     <div class="form-message_permanente" id="mensaje_error__isbn">
+                    <p>Ingresa el ISBN del libroEste campo admite solo números, deben ser 13 caracteres</p>
                     </label>   
                     </div>
                 </div>
                       <!--fin-->
                      <br>
                      <br>
-                     <div class="form-message  me_formulario" id="mensaje_error__formulario">
+                     <div class="form-message me_formulario" id="mensaje_error__formulario">
                     <h6 class="text-center"><b>Debes llenar todos los campos correctamente de acuerdo a las indicaciones</b></h6>
                    </div>
              </div>

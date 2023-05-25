@@ -61,12 +61,9 @@ if(isset( $_SESSION['msg'])){
 </script>";
 unset($_SESSION['msg']);
 }
+
 ?>
-<pre>
-  <?php
-  print_r($ajustes);
-  ?>
-</pre>
+
 
 
 <!-- body  -->
@@ -152,16 +149,16 @@ unset($_SESSION['msg']);
                 <form action="../../controlador/ajustes/guardaAjustes.php" method="post">
                 <div class="misAjustes">
 
-                  <p><b>Inicio de clases:</b></p><p> Establece la fecha de inicio de ciclo escolar que se toma como base para los cálculos estadísticos del sistema.</p>
+                  <h5><b>Inicio de clases:</h5><p> Establece la fecha de inicio de ciclo escolar que se toma como base para los cálculos estadísticos del sistema.</b></p>
                   <input name="fechaInicioClases"class="text-center" type="date" min= "<?=$min?>" max="<?=$hoy?>"value="<?=$fechaInicioClases?>">
-                  <p><b>Hora inicial de atención presencial de padres de familia para el sistema de citas:</b></p><p> La hora establecida permitirá controlar la hora más temprana en que se pueden citar a los padres de familia.</p>
+                  <h5><b>Hora inicial de atención presencial de padres de familia para el sistema de citas:</h5></p><p> La hora establecida permitirá controlar la hora más temprana en que se pueden citar a los padres de familia.</p>
                     <input type="time" name="iniciHorario"class="text-center" id="" value="<?=$a->inicioHorario?>"><?php ampm($a->inicioHorario)?>
-                  <p><b>Hora final de atención presencial de padres de familia para el sistema de citas:</b></p><p>La hora establecida permitirá controlar la última hora en la que se pueden citar a los padres de familia.</p>
+                  <h5><b>Hora final de atención presencial de padres de familia para el sistema de citas:</h5></p><p>La hora establecida permitirá controlar la última hora en la que se pueden citar a los padres de familia.</p>
                   <input type="time" name="finHorario"class="text-center" id="" value="<?=$a->finHorario?>"><?php ampm($a->finHorario)?>
-                  <p><b>Días de edición permitidos en los calendarios del sistema antes del día actual:</b></p>
+                  <h5><b>Días de edición permitidos en los calendarios del sistema antes del día actual:</h5></p>
                   <p>Este valor determina el control de permiso para hacer registros en días anteriores a la fecha actual, se debe ingresar un valor númerico entero positivo</p>
                   <input type="number" name="diasAntes" id="" value="<?=$a->diasAntes?>">
-                  <p><b>Días de edición permitidos en los calendarios del sistema después del día actual:</b></p>
+                  <h5><b>Días de edición permitidos en los calendarios del sistema después del día actual:</h5></p>
                   <p>Este valor determina el control de permiso para hacer registros en días anteriores a la fecha actual, se debe ingresar un valor númerico entero positivo</p>
                   <input type="number" name="diasDespues" id="" value="<?=$a->diasDespues?>">
                  
@@ -188,7 +185,7 @@ unset($_SESSION['msg']);
                       Debes borrar toda la cantidad e introducir una cantidad nueva, luego presiona el botón para guardar el cambio.</h6>
                      <div class="row">
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                      <input name="monto" min="0"class="form-control"type="text"
+                      <input name="monto" id="monto" min="0"class="form-control"type="text"
                         onmouseleave="return maskMoneda(this)" 
                         onkeypress="return filterFloat(event,this);"  value="<?=$a->montoSeguro?>">
                       </div>

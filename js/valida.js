@@ -1,5 +1,23 @@
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
+
+function revisa_selector(){
+  let campo_roles = document.getElementById("roles");
+  const seleccionado = document.getElementById("grupo__selecciona");
+ if(campo_roles.value == 0){
+   console.log("error");
+  console.log(seleccionado.classList);
+   seleccionado.classList.add('form-group-wrong');
+   seleccionado.classList.remove('form-group-correct');
+   campos.tipoUsuario = false;
+ }else{
+   console.log("success");
+   seleccionado.classList.remove('form-group-wrong');
+   seleccionado.classList.add('form-group-correct');
+   campos.tipoUsuario = true;
+ }
+}
+
 const expresiones = {
 	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -18,20 +36,21 @@ const campos={
   amaterno: false,
   domicilio:false,
   tel:false, 
-  cell:false  
+  cell:false,  
+  tipoUsuario :false
 }
 const validarCampo = (expresion, input, campo)=>{
   if(expresion.test(input.value)){
     document.getElementById(`grupo__${campo}`).classList.remove('form-group-wrong');
    document.getElementById(`grupo__${campo}`).classList.add('form-group-correct');
-   document.getElementById(`mensaje_error__${campo}`).classList.remove('form-message-active');
+   //document.getElementById(`mensaje_error__${campo}`).classList.remove('form-message-active');
   // document.getElementById(`mensaje_error__${campo}`).classList.add('form-message');
    campos[campo]=true;
   }else{
     document.getElementById(`grupo__${campo}`).classList.remove('form-group-correct');
     
     document.getElementById(`grupo__${campo}`).classList.add('form-group-wrong');
-    document.getElementById(`mensaje_error__${campo}`).classList.add('form-message-active');
+    //document.getElementById(`mensaje_error__${campo}`).classList.add('form-message-active');
     //document.getElementById(`mensaje_error__${campo}`).classList.remove('form-message');
     campos[campo]=false;
   }
@@ -61,7 +80,7 @@ function telefono(e){
 }
 
 const validarFormulario = (e)=>{
-  console.log(e.target.value);
+  console.log(e);
 switch(e.target.name){
 case "usuario":
   quitaEspacios(e.target.value,"usuario");
@@ -107,7 +126,7 @@ case 'cell':
 }
 }
 inputs.forEach((input)=>{
-input.addEventListener('keyup', validarFormulario);
+//input.addEventListener('keyup', validarFormulario);
 input.addEventListener('blur', validarFormulario);
 });
 

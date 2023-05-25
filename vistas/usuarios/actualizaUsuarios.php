@@ -98,9 +98,9 @@ $espacios ="         ";
     
       
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-11 ">
-          <!--contenedor central -->
+          <!--contenedor central ../../controlador/usuarios/actualizaUsuarios.php-->
           <div class="row">
-    <form action="../../controlador/usuarios/actualizaUsuarios.php" id="formulario" method="post" class="form-control2">
+    <form action="" id="formulario" method="post" class="form-control2">
           <center><h1>Modificar Usuario</h1></center>
        
                 <div class="row form-control">
@@ -146,7 +146,8 @@ $espacios ="         ";
                      <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12 " id="grupo__usuario">
                         
                         <div class="form-group-input  ">
-                        <label for="">Usuario:</label>    <input type="text" disabled id="usuario"name="usuario"value="<?=$usuario['0']->user?>" class="form-control"required placeholder="Usuario" autocomplete="off">
+                        <label for="">Usuario:</label>    
+                        <input type="text" disabled id="usuario"name="usuario"value="<?=$usuario['0']->user?>" class="form-control"required placeholder="Usuario" autocomplete="off">
                            
                                 <i class=""><img class="form-validation-state img-input" id="img-usuario"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                         </div>
@@ -169,10 +170,12 @@ $espacios ="         ";
                         </div>
                     </div>
                      <!--inicia rol-->
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
-                    <label class="form-label" for="">Tipo de usuario:</label><select name="roles" class="form-control" >
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" id="grupo__selecciona" >
+                    <label class="form-label" for="">Tipo de usuario:</label>
+                    <select name="roles" id="roles" class="form-control" onblur="revisa_selector()" >
+                    <option value="0">Selecciona un rol</option>
              <?php foreach ($roles as $rol):?>  
-       
+                   
                     <option value="<?=$rol->idRol?>" <?php if($usuario['0']->roles_idRol == $rol->idRol){echo ' Selected';}?>>
                     <?=$rol->rol?></option>
                     <?php endforeach?>
@@ -255,7 +258,7 @@ $espacios ="         ";
 </div>
 
  
-<script src="../../js/valida.js">        </script>
+<script src="../../js/valida.js">         </script>
         <script src="../../js/valida-usuarios.js">        </script>
         <script>
                 campos.usuario= true;

@@ -1,4 +1,5 @@
 const formulario = document.getElementById('formulario');
+
 const inputs = document.querySelectorAll('#formulario input');
 const expresiones = {
 
@@ -9,7 +10,7 @@ const expresiones = {
 const campos={
   titulo: false, 
   autor: false,
-  
+  editorial : false,
   isbn: false 
 
 }
@@ -29,6 +30,22 @@ function isbnFormato(myIsbn){
   }
   console.log(myIsbn);
   return myIsbn;
+}
+function revisa_editorial(){
+   let campo_editorial = document.getElementById("editorial");
+   const seleccionado = document.getElementById("grupo__editorial");
+  if(campo_editorial.value == 0){
+    console.log("error");
+   console.log(seleccionado.classList);
+    seleccionado.classList.add('form-group-wrong');
+    seleccionado.classList.remove('form-group-correct');
+    campos.editorial = false;
+  }else{
+    console.log("success");
+    seleccionado.classList.remove('form-group-wrong');
+    seleccionado.classList.add('form-group-correct');
+    campos.editorial = true;
+  }
 }
 function quitaEspacios(cadena,ninput){
   console.log("correcto");
@@ -90,12 +107,14 @@ case "isbn":
 }
 }
 inputs.forEach((input)=>{
-input.addEventListener('keyup', validarFormulario);
+//input.addEventListener('keyup', validarFormulario);
 input.addEventListener('blur', validarFormulario);
+
 });
 formulario.addEventListener('submit', (e)=>{
+revisa_editorial();
 
-if(campos.titulo && campos.autor && campos.isbn){
+if(campos.titulo && campos.autor && campos.isbn && campos.editorial){
   formulario.submit();
 
 document.querySelectorAll('form-group-correct').forEach((icon)=>{

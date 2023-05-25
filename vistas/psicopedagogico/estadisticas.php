@@ -58,7 +58,7 @@ $estCategorias = $estadisticasPsico['categoria'];
     <div class="container">
         <div class="row">
             <!-- contenedor_grafico tiene el css -->
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 contenedor_grafico">
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 contenedor_grafico">
                 
                 <?php  
                 //  se manda la variable a JS
@@ -70,10 +70,12 @@ $estCategorias = $estadisticasPsico['categoria'];
 
                     </canvas>
             </div>
+            <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0">
+</div>
             <!-- separador -->
          
             <!-- contenedor_grafico tiene el css -->
-                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 contenedor_grafico">
+                 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 contenedor_grafico">
                 
                         <?php  
                         //  se manda la variable a JS
@@ -87,8 +89,8 @@ $estCategorias = $estadisticasPsico['categoria'];
                  </div>
             <!-- separador -->
              <!-- contenedor_grafico tiene el css -->
-          
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 contenedor_grafico">
+          <hr style="border:transparent">
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 contenedor_grafico">
                 
                             <?php  
                             //  se manda la variable a JS

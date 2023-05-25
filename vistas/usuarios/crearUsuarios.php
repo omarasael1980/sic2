@@ -134,8 +134,8 @@ $roles = buscaRoles();
                                 <input class="form-control img-container " required id="nombre" type="text" name="nombre" placeholder="Nombre">
                                     <i class=""><img class="form-validation-state img-input" id="img-nombre"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                             </div>
-                            <div class="form-message" id="mensaje_error__nombre">
-                            <p>Escribe el nombre, puede contener solo letras</p>
+                            <div class="form-message_permanente" id="mensaje_error__nombre">
+                            <p>Escribe el nombre del usuario, puede contener solo letras</p>
                             </div>
                     </div>
                    <!--inicia Apaterno-->
@@ -148,8 +148,8 @@ $roles = buscaRoles();
                                 <i class=""><img class="form-validation-state img-input" id="img-apaterno"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                         </div>
                     
-                        <div class="form-message" id="mensaje_error__apaterno">
-                        <p>Puede contener solo letras</p>
+                        <div class="form-message_permanente" id="mensaje_error__apaterno">
+                        <p>Escribe el apellido paterno del ususario, puede contener solo letras</p>
                         </div>
                     </div>
                      <!--inicia amaterno-->
@@ -162,8 +162,8 @@ $roles = buscaRoles();
                                 <i class=""><img class="form-validation-state img-input" id="img-amaterno"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                         </div>
                     
-                        <div class="form-message" id="mensaje_error__amaterno">
-                        <p>Puede contener solo letras</p>
+                        <div class="form-message_permanente" id="mensaje_error__amaterno">
+                        <p>Escribe el apellido materno del usuario, puede contener solo letras</p>
                         </div>
                     </div>
                      <!--inicia usuario-->
@@ -176,8 +176,8 @@ $roles = buscaRoles();
                                 <i class=""><img class="form-validation-state img-input" id="img-usuario"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                         </div>
                     
-                        <div class="form-message" id="mensaje_error__usuario">
-                        <p>Escribe el usuario, puede contener letras, números, guión alto o bajo.</p>
+                        <div class="form-message_permanente" id="mensaje_error__usuario">
+                        <p>Escribe el usuario, no puede contener espacios, puede contener letras, números, guión alto o bajo.</p>
                         </div>
                     </div>
                      <!--inicia password-->
@@ -190,31 +190,35 @@ $roles = buscaRoles();
                                 <i class=""><img class="form-validation-state img-input" id="img-password"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                         </div>
                     
-                        <div class="form-message" id="mensaje_error__password">
-                        <p>El password debe tener entre 8 a 14 caracteres.</p>
-                        </div>
+                        <div class="form-message_permanente" id="mensaje_error__password">
+                        <p>El password debe tener entre 8 a 14 caracteres, debe contener al menos una mayúscula, minúscula, número y caracter especial.</p>
+                        </div> 
                     </div>
                      <!--inicia rol-->
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" id="grupo__rol" >
                     <label class="form-label" for="rol">Tipo de Usuario:</label>
-                            <select id="rol" name="rol" class="form-control">
+                            <select id="rol" name="rol" class="form-control" onBlur='valida_combo()'>
+                              <option value="0">Selecciona un rol</option>
                                 <?php foreach($roles as $rol):?>
                                 <option value="<?=$rol->idRol?>"><?=$rol->rol?></option>
                                <?php endforeach?>.
                             </select>
+                        </div>
+                        <div class="form-message_permanente" id="mensaje_error__password">
+                        <p>Debes seleccionar un tipo de usuario, dependiendo de las funciones.</p>
                         </div>
                      <!--inicia domicilio-->
                      <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 " id="grupo__domicilio">
                         
                         <div class="form-group-input  ">
                         <label class="form-label" for="domicilio">Domicilio:</label>
-                            <input class="form-control img-container " required id="domicilio" type="text" name="domicilio" placeholder="Domicilio">
+                            <input class="form-control img-container " required id="domicilio" type="text" name="domicilio" placeholder="Av. Siempre viva No. 32, Springfield">
                            
                                 <i class=""><img class="form-validation-state img-input" id="img-domicilio"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                         </div>
                     
-                        <div class="form-message" id="mensaje_error__domicilio">
-                        <p>Escribe domicilio, puede contener solo letras y números</p>
+                        <div class="form-message_permanente" id="mensaje_error__domicilio">
+                        <p>Escribe el  domicilio del usuario, puede contener solo letras y números</p>
                         </div>
                     </div>
                      <!--inicia tel-->
@@ -222,12 +226,12 @@ $roles = buscaRoles();
                         
                         <div class="form-group-input  ">
                         <label class="form-label" for="tel">Teléfono:</label>
-                            <input class="form-control img-container " required id="tel" type="tel" name="tel" placeholder="Teléfono">
+                            <input class="form-control img-container " required id="tel" type="tel" name="tel" placeholder="123-123-1234">
                            
                                 <i class=""><img class="form-validation-state img-input" id="img-tel"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                         </div>
                     
-                        <div class="form-message" id="mensaje_error__tel">
+                        <div class="form-message_permanente" id="mensaje_error__tel">
                         <p>El número de teléfono solo admite números,recibe 10 dígitos ejemplo: 123-456-7890</p>
                         </div>
                     </div>
@@ -236,12 +240,12 @@ $roles = buscaRoles();
                         
                         <div class="form-group-input  ">
                         <label class="form-label" for="cell">Celular:</label>
-                            <input class="form-control img-container " required id="cell" type="tel" name="cell" placeholder="Celular">
+                            <input class="form-control img-container " required id="cell" type="tel" name="cell" placeholder="123-123-1234">
                            
                                 <i class=""><img class="form-validation-state img-input" id="img-cell"src="../../img/icons/cross.png" alt="incorrecto"> </i>
                         </div>
                     
-                        <div class="form-message" id="mensaje_error__cell">
+                        <div class="form-message_permanente" id="mensaje_error__cell">
                         <p>El número de celular solo admite números, recibe 10 dígitos ejemplo: 123-456-7890</p>
                         </div>
                     </div>

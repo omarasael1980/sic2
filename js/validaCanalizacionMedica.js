@@ -66,12 +66,12 @@ case "desc":
 }
 }
 inputs.forEach((input)=>{
-input.addEventListener('keyup', validarFormulario);
+//input.addEventListener('keyup', validarFormulario);
 input.addEventListener('blur', validarFormulario);
 });
 textarea.forEach((ta)=>{
 
-    ta.addEventListener('keyup', validarFormulario);
+   // ta.addEventListener('keyup', validarFormulario);
     ta.addEventListener('blur', validarFormulario);
     });
 formulario.addEventListener('submit', (e)=>{

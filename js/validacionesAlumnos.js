@@ -44,7 +44,7 @@ case "nombre":
 }
 }
 inputs.forEach((input)=>{
-input.addEventListener('keyup', validarFormulario);
+//input.addEventListener('keyup', validarFormulario);
 input.addEventListener('blur', validarFormulario);
 });
 formulario.addEventListener('submit', (e)=>{
