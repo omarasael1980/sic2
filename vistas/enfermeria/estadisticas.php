@@ -58,6 +58,8 @@ $estCat =atencionesxCategoria();
         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 ">
           <!--contenedor central -->
   <!-- contenedor_grafico tiene el css -->
+  
+  <?php if($estCat != ""):?>
   <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 contenedor_grafico">
                 
                 <?php  
@@ -89,8 +91,9 @@ $estCat =atencionesxCategoria();
     <!-- separador -->
 
             <!--contenedor central -->
-          
-       
+          <?php else:?>
+            <h1 class="text-center">No tenemos datos que mostrar</h1>
+       <?php endif?>
             </div>
 <!-- FIN CENTRO -->
 <!--contenedor central -->

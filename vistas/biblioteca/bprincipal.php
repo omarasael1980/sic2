@@ -213,6 +213,8 @@ if(isset( $_SESSION['msg'])){
                                                        <br>                       
                         <!--final libros prestados-->
                           <!--titulos mas prestados-->
+                      
+                          <?php if($e['Total'][0]->prestados !=0): ?>
                           <div class="row form-control2 postit2">
                             <h4 class="text-center">Top 10</h4>
                           <h4 class="text-center">Títulos mas leídos</h4>
@@ -233,6 +235,7 @@ if(isset( $_SESSION['msg'])){
                                                         <?php endforeach?>
                             </div>
                             <br>
+                            <?php endif?>
                               <!--grupos con mas prestamos-->
                               <div class="row form-control2 postit2">
                                     <h4 class="text-center">Grupos con  más préstamos</h4>

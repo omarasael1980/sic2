@@ -57,6 +57,7 @@ if(isset( $_SESSION['msg'])){
 ?>
 
 
+
 <!-- body  -->
 <div class="container-fluid">
     
@@ -170,7 +171,7 @@ if(isset( $_SESSION['msg'])){
            <!--filtra libros-->   
 
         <div class="row">
-      
+      <!-- Cuando se carga la pagina si  no  eligio ejemplares -->
                 <?php if(!isset($ejemplares)):?>
                 <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
                 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
@@ -199,8 +200,8 @@ if(isset( $_SESSION['msg'])){
              
             
                 <?php else:?>
-       
-                
+       <!-- SI ya se eligio ejemplares -->
+               
         <div class="row">
             <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0"></div>
             <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
@@ -211,6 +212,7 @@ if(isset( $_SESSION['msg'])){
                   <?php $i=1;?>
                   <h3 class="text-center">Ejemplares encontrados:</h3>
                   <hr>
+                  <!-- Si existen ejemplares -->
                  <?php if ($ejemplares != ""):?>
                   <?php  foreach($ejemplares as $e):?>
                     <div class="row antecedentes m-0 p-0">
@@ -262,7 +264,6 @@ if(isset( $_SESSION['msg'])){
         
         <?php endif?>
 
-    
       <?php if( isset($proceso)):?>
             <?php if ($proceso == 'editaEjemplar'):?>
                     <?php if(isset($buscaEjemplar)):?>

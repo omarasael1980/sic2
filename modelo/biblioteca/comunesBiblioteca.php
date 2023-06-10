@@ -303,6 +303,7 @@ function buscaEstadisticasPrestamos(){
   //titulos mas prestados
   $libros = buscaTodosLibros();
   foreach($libros as $l){
+      $estTitulo[]=array();
       $titlosMasPrestados = buscaPrestamosLibro($l->idlibros);
       $i=0;
         //se cuentan cuantos prestamos tiene el titulo
@@ -310,6 +311,7 @@ function buscaEstadisticasPrestamos(){
             foreach($titlosMasPrestados as $tmp){
               $i=$i+1;
             }
+            
             $estTitulo[]=array( "prestamos"=>$i, "titulo"=>$l->titulo);
             arsort($estTitulo);
           }

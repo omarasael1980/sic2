@@ -54,7 +54,7 @@ $estCategorias = $estadisticasPsico['categoria'];
      </div>
       
   <div class="col-lg-10 col-md-10 col-sm-8 col-xs-12 "> <!--contenedor central -->  
-
+<?php if($estadisticasPsico["atendidos"][0]->atendidos !=0):?>
     <div class="container">
         <div class="row">
             <!-- contenedor_grafico tiene el css -->
@@ -105,6 +105,10 @@ $estCategorias = $estadisticasPsico['categoria'];
             
         </div>
     </div>
+    <?php else:?>
+
+    <h1 class="text-center">No hay ningún registro aún</h1>
+    <?php endif?>
 <!-- FIN CENTRO --></div>
 <!--contenedor central -->
     

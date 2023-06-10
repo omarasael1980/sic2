@@ -7,15 +7,22 @@ require_once '../../modelo/enfermeria/comunesEnfermeria.php';
 require '../../modelo/config/comunes.php';
 
 
+
+
 if(!isset($_SESSION['user']) || !in_array('Enfermeria',$_SESSION['user']->perm)){
     header("Location:../../");
 }
-$fechaI='2022-08-21';
+$ajustes = buscSettings();
+$fechaI=$ajustes[0]->inicioClases;
 date_default_timezone_set("America/Tijuana"); 
 $fechaF= date("Y-m-d");
-$estadisticas = dameEstadisticasMedicas('2022-08-21',$fechaF);
-$roles = buscaRoles();
 $uCasos =cargarUltimasAtencionesMedicas();
+if($uCasos == false){
+  
+$estadisticas = dameEstadisticasMedicas($fechaI,$fechaF);
+}
+$roles = buscaRoles();
+
 $categorias = getCategoriasMedicas();
 $espacios = "        ";
 
@@ -65,7 +72,7 @@ $espacios = "        ";
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
           <!--contenedor central -->
 <br>
-         <h3 class="text-center"><b>Inicio de atención médica</b></h3>
+         <h1 class="text-center"><b>Inicio de atención médica</b></h1>
     <div class="row m-0 p-0">
     <form action="../../controlador/enfermeria/atencion_enfermeria.php"  class="form-control2"method="post" autocomplete="off">
             
@@ -95,7 +102,10 @@ $espacios = "        ";
             <div class="row m-0 p-0">
                     <div class="form-control col-lg-12 col-md-12 col-sm-12 col-xs-12 m-0 p-0">
                         <!--Se muestran los ultimos casos atendidos-->
-                        
+                        <?php if($uCasos ==false):?> 
+                          <h1 class="text-center">Aún no hay registros</h1> 
+                          <?php else: ?>
+                          
                         <h1 class="text-center">Últimos casos atendidos</h1>  
                         <hr><br>
                         <div class="container">
@@ -104,7 +114,7 @@ $espacios = "        ";
                           
                             <!--barra de encabezado de cada caso-->
              
-                    <?php if($uCasos!=false):?>
+                   
                     <?php foreach($uCasos as $caso):?>
                  
                       <div class="flex-row ">
@@ -143,16 +153,17 @@ $espacios = "        ";
                     </div>
                     <br><br> <hr>
                     <?php endforeach?>
-                    <?php endif?>
+                
                
                     </div>
-                       
+                    <?php endif?>
                     </div>
                    
-    </div>
+    </div>   
 
             <!--contenedor central -->
         </div>
+        
 <!-- FIN CENTRO -->
 <!--contenedor central -->
      
@@ -171,6 +182,7 @@ $espacios = "        ";
                         <div class="form-control2"   >
                            
                          <h4 class="text-center">Estadísticas</h4>
+                         <?php if(!isset ($estadisticas)):?>
                           <?php foreach($estadisticas as $e):?>
                        
                             <!--Se muestran las estadisticas dias sin incidentes-->
@@ -255,6 +267,8 @@ $espacios = "        ";
                                </div>                                   
                         </div>
                         <?php endforeach?>
+                     
+                        <?php endif ?>
                     </div>
                     
 

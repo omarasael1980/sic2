@@ -37,11 +37,13 @@ foreach ( $libros as $l){
 $titulos[] ="" ;
 
 $i=0;
-foreach( $estTitulo as $t){
-if($i<10){
-  $titulos[$i] = $t;
-}
-$i++;
+if(isset($estTitulo)) {
+    foreach($estTitulo as $t) {
+        if($i<10) {
+            $titulos[$i] = $t;
+        }
+        $i++;
+    }
 }
 ?>
 
@@ -123,8 +125,8 @@ $i++;
                              
                                                        <br>   
                           
-                                                
-                                     
+                                               
+                                  
                                           <!-- contenedor_grafico tiene el css -->
                               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <h1 class="text-center"><b>TOP 10</b></h1>
@@ -175,6 +177,7 @@ $i++;
                             <!-- separador -->  
 
                               <!--grupos con mas prestamos-->
+                          
                              
                                                         <?php endforeach?>
                                                     <?php endif?>

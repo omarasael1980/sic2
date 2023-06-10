@@ -6,6 +6,7 @@ require '../complementos/nav_2.php';
 
 require '../../modelo/config/comunes.php';
 
+
 $espacios = "        ";
 if(!isset($_SESSION['user']) || !in_array('Ajustes',$_SESSION['user']->perm)){
     header("Location:../../");

@@ -266,7 +266,7 @@ function cargarUltimasAtencionesMedicas(){
      }
     }
   function dameEstadisticasMedicas($fechaI, $fechaF){
-      require_once '../../modelo/config/pdo.php';
+    require '../../modelo/config/pdo.php';
    
       $categorias =getCategoriasMedicas();
       //se prepara el array para almacenar resultados por categorias
@@ -285,7 +285,9 @@ function cargarUltimasAtencionesMedicas(){
                     while($row = $st->fetch(PDO::FETCH_ASSOC)){
                     $ec[]= array( 'numero'=>$row['cantidad'], 'categoria'=>$cat->categoriaMedica);
 
-                    }
+                    } 
+                    }else {
+                      $ec[]=array('numero'=>0, 'categoria'=>0);
       
               }
       
@@ -313,6 +315,8 @@ function cargarUltimasAtencionesMedicas(){
                 $eg[]= array( 'numero'=>$row['valor'], 'grupo'=>$gr->grupo);
                 
                 }
+                }else{
+                  $eg[]=array('cantidad'=>0);
   
           }
 
@@ -335,17 +339,20 @@ function cargarUltimasAtencionesMedicas(){
         $st->execute() or die (implode(">>", $st->errorInfo()));
             if($st->rowCount()>0){
               $ultimoEvento []=array('fecha'=>$st->fetch(PDO::FETCH_ASSOC));
+              $fechita =   $ultimoEvento[0]['fecha'];
+              $ultimoIncifente = $fechita['fecha'];
+              $ultimoIncifente =substr($ultimoIncifente,0,-9);
+              date_default_timezone_set("America/Tijuana");
+             $hoy = getdate();
+             $hoy = date("Y-m-d"); 
+             //se restan los dias
+             $diferencia = dias_pasados($hoy,$ultimoIncifente);
             }else{
-              $ultimoEvento []=array('cantidad'=>0, );
+              $ultimoEvento []=array('fecha'=>"" );
+              $diferencia ="";
             }
-         $fechita =   $ultimoEvento[0]['fecha'];
-         $ultimoIncifente = $fechita['fecha'];
-         $ultimoIncifente =substr($ultimoIncifente,0,-9);
-         date_default_timezone_set("America/Tijuana");
-        $hoy = getdate();
-        $hoy = date("Y-m-d"); 
-        //se restan los dias
-        $diferencia = dias_pasados($hoy,$ultimoIncifente);
+            
+       
         //se ordena el array
         arsort($ec);
        arsort($eg);

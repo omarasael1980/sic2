@@ -387,10 +387,11 @@ unset($_SESSION['msg']);
     </div> 
 <!-- FIN CENTRO -->
 <!--contenedor central -->
-     
+    
 
         
         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 form-control2">
+          <?php if ($estadisticasPsico["atendidos"][0]->atendidos !=0):?>
     <!--contenedor derecha -->
  <!-- inician postit con estadisticas -->
      <!-- contenedor_grafico tiene el css -->
@@ -405,7 +406,7 @@ unset($_SESSION['msg']);
                     <canvas class="m-0 p-0" id="graficaGrupos" >
 
                     </canvas>
-            </div>
+    </div>
             <!-- separador -->
                              <!--Se muestran las estadisticas dias sin incidentes-->
     <div class="row m-0 p-0">
@@ -423,8 +424,8 @@ unset($_SESSION['msg']);
                              <H4  class="text-center  blink <?=$color?>"><?=$estSeguimiento?></H4>
                                
                               
-                            </div>
-                        </div>
+        </div>
+    </div>
                         <br>
                          <!--Se muestran casos atendidos-->
     <div class="row m-0 p-0">
@@ -456,20 +457,28 @@ unset($_SESSION['msg']);
                                         <?php endif?>
                                         <?php endforeach?>
                                    </div>
+                                  
                             </div>
-                        </div> 
-                          <!-- contenedor_grafico tiene el css -->
+                     
+                          </div> 
+                         
             
               
                         <br>
                    
  <!-- termina el postit -->
     <!--contenedor derecha -->
+    <?php else:?>
+      </div>
+<h1 class="text-center ">No hay datos disponibles</h1>
 
+<?php endif ?>
         </div>
+        
     </div>
-</div>
    
+</div>
+
  <script src="../../js/colapsables.js"></script>
  <script src="../../js/cambioSeguimiento.js"> </script>
  <script src="../../js/validacionesNuevoPsico2.js"> </script>
