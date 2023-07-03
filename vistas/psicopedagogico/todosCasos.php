@@ -10,8 +10,20 @@ require '../../modelo/config/comunes.php';
 if(!isset($_SESSION['user']) || !in_array('Psicopedagogico', $_SESSION['user']->perm)){
     header("Location:../../");
 }
-$pendiente = cargaPendientesPsico();
+$ajustes = buscSettings();
+$fechaInicioClases = $ajustes[0]->inicioClases;
 $today =  date('Y-m-d');
+if(isset($_POST['fechaI'])){
+    $fechaI= $_POST['fechaI'];
+    $fechaF = $_POST['fechaF'];
+}else{
+    $fechaI= $fechaInicioClases;
+    $fechaF = $today;
+}
+
+$todos_Casos = cargarTodosCasosPiscologia($fechaI,$fechaF);
+$pendiente = cargaPendientesPsico(); 
+
 $motivos = cargaMotivosPsico();
 $viaComunicacion = cargaMotivosNotificacion();
 $especialistas = buscaEspecialistas();
@@ -71,7 +83,6 @@ unset($_SESSION['msg']);
                    <br>     <a class="list-group-item text-center list-group-item-action" href="psicoNuevoCaso.php"><p><i class="fa-solid fa-file-circle-plus"></i><?=$espacios?> Nuevo caso </p></a>
                     <br>    <a href="estadisticas.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-chart-column"></i><?=$espacios?>Estadísticas </p> </a>
                       <br>  <a href="historialPsico.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-file-lines"></i> <?=$espacios?>Historial Alumno</p></a>
-                      <br>  <a href="todosCasos.php" class="list-group-item text-center list-group-item-action"><p><i class="fa-solid fa-briefcase"></i> <?=$espacios?>Historial de casos</p></a>
                         
                        
           </div>
@@ -84,16 +95,41 @@ unset($_SESSION['msg']);
       
       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 m-0 p-0">
           <!--contenedor central -->
-           <h1 class="text-center"> Casos pendientes de seguimiento.</h1>
+           <h1 class="text-center"> Casos atendidos</h1>
+           <h3 class="text-center">Entre las fechas</h3>
+           <div class="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
+           <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12">
+            <form action="./todosCasos.php" class="busqueda_fechas" method="post">
+                <label class="form-control-2" for="fechaInicio"><p>Fecha de Inicio</p></label>
+                <input type="date" class="form-control" name="fechaI"  min=<?=$fechaInicioClases?>
+                max=<?=$today?> value=<?=$fechaI?> id="fechaInicio">
+                <label class="form-control-2" for="fechaFinal"><p>Fecha Final</p></label>
+                <input type="date" class="form-control"name="fechaF" min=<?=$fechaInicioClases?>
+                max=<?=$today?> value=<?=$fechaF?> id="fechaFinal">
+                <br>
+                <input type="submit" class="btn btn-outline-primary" value="Cargar Búsqueda">
+            </form>
+           </div>
+           <div class="col-lg-4 col-md-3 col-sm-2 col-xs-0"></div>
+          
           <div class="row"> <!-- INICIO CENTRO -->
             <!-- Se cargan los registros conetiqueta de seguimiento -->
+            <hr>
+            <?php if($todos_Casos === false):?>
+                <h3 class="text-center">No se encontraron  casos del <?=$fechaI?> al <?=$fechaF?></h3>
+            </div>
+            <?php else:?>
+                <h3 class="text-center">Se encontraron <?= sizeof($todos_Casos)?> casos</h3>
+            <?php endif?>
+         
            
+            <hr>
     
-           <?php if($pendiente != ""):?>
-           <?php foreach($pendiente as $p):?>
+           <?php if($todos_Casos != ""):?>
+           <?php foreach($todos_Casos as $p):?>
             
            <!-- se llaman datos del alumno -->
-           <?php if($pendiente !=null){
+           <?php if($todos_Casos !=null){
           //busca datos del estudiante
            $idalget = buscaAlumno($p->estudiantes_idestudiantes); //carga al alumno
              //se prepara para juntar el nombre
@@ -115,7 +151,7 @@ unset($_SESSION['msg']);
               <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
                <div class="form-check form-switch">
                   <input type="hidden" name="folio" id="folio" value="<?=$p->idatencion_psico?>">
-                  <input class="form-check-input" type="checkbox" checked onChange="actualizaSeg(<?=$p->idatencion_psico?>)" id="seguimientoPsico<?=$p->idatencion_psico?>"/>
+                  <input class="form-check-input" type="checkbox" <?php if($p->darSeguimiento == 1){echo 'checked';}?> onChange="actualizaSeg(<?=$p->idatencion_psico?>)" id="seguimientoPsico<?=$p->idatencion_psico?>"/>
 
                     <label class="form-check-label" for="seguimientoPsico"><b><p>Dar seguimiento</b></p></label>
                 </div>

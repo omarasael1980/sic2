@@ -136,6 +136,24 @@
         return false;
      }
   }
+  function cargarTodosCasosPiscologia($fechaI, $fechaF){
+    require '../../modelo/config/pdo.php';
+    $query = "SELECT * FROM atencion_psico 
+              WHERE fecha between :fechaI and :fechaF
+              ORDER BY fecha DESC;";
+    $st = $pdo->prepare($query);
+    $st->bindParam(':fechaI',$fechaI);
+    $st->bindParam(':fechaF',$fechaF);
+
+    $st->execute() or die (implode ('>>', $st->errorInfo()));
+    if($st->rowCount()>0){
+        $casos=$st->fetchAll(PDO::FETCH_OBJ);
+          return $casos;
+      }else{
+        return false;
+    }
+              
+  }
   function cargaCategoriasPsico(){
     require '../../modelo/config/pdo.php';
       $query ="CALL select_buscaCategoriasPsico()";
