@@ -1,0 +1,50 @@
+# SICS 2 SISTEMA INTEGRAL COLEGIO SANTEE 2
+
+## Título 
+Este proyecto consta de dos fases, ambas como parte de un trabajo de titulación de la carrera de desarrollo de software en UNADM. El proyecto fue desarrollado para  el colegio Santee ubicado en la  parte oriente de la ciudad de Mexicali, México. El proyecto inicio con el levantamiento de requierimientos, traducidos a mas de 64 Historias de Usuarios, que contiene los siguientes módulos: Enfermería, Psicopedagogía, prefectura y biblioteca escolar. El proyecto fue realizado en primera instancia con PHP, JS, MySQL, HTML, CSS. Posterioremente se incorporó Bootstrap y algunas librerias para manejo de reportes en PDF y graficas estadisticas.
+
+## Estado del proyecto:
+Este proyecto esta en fase de mantenimiento, posiblemente lo pase a React, quiero modificar la estructura y eliminar todo el código repetido.
+
+##  Descripción:
+### - Enfermería: 
+Permite ir documentando la atención médica proporcionada a los mas de 1200 estudiantes del colegio, se puede visualizar el historial de atención de los alumnos para determinar tendencias, además de que lleva el conteo del gasto en el seguro escolar, permite visualizar con las gráficas la tendencia y origen de los incidentes, etc.
+### - Psicopedagógico:
+Permite documentar la atención psicológica, orientación pedagógica, etc. a los alumnos y sus familias, así como la canalización externa. En este módulo también se lleva a cabo el registro propio de prefectura, permite generar reportes por atención, historial de alumno, etc.
+### - Biblioteca: 
+Permite llevar el control y registro de los libros y ejemplares con los que cuenta el colegio, además de permitir registrar los préstamos de libros a cada alumno para que el docente de español conozca los libros leídos en su estancia en los 3 años de secudnaria, con ello se impide que lea otra vez un libro que ya entregó reporte. Permite conocer a través de gráficos la tendencia y preferencia de los préstamos por categorias y autores
+### - Ajustes:
+Permite mover los ajustes para las necesidades de cada institución
+
+## Instalación: 
+xxxxxxxxx
+
+
+## Uso: Describe cómo utilizar el proyecto. Proporciona ejemplos y casos de uso para que los usuarios puedan entender cómo aplicarlo en sus propios proyectos.
+
+## Imágenes: 
+![image](https://github.com/omarasael1980/sic2/assets/51717542/207f8761-608e-416c-b34c-3dcc33b9d30f)
+![image](https://github.com/omarasael1980/sic2/assets/51717542/78a63e24-5b25-457f-9412-3685f1517b80)
+![image](https://github.com/omarasael1980/sic2/assets/51717542/d3d2ef68-84bd-4484-bbfe-6f6e16410085)
+![image](https://github.com/omarasael1980/sic2/assets/51717542/6ba95f3e-4a6a-4451-be0d-66a3bec3ad6a)
+![image](https://github.com/omarasael1980/sic2/assets/51717542/2a33e128-3eed-4aaf-a62f-2d16e037bc53)
+
+
+
+
+
+## Contribución:
+Si quieres hacer una contribución puedes hacer un FORK para realizar los cambios que se requieran y mandame un mensaje para saber de tu contribucón y poder revisarla.
+## Créditos:
+### HTML2PDF: se utiliza en las secciones que generan reportes en PDF
+### Bootstrap se complementó el proyecto en algunas partes
+### Chart.js: Se usó en las gráficas de estadísticas.
+### SweetAlert: Generación de alertas de confirmación
+## Licencia: Especifica la licencia bajo la cual se distribuye el proyecto. Asegúrate de elegir una licencia que sea adecuada para tus objetivos y que permita que otros utilicen, modifiquen y distribuyan el código.
+
+## Estado de construcción: Si es un proyecto en desarrollo, puedes incluir información sobre el estado de la construcción, las pruebas y la integración continua.
+
+## Notas de versión: Si es apropiado, proporciona un historial de versiones con detalles sobre las actualizaciones y cambios en cada versión.
+
+## Contacto
+email: omarasael80
