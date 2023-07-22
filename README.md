@@ -1,47 +1,63 @@
 # SISTEMA INTEGRAL PARA EL COLEGIO SANTEE AC
 
 ## Propósito:
-El sistema desarrollado mejora el control y gestión de los servicios que ofrecen los departamentos de enfermeria y psicopedagogia. Además el sistema también genera reportes imprimibles de los casos atendidos, permite llevar el control del gasto del seguro escolar, entre otras funciones. A unos meses de la implementación del sistema ha mejorado la  atención al cliente, automatizado los procesos y disminuido los tiempos de respuesta.
+El propósito del sistema desarrollado es optimizar el control y gestión de los servicios proporcionados por los departamentos de enfermería y psicopedagogía. Este sistema innovador ofrece múltiples funcionalidades, incluyendo la generación de reportes imprimibles de los casos atendidos y la capacidad de supervisar el gasto del seguro escolar, entre otras prestaciones.
+
+Desde su implementación hace unos meses, el sistema ha demostrado su eficacia al mejorar significativamente la atención al cliente, automatizar procesos clave y reducir drásticamente los tiempos de respuesta. Estos resultados han impulsado una mayor eficiencia en la administración de los servicios, beneficiando tanto al personal encargado como a los usuarios.
 
 ## Funciones principales
-El sistema consta de 4 módulos que a continuación describo:
-### - Enfermería: 
-* Permite ir documentando la atención médica proporcionada a los mas de 1200 estudiantes del colegio.
-* Se puede visualizar el historial de atención de los alumnos para determinar tendencias
-* Además de que lleva el conteo del gasto en el seguro escolar
-* Permite visualizar con las gráficas la tendencia y origen de los incidentes
-### - Psicopedagógico:
-* Permite documentar la atención psicológica  y  de orientación pedagógica
-* Canalización externa.
-* Control de  prefectura (reportes, notificaciones, justificantes, suspensiones y citatorios)
-* Generar reportes por atención, historial de alumno, etc.
-### - Biblioteca: 
-* Permite llevar el control y registro de los libros y ejemplares
-* Registrar los préstamos de libros a cada alumno
-* Permite conocer a través de gráficos la tendencia y preferencia de los préstamos por categorias y autores
-### - Ajustes:
-* Permite mover los ajustes para las necesidades de cada institución
-* Control de ususarios y permisos
-* Establecimiento de fechas de inicio y fin de ciclo escolar
-* Establecer monto de seguro escolar
+El sistema cuenta con 4 módulos que detallamos a continuación:
+
+### Módulo de Enfermería:
+
+Permite documentar y registrar la atención médica brindada a los más de 1200 estudiantes del colegio.
+Ofrece la visualización del historial de atención de cada alumno, facilitando la identificación de tendencias y patrones relevantes.
+Lleva un conteo preciso del gasto en el seguro escolar.
+Proporciona gráficas para visualizar claramente la tendencia y origen de los incidentes médicos atendidos.
+### Módulo Psicopedagógico:
+
+Facilita la documentación de la atención psicológica y orientación pedagógica brindada a los estudiantes.
+Permite canalizar externamente casos que requieran atención especializada.
+Controla aspectos relacionados con la prefectura, como reportes, notificaciones, justificantes, suspensiones y citatorios.
+Genera reportes detallados sobre las atenciones realizadas y el historial de cada alumno, entre otras funcionalidades.
+### Módulo de Biblioteca:
+
+Permite un registro exhaustivo y ordenado de todos los libros y ejemplares de la biblioteca.
+Gestiona los préstamos de libros a cada alumno de manera eficiente.
+Brinda gráficos y estadísticas que muestran las preferencias y tendencias en las categorías y autores más solicitados.
+### Módulo de Ajustes:
+
+Brinda flexibilidad para adaptarse a las necesidades específicas de cada institución.
+Permite administrar usuarios y sus respectivos permisos de acceso al sistema.
+Facilita el establecimiento de fechas de inicio y fin del ciclo escolar.
+Ofrece la posibilidad de configurar el monto del seguro escolar de acuerdo con los requerimientos de la institución.
+
+Con esta estructura mejorada, el sistema se presenta como una herramienta completa y versátil que agiliza la gestión administrativa y de servicios en el colegio, contribuyendo significativamente a mejorar la eficiencia y el funcionamiento general de la institución educativa.
   
 
 ## Descripción
-Este proyecto consta de dos fases, ambas como parte de un trabajo de titulación de la carrera de desarrollo de software en UNADM. El proyecto fue desarrollado para  el colegio Santee ubicado en la  parte oriente de la ciudad de Mexicali, México. El proyecto inicio con el levantamiento de requierimientos, traducidos a mas de 64 Historias de Usuarios, que contiene los siguientes módulos: Enfermería, Psicopedagogía, prefectura y biblioteca escolar. El proyecto fue realizado en primera instancia con PHP, JS, MySQL, HTML, CSS. Posterioremente se incorporó Bootstrap y algunas librerias para manejo de reportes en PDF y gráficas estadísticas.
+Este proyecto se divide en dos fases, ambas forman parte de mi trabajo de titulación en la carrera de desarrollo de software en la UNADM. La iniciativa fue desarrollada para el colegio Santee, ubicado en la parte oriente de la ciudad de Mexicali, México.
+
+La primera fase del proyecto consistió en llevar a cabo un detallado levantamiento de requerimientos, los cuales se tradujeron en más de 64 Historias de Usuarios. Estas historias dieron forma a los siguientes módulos del sistema: Enfermería, Psicopedagogía, Prefectura y Biblioteca Escolar, cubriendo así diversas áreas fundamentales de la institución.
+
+En la fase inicial del desarrollo, se emplearon tecnologías como PHP, JS, MySQL, HTML y CSS. Posteriormente, para mejorar la interfaz y funcionalidades del sistema, se incorporó el framework Bootstrap y algunas librerías que facilitaron la generación de reportes en PDF y gráficas estadísticas.
+
+Este proyecto no solo representa un desafío académico sino también una valiosa oportunidad para brindar una solución informática eficiente y efectiva al colegio Santee, mejorando su administración y ofreciendo un sistema más completo y útil para su personal y estudiantes.
 
 ## Instalación: 
 
 ### La instalación de nuestro proyecto es rápida y sencilla. Sigue estos simples pasos:
 * Clona el repositorio: Para obtener el proyecto, simplemente clona el repositorio desde la rama Master en tu máquina local.
-* Importa la BD: La base de datos que se incluye aquí es solo ilustrativa
-* Ejecuta el proyecto: Una vez que hayas clonado el repositorio y configurado tu BD, estás listo para ejecutar el proyecto.
+* Importa la base de datos: Ten en cuenta que la base de datos incluida aquí es solo ilustrativa.
+* Ejecuta el proyecto: Una vez que hayas clonado el repositorio y configurado tu base de datos, estarás listo para ejecutar el proyecto.
+
+¡Así de fácil! Ahora podrás disfrutar de todas las funcionalidades que ofrece nuestro proyecto en tu entorno local. Si tienes alguna duda o necesitas ayuda durante el proceso de instalación, no dudes en contactarnos. Estamos aquí para asistirte en todo momento.
 
 ## Guía de uso:
-El sistema es fácil de utilizar, aqui te mostramos como acceder a diferentes perfiles: 
-- ingresar a página de Login
-- escribir tu usuario y contraseña
-- Ingresar
-Con esos pasos simples puedes ingresar al sistema
+Accede a la página de inicio de sesión.
+Introduce tu nombre de usuario y contraseña.
+Haz clic en "Ingresar".
+Con estos sencillos pasos, podrás acceder rápidamente al sistema y disfrutar de todas sus funciones sin complicaciones. ¡Así de simple es utilizar nuestra plataforma! Si tienes alguna consulta o necesitas asistencia adicional, no dudes en contactarnos. Estamos aquí para ayudarte en todo momento.
 ![image](https://github.com/omarasael1980/sic2/assets/51717542/3c984007-b2d4-4219-9520-7cbc067d0771)
 
   
