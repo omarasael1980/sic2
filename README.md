@@ -1,12 +1,10 @@
-# SICS 2 SISTEMA INTEGRAL COLEGIO SANTEE 2
+# SISTEMA INTEGRAL PARA EL COLEGIO SANTEE AC
 
-## Título 
-Este proyecto consta de dos fases, ambas como parte de un trabajo de titulación de la carrera de desarrollo de software en UNADM. El proyecto fue desarrollado para  el colegio Santee ubicado en la  parte oriente de la ciudad de Mexicali, México. El proyecto inicio con el levantamiento de requierimientos, traducidos a mas de 64 Historias de Usuarios, que contiene los siguientes módulos: Enfermería, Psicopedagogía, prefectura y biblioteca escolar. El proyecto fue realizado en primera instancia con PHP, JS, MySQL, HTML, CSS. Posterioremente se incorporó Bootstrap y algunas librerias para manejo de reportes en PDF y graficas estadisticas.
+## Propósito:
+El sistema desarrollado mejora el control y gestión de los servicios que ofrecen los departamentos de enfermeria y psicopedagogia. Además el sistema también genera reportes imprimibles de los casos atendidos, permite llevar el control del gasto del seguro escolar, entre otras funciones. A unos meses de la implementación del sistema ha mejorado la  atención al cliente, automatizado los procesos y disminuido los tiempos de respuesta.
 
-## Estado del proyecto:
-Este proyecto esta en fase de mantenimiento, posiblemente lo pase a React, quiero modificar la estructura y eliminar todo el código repetido.
-
-##  Descripción:
+## Funciones principales
+El sistema consta de 4 módulos que a continuación describo:
 ### - Enfermería: 
 Permite ir documentando la atención médica proporcionada a los mas de 1200 estudiantes del colegio, se puede visualizar el historial de atención de los alumnos para determinar tendencias, además de que lleva el conteo del gasto en el seguro escolar, permite visualizar con las gráficas la tendencia y origen de los incidentes, etc.
 ### - Psicopedagógico:
@@ -16,8 +14,15 @@ Permite llevar el control y registro de los libros y ejemplares con los que cuen
 ### - Ajustes:
 Permite mover los ajustes para las necesidades de cada institución
 
+## Descripción
+Este proyecto consta de dos fases, ambas como parte de un trabajo de titulación de la carrera de desarrollo de software en UNADM. El proyecto fue desarrollado para  el colegio Santee ubicado en la  parte oriente de la ciudad de Mexicali, México. El proyecto inicio con el levantamiento de requierimientos, traducidos a mas de 64 Historias de Usuarios, que contiene los siguientes módulos: Enfermería, Psicopedagogía, prefectura y biblioteca escolar. El proyecto fue realizado en primera instancia con PHP, JS, MySQL, HTML, CSS. Posterioremente se incorporó Bootstrap y algunas librerias para manejo de reportes en PDF y gráficas estadísticas.
+
+
+
+
+##URL 
+www.sisantee.com.mx
 ## Instalación: 
-xxxxxxxxx
 
 
 ## Uso: Describe cómo utilizar el proyecto. Proporciona ejemplos y casos de uso para que los usuarios puedan entender cómo aplicarlo en sus propios proyectos.
