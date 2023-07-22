@@ -23,13 +23,10 @@ xxxxxxxxx
 ## Uso: Describe cómo utilizar el proyecto. Proporciona ejemplos y casos de uso para que los usuarios puedan entender cómo aplicarlo en sus propios proyectos.
 
 ## Imágenes: 
-![image](https://github.com/omarasael1980/sic2/assets/51717542/207f8761-608e-416c-b34c-3dcc33b9d30f)
-![image](https://github.com/omarasael1980/sic2/assets/51717542/78a63e24-5b25-457f-9412-3685f1517b80)
-![image](https://github.com/omarasael1980/sic2/assets/51717542/d3d2ef68-84bd-4484-bbfe-6f6e16410085)
-![image](https://github.com/omarasael1980/sic2/assets/51717542/6ba95f3e-4a6a-4451-be0d-66a3bec3ad6a)
-![image](https://github.com/omarasael1980/sic2/assets/51717542/2a33e128-3eed-4aaf-a62f-2d16e037bc53)
 
-
+![image](https://github.com/omarasael1980/sic2/assets/51717542/ea973e94-0809-4acf-a77f-a22ee4a98721)
+![image](https://github.com/omarasael1980/sic2/assets/51717542/443d4de1-ecf9-4c28-a7d3-6850fe04a580)
+![image](https://github.com/omarasael1980/sic2/assets/51717542/775b64f9-7965-44cd-8c1f-644f79a2d2a5)
 
 
 
