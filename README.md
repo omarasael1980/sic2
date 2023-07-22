@@ -51,6 +51,7 @@ Accede a la página de inicio de sesión.
 Introduce tu nombre de usuario y contraseña.
 Haz clic en "Ingresar".
 Con estos sencillos pasos, podrás acceder rápidamente al sistema y disfrutar de todas sus funciones sin complicaciones. ¡Así de simple es utilizar nuestra plataforma! Si tienes alguna consulta o necesitas asistencia adicional, no dudes en contactarnos. Estamos aquí para ayudarte en todo momento.
+
 ![image](https://github.com/omarasael1980/sic2/assets/51717542/3c984007-b2d4-4219-9520-7cbc067d0771)
 
   
