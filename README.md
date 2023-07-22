@@ -29,11 +29,6 @@ El sistema consta de 4 módulos que a continuación describo:
 ## Descripción
 Este proyecto consta de dos fases, ambas como parte de un trabajo de titulación de la carrera de desarrollo de software en UNADM. El proyecto fue desarrollado para  el colegio Santee ubicado en la  parte oriente de la ciudad de Mexicali, México. El proyecto inicio con el levantamiento de requierimientos, traducidos a mas de 64 Historias de Usuarios, que contiene los siguientes módulos: Enfermería, Psicopedagogía, prefectura y biblioteca escolar. El proyecto fue realizado en primera instancia con PHP, JS, MySQL, HTML, CSS. Posterioremente se incorporó Bootstrap y algunas librerias para manejo de reportes en PDF y gráficas estadísticas.
 
-
-
-
-
-
 ## Instalación: 
 
 ### La instalación de nuestro proyecto es rápida y sencilla. Sigue estos simples pasos:
@@ -41,8 +36,17 @@ Este proyecto consta de dos fases, ambas como parte de un trabajo de titulación
 * Importa la BD: La base de datos que se incluye aquí es solo ilustrativa
 * Ejecuta el proyecto: Una vez que hayas clonado el repositorio y configurado tu BD, estás listo para ejecutar el proyecto.
 
+## Guía de uso:
+El sistema es fácil de utilizar, aqui te mostramos como acceder a diferentes perfiles: 
+- ingresar a página de Login
+- escribir tu usuario y contraseña
+- Ingresar
+Con esos pasos simples puedes ingresar al sistema
 
-## Imágenes: 
+
+  
+
+## Capturas de pantalla: 
 
 
 ![image](https://github.com/omarasael1980/sic2/assets/51717542/3c984007-b2d4-4219-9520-7cbc067d0771)
@@ -52,23 +56,4 @@ Este proyecto consta de dos fases, ambas como parte de un trabajo de titulación
 
 
 
-## Contribución:
-Si quieres hacer una contribución puedes hacer un FORK para realizar los cambios que se requieran y mandame un mensaje para saber de tu contribucón y poder revisarla.
-## Créditos:
-### HTML2PDF: 
-se utiliza en las secciones que generan reportes en PDF
-### Bootstrap:
-se complementó el proyecto en algunas partes
-### Chart.js: 
-Se usó en las gráficas de estadísticas.
-### SweetAlert:
-Generación de alertas de confirmación
-## Licencia:
-Puedes hacer un Fork del ployecto, habilitar tu base de datos y hacer las modificaciones que sean necesarias.
 
-
-## Versión: 1.0 
-
-
-## Contacto
-email: omarasael80@gmail.com, omarasael@hotmail.com, omarasael@nube.unadmexico.mx
