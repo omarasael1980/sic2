@@ -1,4 +1,4 @@
-# SISTEMA INTEGRAL PARA EL COLEGIO SANTEE AC
+# Sistema Integral para el Colegio Santee A.C.
 
 ## Propósito:
 El propósito del sistema desarrollado es optimizar el control y gestión de los servicios proporcionados por los departamentos de enfermería y psicopedagogía. Este sistema innovador ofrece múltiples funcionalidades, incluyendo la generación de reportes imprimibles de los casos atendidos y la capacidad de supervisar el gasto del seguro escolar, entre otras prestaciones.
