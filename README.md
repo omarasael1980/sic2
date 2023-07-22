@@ -36,15 +36,22 @@ xxxxxxxxx
 ## Contribución:
 Si quieres hacer una contribución puedes hacer un FORK para realizar los cambios que se requieran y mandame un mensaje para saber de tu contribucón y poder revisarla.
 ## Créditos:
-### HTML2PDF: se utiliza en las secciones que generan reportes en PDF
-### Bootstrap se complementó el proyecto en algunas partes
-### Chart.js: Se usó en las gráficas de estadísticas.
-### SweetAlert: Generación de alertas de confirmación
-## Licencia: Especifica la licencia bajo la cual se distribuye el proyecto. Asegúrate de elegir una licencia que sea adecuada para tus objetivos y que permita que otros utilicen, modifiquen y distribuyan el código.
+### HTML2PDF: 
+se utiliza en las secciones que generan reportes en PDF
+### Bootstrap:
+se complementó el proyecto en algunas partes
+### Chart.js: 
+Se usó en las gráficas de estadísticas.
+### SweetAlert:
+Generación de alertas de confirmación
+## Licencia:
+Puedes hacer un Fork del ployecto, habilitar tu base de datos y hacer las modificaciones que sean necesarias.
 
-## Estado de construcción: Si es un proyecto en desarrollo, puedes incluir información sobre el estado de la construcción, las pruebas y la integración continua.
+## Estado de construcción:
+Esta en fase de mantenimiento con la visión de rehacerlo con React y una API construida en php y MySQL para reutilizar la base de datos
 
-## Notas de versión: Si es apropiado, proporciona un historial de versiones con detalles sobre las actualizaciones y cambios en cada versión.
+## Versión: 1.0 
+
 
 ## Contacto
-email: omarasael80
+email: omarasael80@gmail.com, omarasael@hotmail.com, omarasael@unadmexico.mx
