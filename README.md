@@ -35,14 +35,7 @@ Ofrece la posibilidad de configurar el monto del seguro escolar de acuerdo con l
 Con esta estructura mejorada, el sistema se presenta como una herramienta completa y versátil que agiliza la gestión administrativa y de servicios en el colegio, contribuyendo significativamente a mejorar la eficiencia y el funcionamiento general de la institución educativa.
   
 
-## Descripción
-Este proyecto se divide en dos fases, ambas forman parte de mi trabajo de titulación en la carrera de desarrollo de software en la UNADM. La iniciativa fue desarrollada para el colegio Santee, ubicado en la parte oriente de la ciudad de Mexicali, México.
 
-La primera fase del proyecto consistió en llevar a cabo un detallado levantamiento de requerimientos, los cuales se tradujeron en más de 64 Historias de Usuarios. Estas historias dieron forma a los siguientes módulos del sistema: Enfermería, Psicopedagogía, Prefectura y Biblioteca Escolar, cubriendo así diversas áreas fundamentales de la institución.
-
-En la fase inicial del desarrollo, se emplearon tecnologías como PHP, JS, MySQL, HTML y CSS. Posteriormente, para mejorar la interfaz y funcionalidades del sistema, se incorporó el framework Bootstrap y algunas librerías que facilitaron la generación de reportes en PDF y gráficas estadísticas.
-
-Este proyecto no solo representa un desafío académico sino también una valiosa oportunidad para brindar una solución informática eficiente y efectiva al colegio Santee, mejorando su administración y ofreciendo un sistema más completo y útil para su personal y estudiantes.
 
 ## Instalación: 
 
