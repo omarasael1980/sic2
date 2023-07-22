@@ -54,4 +54,4 @@ Esta en fase de mantenimiento con la visión de rehacerlo con React y una API co
 
 
 ## Contacto
-email: omarasael80@gmail.com, omarasael@hotmail.com, omarasael@unadmexico.mx
+email: omarasael80@gmail.com, omarasael@hotmail.com, omarasael@nube.unadmexico.mx
