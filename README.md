@@ -25,6 +25,9 @@ xxxxxxxxx
 ## Imágenes: 
 
 
+![image](https://github.com/omarasael1980/sic2/assets/51717542/3c984007-b2d4-4219-9520-7cbc067d0771)
+![image](https://github.com/omarasael1980/sic2/assets/51717542/da69bb55-9d66-4bc0-82da-b1b8a1d4933f)
+![image](https://github.com/omarasael1980/sic2/assets/51717542/9578f39b-e5ed-44a0-89fa-680482951fc0)
 
 
 
